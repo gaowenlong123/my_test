@@ -1,0 +1,33 @@
+testinfo:
+    - id: test002
+      title: 标题
+      info: 用例信息
+
+testcase:
+    - element_info: //*[@id="main"]/div/div[1]/div[2]/div[1]/div/a
+      find_type: xpath
+      operate_type: click
+      info: 点击登录
+    - element_info: None
+      find_type: None
+      operate_type: switch_windows
+      info: 切换窗口
+    - element_info: //*[@id="kr-shield-username"]
+      find_type: xpath
+      operate_type: send_keys
+      info: 23322332233
+    - element_info: //*[@id="kr-shield-password"]
+      find_type: xpath
+      operate_type: send_keys
+      info: er2222
+    - element_info: //*[@id="kr-shield-submit"]
+      find_type: xpath
+      operate_type: click
+      info: 点击登录
+
+check:
+    - element_info: 检查的元素信息
+      find_type: 类型
+      operate_type: 操作
+      check: 检查类型   ???check_type
+      info: 检查的详细信息

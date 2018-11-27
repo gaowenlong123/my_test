@@ -1,0 +1,3 @@
+repository  1：yaml文件的书写（按模块来分
+            2：testcase文件的书写（同上结构，没有文件希望可以自动生成，就是默认无其他操作
+            3：testoperates（同上结构，必须手写）
