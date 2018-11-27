@@ -38,8 +38,4 @@ def getYaml(path =''):
 
 
 
-if __name__ == '__main__':
-    path=change_path()
-    print(path)
-    print(getYaml(path))
 
