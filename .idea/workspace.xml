@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e670878-8f4f-4f45-b0d2-23e7314eea1e" name="Default" comment="" />
+    <list default="true" id="7e670878-8f4f-4f45-b0d2-23e7314eea1e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/my_test.iml" afterPath="$PROJECT_DIR$/.idea/my_test.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/CMS_Repository/Readme.text" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Element.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Enums.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Error.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Log.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Operate.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Os.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Unittest.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Readme.text" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Page.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Yaml.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Operate_Server/Readme.text" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/CMS_Server/Report_Server/Readme.text" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Chromedriver/64-66/chromedriver.exe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Chromedriver/67-69/chromedriver.exe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Chromedriver/70-72/chromedriver.exe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Test_flow/runner/runner.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Test_flow/testPage/onepage.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Test_flow/testPage/twoPage.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Test_flow/testmain/one.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Test_flow/testmain/twoPage.py" afterPath="" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,38 +36,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Readme.text" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Readme.text">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Operate_Yaml.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Yaml.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Readme.text" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMS_Repository/Readme.text">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -59,30 +52,6 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Base_Unittest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Unittest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Operate_Page.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Page.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3564">
-              <caret line="137" column="21" lean-forward="false" selection-start-line="137" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -167,15 +136,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\PycharmProjects\my_test\CMS_Server\Operate_Server" />
-      <recent name="E:\PycharmProjects\my_test\CMS_Server" />
-      <recent name="E:\PycharmProjects\my_test" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\PycharmProjects\my_test\CMS_Server\Report_Server" />
       <recent name="E:\PycharmProjects\my_test\CMS_Server\Base_Server" />
       <recent name="E:\PycharmProjects\my_test\CMS_Repository" />
+      <recent name="E:\PycharmProjects\my_test" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Pycharm_Git\my_test\CMS\Main" />
+      <recent name="E:\Pycharm_Git\my_test\CMS" />
+      <recent name="E:\PycharmProjects\my_test\CMS_Server\Operate_Server" />
+      <recent name="E:\PycharmProjects\my_test\CMS_Server" />
       <recent name="E:\PycharmProjects\my_test" />
     </key>
   </component>
@@ -209,7 +180,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21502976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -218,7 +188,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3282313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4234694" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -243,7 +213,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Readme.text">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Readme.text">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -251,17 +221,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Yaml.py">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Operate_Yaml.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Repository/Readme.text">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Repository/Readme.text">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="2" column="37" lean-forward="true" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
@@ -269,13 +237,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Unittest.py">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Unittest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
           <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -287,13 +253,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Page.py">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Operate_Page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3564">
           <caret line="137" column="21" lean-forward="false" selection-start-line="137" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -304,10 +268,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test_flow/runner/runner.py">
+    <entry file="file://$PROJECT_DIR$/CMS/Main/runner/runner.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -327,44 +292,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Base/BaseRunner.py" />
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Operate.py">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Operate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9834">
           <caret line="298" column="0" lean-forward="false" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Element.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Log.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Enums.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Base/BaseYaml.py" />
-    <entry file="file://$PROJECT_DIR$/Base/BaseRunPage.py" />
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Operate_Server/Readme.text">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Readme.text">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Element.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -372,34 +308,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Page.py">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Log.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3564">
-          <caret line="137" column="21" lean-forward="false" selection-start-line="137" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Report_Server/Readme.text">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Enums.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Base/BaseYaml.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseRunPage.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Readme.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Readme.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Operate_Page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3564">
+          <caret line="137" column="21" lean-forward="false" selection-start-line="137" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Report_Server/Readme.text">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Yaml.py">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Operate_Yaml.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Repository/Readme.text">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Repository/Readme.text">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
@@ -407,13 +372,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Unittest.py">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Unittest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
           <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
