@@ -1,0 +1,6 @@
+#LWP-Cookies-2.0
+Set-Cookie3: kr_plus_id=19482566; path="/"; domain=".36kr.com"; path_spec; domain_dot; expires="2018-12-15 06:41:46Z"; version=0
+Set-Cookie3: kr-account-id=19482566; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-15 06:41:46Z"; version=0
+Set-Cookie3: kr-account-token="eyJ0eXAiOiJKV1QiLCJhbGciOiIzNmtyLWp3dCJ9.eyJtZWRpYS1pZCI6MTk0ODI1NjYsImV4cCI6MTU0MzY0NjUwNH0%3D.e921fb95c98c30f1cc15eab312a844c0933f4fea084732c2132f1e9658ba6318"; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-15 06:41:46Z"; HttpOnly=None; version=0
+Set-Cookie3: kr-account-uuid=5c00dba87ec581543560104; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-15 06:41:46Z"; version=0
+Set-Cookie3: kraccountss=24HxWShJZgojahvSsoMNm5f7xZfiaXPoNoIv7bsK; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-01 06:41:46Z"; httponly=None; version=0
