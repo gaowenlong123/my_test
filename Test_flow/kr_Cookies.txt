@@ -1,6 +1,8 @@
 #LWP-Cookies-2.0
-Set-Cookie3: kr_plus_id=19482566; path="/"; domain=".36kr.com"; path_spec; domain_dot; expires="2018-12-15 06:41:46Z"; version=0
-Set-Cookie3: kr-account-id=19482566; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-15 06:41:46Z"; version=0
-Set-Cookie3: kr-account-token="eyJ0eXAiOiJKV1QiLCJhbGciOiIzNmtyLWp3dCJ9.eyJtZWRpYS1pZCI6MTk0ODI1NjYsImV4cCI6MTU0MzY0NjUwNH0%3D.e921fb95c98c30f1cc15eab312a844c0933f4fea084732c2132f1e9658ba6318"; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-15 06:41:46Z"; HttpOnly=None; version=0
-Set-Cookie3: kr-account-uuid=5c00dba87ec581543560104; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-15 06:41:46Z"; version=0
-Set-Cookie3: kraccountss=24HxWShJZgojahvSsoMNm5f7xZfiaXPoNoIv7bsK; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-01 06:41:46Z"; httponly=None; version=0
+Set-Cookie3: M-XSRF-TOKEN=a4d7f968dfaaede7a173042c09b5848046a45ffaea6a566cdae9d87e4543c648; path="/"; domain=".36kr.com"; path_spec; domain_dot; expires="2018-11-30 14:18:19Z"; version=0
+Set-Cookie3: kr_plus_id=12186523; path="/"; domain=".36kr.com"; path_spec; domain_dot; expires="2018-12-15 12:18:19Z"; version=0
+Set-Cookie3: krnewsfrontss=940fa170898274732ed76d24e3998cad; path="/"; domain=".36kr.com"; path_spec; domain_dot; expires="2018-11-30 14:18:19Z"; HttpOnly=None; version=0
+Set-Cookie3: kr-account-id=12186523; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-15 12:18:19Z"; version=0
+Set-Cookie3: kr-account-token="eyJ0eXAiOiJKV1QiLCJhbGciOiIzNmtyLWp3dCJ9.eyJtZWRpYS1pZCI6MTIxODY1MjMsImV4cCI6MTU0MzY2NjY5N30%3D.2193eef08b28bf63dbb7e0810eb89d8a48bef5da9f3aacba4a99985d9a38b7b5"; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-15 12:18:19Z"; HttpOnly=None; version=0
+Set-Cookie3: kr-account-uuid=5c012a897b80f1543580297; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-15 12:18:19Z"; version=0
+Set-Cookie3: kraccountss=riNrn9tIfeqdkjmJCer5wcHXf5mXO4h3EuAinkiJ; path="/"; domain=".accounttest12.36kr.com"; path_spec; domain_dot; expires="2018-12-01 12:18:19Z"; httponly=None; version=0
