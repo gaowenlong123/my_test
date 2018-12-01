@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/Test_flow/test.py" line="13" mnemonic="3" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7e670878-8f4f-4f45-b0d2-23e7314eea1e" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change beforePath="" afterPath="$PROJECT_DIR$/Test_flow/test2.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Test_flow/test_wei.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Main.text" afterPath="$PROJECT_DIR$/Main.text" />
+      <change beforePath="$PROJECT_DIR$/Test_flow/kr_Cookies.txt" afterPath="$PROJECT_DIR$/Test_flow/kr_Cookies.txt" />
+      <change beforePath="$PROJECT_DIR$/Test_flow/test.py" afterPath="$PROJECT_DIR$/Test_flow/test.py" />
+      <change beforePath="$PROJECT_DIR$/Test_flow/test02.py" afterPath="$PROJECT_DIR$/Test_flow/test02.py" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,28 +24,46 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="my_test" />
+  </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf>
       <file leaf-file-name="Base_Element.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Element.py">
+=======
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Main.text" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.text">
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="325">
+              <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Base_Enums.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Enums.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="33">
               <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+=======
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_flow/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1362">
+              <caret line="62" column="48" lean-forward="true" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Base_Error.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Error.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -50,11 +81,21 @@
               <caret line="168" column="0" lean-forward="false" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+=======
+      <file leaf-file-name="test02.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_flow/test02.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Base_Operate.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Operate.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -62,21 +103,50 @@
               <caret line="299" column="0" lean-forward="false" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
+=======
+      <file leaf-file-name="test2.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Test_flow/test2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+                <element signature="e#77#1695#0" expanded="false" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Base_Os.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Os.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+      <file leaf-file-name="test_wei.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_flow/test_wei.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-432">
+              <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="kr_Cookies.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_flow/kr_Cookies.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="3" column="128" lean-forward="true" selection-start-line="3" selection-start-column="128" selection-end-line="3" selection-end-column="128" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="Base_Unittest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Unittest.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,10 +167,19 @@
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="Base_Login.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Base/Base_Login.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+              <folding />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Operate_Yaml.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Yaml.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -109,6 +188,14 @@
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LICENSE">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
             </state>
           </provider>
         </entry>
@@ -124,6 +211,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -136,11 +228,21 @@
         <option value="$PROJECT_DIR$/CMS_Server/Report_Server/Readme.text" />
         <option value="$PROJECT_DIR$/CMS_Repository/Readme.text" />
         <option value="$PROJECT_DIR$/Main.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Enums.py" />
         <option value="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Log.py" />
         <option value="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Error.py" />
         <option value="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Operate.py" />
         <option value="$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Yaml.py" />
+=======
+        <option value="$PROJECT_DIR$/Base/Base_Login.py" />
+        <option value="$PROJECT_DIR$/Test_flow/kr_Cookies.txt" />
+        <option value="$PROJECT_DIR$/Test_flow/test02.py" />
+        <option value="$PROJECT_DIR$/Main.text" />
+        <option value="$PROJECT_DIR$/Test_flow/test.py" />
+        <option value="$PROJECT_DIR$/Test_flow/test_wei.py" />
+        <option value="$PROJECT_DIR$/Test_flow/test2.py" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
       </list>
     </option>
   </component>
@@ -151,8 +253,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-17" />
-    <option name="y" value="38" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1200" />
     <option name="height" value="684" />
   </component>
@@ -174,6 +276,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,27 +284,37 @@
               <item name="my_test" type="b2602c69:ProjectViewProjectNode" />
               <item name="my_test" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
+=======
+            <path>
+              <item name="my_test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_test" type="462c0819:PsiDirectoryNode" />
+              <item name="Test_flow" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\PycharmProjects\my_test\CMS_Server\Operate_Server" />
-      <recent name="E:\PycharmProjects\my_test\CMS_Server" />
-      <recent name="E:\PycharmProjects\my_test" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\PycharmProjects\my_test\CMS_Server\Base_Server" />
       <recent name="E:\PycharmProjects\my_test\CMS_Server\Report_Server" />
       <recent name="E:\PycharmProjects\my_test\CMS_Repository" />
+      <recent name="E:\PycharmProjects\my_test" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Pycharm_Git\my_test\CMS\Main" />
+      <recent name="E:\Pycharm_Git\my_test\CMS" />
+      <recent name="E:\PycharmProjects\my_test\CMS_Server\Operate_Server" />
+      <recent name="E:\PycharmProjects\my_test\CMS_Server" />
       <recent name="E:\PycharmProjects\my_test" />
     </key>
   </component>
@@ -217,8 +330,100 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Python.test2">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test_flow" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="my_test" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test_flow/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="test02" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test_flow" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="my_test" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test_flow/test02.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="test2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test_flow" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="my_test" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test_flow/test2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="test_wei" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test_flow" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="my_test" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test_flow/test_wei.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Python.test" />
+      <item index="1" class="java.lang.String" itemvalue="Python.test02" />
+      <item index="2" class="java.lang.String" itemvalue="Python.test2" />
+      <item index="3" class="java.lang.String" itemvalue="Python.test_wei" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.test2" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test_wei" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test02" />
+        <item index="4" class="java.lang.String" itemvalue="Python.test02" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -232,26 +437,38 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21558245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14508928" sideWeight="0.70718235" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38435373" sideWeight="0.51488096" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38435373" sideWeight="0.48511904" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6873977" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3010204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14508928" sideWeight="0.29281768" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5595238" sideWeight="0.85863096" order="3" side_tool="false" content_ui="tabs" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,31 +478,67 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="9" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Report_Server/Readme.text" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Operate_Yaml.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Repository/Readme.text" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Unittest.py" />
+    <entry file="file://$PROJECT_DIR$/CMS_Server/Report_Server/BaseError.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseError.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseLog.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseOperate.py" />
+    <entry file="file://$PROJECT_DIR$/Main.py" />
+    <entry file="file://$PROJECT_DIR$/Main.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_flow/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Readme.text" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Operate_Yaml.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Repository/Readme.text" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Unittest.py" />
+    <entry file="file://$PROJECT_DIR$/Main.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Operate_Page.py" />
     <entry file="file://$PROJECT_DIR$/Yamls/test/test1.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test_flow/runner/runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/CMS/Main/runner/runner.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseOs.py" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
     <entry file="file://D:/python/Lib/unittest/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
           <caret line="64" column="10" lean-forward="false" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -293,6 +546,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+<<<<<<< HEAD
           <folding />
         </state>
       </provider>
@@ -370,6 +624,31 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Base/BaseOs.py">
+=======
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Base/BaseRunner.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Operate.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Element.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Log.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Enums.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseYaml.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseRunPage.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Readme.text" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Readme.text" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Operate_Page.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Report_Server/Readme.text" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Operate_Server/Operate_Yaml.py" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Repository/Readme.text" />
+    <entry file="file://$PROJECT_DIR$/CMS/CMS_Server/Base_Server/Base_Unittest.py" />
+    <entry file="file://$PROJECT_DIR$/CMS_Server/Report_Server/BaseError.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseError.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseLog.py" />
+    <entry file="file://$PROJECT_DIR$/Base/BaseOperate.py" />
+    <entry file="file://$PROJECT_DIR$/Main.py" />
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -377,22 +656,30 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Base/BaseRunner.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
           <caret line="3" column="15" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Base/BaseRunPage.py">
+=======
+    <entry file="file://D:/python/Lib/site-packages/requests/sessions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="1" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="137" selection-end-column="21" />
+        <state relative-caret-position="58">
+          <caret line="558" column="0" lean-forward="false" selection-start-line="558" selection-start-column="0" selection-end-line="558" selection-end-column="0" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Main.text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Base/BaseYaml.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -405,10 +692,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="81" column="20" lean-forward="false" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="20" />
+=======
+    <entry file="file://$PROJECT_DIR$/Test_flow/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1362">
+          <caret line="62" column="48" lean-forward="true" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Element.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -447,20 +741,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="299" column="0" lean-forward="false" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/Test_flow/test02.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Os.py">
+=======
+    <entry file="file://$PROJECT_DIR$/Base/Base_Login.py">
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/CMS_Server/Base_Server/Base_Unittest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
@@ -487,6 +792,31 @@
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/Test_flow/kr_Cookies.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="128" lean-forward="true" selection-start-line="3" selection-start-column="128" selection-end-line="3" selection-end-column="128" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_flow/test_wei.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-432">
+          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_flow/test2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#77#1695#0" expanded="false" />
+>>>>>>> ef702c76d027fd9e33484a70bb389091429040ea
           </folding>
         </state>
       </provider>
