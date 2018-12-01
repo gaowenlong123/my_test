@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e670878-8f4f-4f45-b0d2-23e7314eea1e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Base/BaseLog.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Base/BaseOperate.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Base/BaseRunPage.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Base/BaseRunner.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Base/BaseYaml.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Base/str_enum.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Enums.py" afterPath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Enums.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Log.py" afterPath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Log.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Operate.py" afterPath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Operate.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Yaml.py" afterPath="$PROJECT_DIR$/CMS_Server/Operate_Server/Operate_Yaml.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Base/BaseError.py" afterPath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Error.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Base/BaseOs.py" afterPath="$PROJECT_DIR$/CMS_Server/Base_Server/Base_Os.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
