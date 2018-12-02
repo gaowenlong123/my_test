@@ -14,7 +14,6 @@ chrome_options = Options()
 
 # driver = webdriver.Chrome(chrome_options=chrome_options)
 driver =webdriver.Chrome()
-
 print(driver.get('http://httpbin.org/ip'))
 print(driver.page_source)
 driver.get("https://www.36kr.com/")
@@ -84,6 +83,8 @@ print(re.cookies)
 res=re.post(url='https://36kr.com/pp/api/like' ,headers=header ,data=post_data)
 print(res.cookies)
 print(res.text)
+
+
 
 #1 伪装成不同ip 来避免画动图片
 #2 抓到头像名称，证明已经登录状态

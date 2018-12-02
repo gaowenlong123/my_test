@@ -1,0 +1,17 @@
+1: interface : 请求数据类型 ，相应类型 ， 类型 ， 作者 ，修改人 ，出错次数 ，出错时间 ，原因
+
+每个接口看成一个对象，我们可以像方法一样的调用 ，输出参数，进行一些接口测试或者逻辑测试
+
+article.favorite.favorite_info()   >>>  输出接口信息
+
+article.publishing.motif()
+
+publishing 文章发布的时候可能触发的接口
+publish    指发布文章的接口
+published    指发布完文章，可以操作的接口
+
+
+
+请求状态：有登录态和非登录态
+
+
