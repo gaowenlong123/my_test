@@ -10,6 +10,21 @@ class I_video(Interface):
         return str(os.path.dirname(__file__).split('/')[-1])
 
 
-i = I_video()
-for ia in range(5):
-    i.end_write('dadada')
+
+
+
+
+
+
+
+if __name__ == '__main__':
+
+    i = I_video()
+    for i1 in range(10):
+        i.write('21111sssssssssss我是文章1dadwaa')
+    i.write('adada')
+
+    # 写入dict
+    b = {"aaaa": 111, "22": 222222}
+    i.write_dict(b)
+    i.end_write()

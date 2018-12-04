@@ -1,13 +1,13 @@
 #运行时候 先用Pickle ，结束时输出到text
 
-def write_init(path='b.text'):
+def write_text_init(path='b.text'):
     data = '接口统计   只存一次运行\n'
     with open(path, 'w+') as f:
         f.write(data)
 
 
-def write(data, path):           #累加
-    all = read(path)
+def write_text(data, path):           #累加
+    all = read_text(path)
     data+='\n'
     all+=data
     with open(path, 'w+') as f:
@@ -15,7 +15,7 @@ def write(data, path):           #累加
 
 
 
-def read(path ):                #读数据
+def read_text(path ):                #读数据
     with open(path, 'r+') as f:
         data=f.read()
     f.close()
@@ -28,5 +28,5 @@ def read(path ):                #读数据
 
 if __name__ == '__main__':
     write_init()
-    a=read('b.text')
-    write('aaccccccccccc','b.text')
+    a=read_text('b.text')
+    write_text('aaccccccccccc','b.text')
