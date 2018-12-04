@@ -27,6 +27,5 @@ def read_text(path ):                #读数据
 
 
 if __name__ == '__main__':
-    write_init()
     a=read_text('b.text')
     write_text('aaccccccccccc','b.text')
