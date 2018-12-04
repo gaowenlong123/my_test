@@ -77,9 +77,7 @@ class WebDriver():
 
 
 
-    #重启浏览器
-    def restart(self):
-        pass
+
 
     def get_headers_Token(self):
         headers = {

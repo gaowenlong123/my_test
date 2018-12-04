@@ -12,16 +12,14 @@ class Interface(metaclass=ABCMeta):
 
         #====每个对象初始化的步骤======
         self.login_type = Enums.test_Cms_url
+        self.Cookie_path='E:\Pycharm_Git\my_test\Base\Root\Cookie.pickle'
 
-        #建立一个seesion
+        #建立一个seesion  ? 要不要直接建立一个seesion 到处用
         # self.request=requests.session()
 
-        #先检查本地的cookie           如果是cms，就不需要token
+        #先检查本地的cookie
         self._Check_Cookie()
 
-        # 如果没有运行，保持diriver ，如果有就跳过
-        # self._driver = WebDriver()
-        # self._driver.login(self.login_type)
 
         #初始化属性
         self._privite_property()
@@ -43,9 +41,6 @@ class Interface(metaclass=ABCMeta):
 
         # 这个搞成全局的先试试 ,一次拿到全局都用
 
-        self.Headers=self._get_Headers()
-
-
 
 
 #私有方法区域
@@ -66,52 +61,77 @@ class Interface(metaclass=ABCMeta):
         return read_pickle(self.log_pickle ,is_clear=True)
 
     def _Check_Cookie(self):
-        mkdir_file('Cookie.text')
-        temp = read_text('Cookie.text').split('\n')
+        dict = read_pickle(self.Cookie_path)
         if self.login_type ==Enums.test_Cms_url:
-            self.Cookie=temp[0].split(':')[1]
-            self.Headers = {
-                'x-requested-with': 'XMLHttpRequest',
-                'Cookie': self.Cookie,
-            }
-
+            self.Cookie=dict['CMS']
+            self.Headers = self._make_headers(self.login_type ,self.Cookie)
             self._check_request('http://cmstest02.36kr.com/api/post?per_page=1&page=1', headers=self.Headers)
 
         elif self.login_type == Enums.test_Web_url:
-            self.Cookie = temp[1].split(':')[1]
+            Token=''
+            self.Cookie = dict['WEB']
             _list = self.Cookie.split(';')
             for i in _list:
                 if 'M-XSRF-TOKEN' in i:
-                    self.Token = i.split('=')[1]
-            self.Headers = {
-                'M-X-XSRF-TOKEN': self.Token,
-                'Cookie': self.Cookie
-            }
+                    Token = i.split('=')[1]
+            self.Headers = self._make_headers(self.login_type, self.Cookie)
+            raise("还没有写判断机制呢")
             self._check_request('', self.Headers)
 
-
-
     def _check_request(self , url,headers):
+        '''  检查请求结果 '''
         re=requests.get(url=url ,headers=headers)
-        print(re.json()['code'])
+        if re.json()['code'] == 0:
+            print(re.text)
+            print('Cookie  没有过期')
+        else:
+            # 重新启动
+            print('Cookie  过期')
+            self._Restart_driver()
+
+    def _Restart_driver(self):
+        ''' Cookie写入文件  ， 返回Headers 就行'''
+        # 重启浏览器  ,
+        self._driver = WebDriver()
+        self._driver.login(self.login_type)
+
+        if self.login_type == Enums.test_Web_url:
+            self.Cookie = self._get_Cookie()
+            data={'WEB':self.Cookie}
+            writeInfo(data ,self.Cookie_path)
+        elif self.login_type == Enums.test_Cms_url:
+            self.Cookie = self._get_Cookie()
+            data = {'CMS': self.Cookie}
+            writeInfo( data ,self.Cookie_path)
+
+        return self._make_headers(self.login_type, self.Cookie)
+
+    def _make_headers(self,type ,cookie):
+        if type == Enums.test_Cms_url:
+            self.Headers = {
+                'x-requested-with': 'XMLHttpRequest',
+                'Cookie': cookie,
+            }
+            return self.Headers
+        elif type == Enums.test_Web_url:
+            Token = ''
+            _list = cookie.split(';')
+            for i in _list:
+                if 'M-XSRF-TOKEN' in i:
+                    Token = i.split('=')[1]
+            self.Headers = {
+                'M-X-XSRF-TOKEN': Token,
+                'Cookie': cookie
+            }
+            return self.Headers
 
     def _get_Cookie(self):
-        # self.Cookie = self._drivr.get_Cookie()
-        # return self.Cookie
         return self._driver.get_Cookie()
 
     def _get_Token(self):
-        # self.Token = self.drivr.get_Token()
-        # return self.Token
         return self._driver.get_Token()
 
-    def _get_Headers_Token(self):
-        # self.Heades_Token = self._drivr.get_headers_Token()
-        # return self.Heades_Token
-        return self._driver.get_headers_Token()
 
-    def _get_Headers(self):
-        return self._driver.get_headers()
 
 
 #公有方法区域
@@ -129,13 +149,7 @@ class Interface(metaclass=ABCMeta):
     def write_dict(self,data):
         writeInfo(data,self.log_pickle)
 
-    def Restart_driver(self):
-        # 重启浏览器
-        self._driver.restart()
 
-        #改变全局header
-        self.Headers_Token=self._get_Headers_Token()
-        pass
 
 
 
@@ -143,9 +157,9 @@ class Interface(metaclass=ABCMeta):
 
 
     #抽象方法区域
-    # @abstractmethod
-    # def get_dir_name(self):
-    #     return ''
+    @abstractmethod
+    def get_dir_name(self):
+        return ''
 
 
 
@@ -194,4 +208,9 @@ class Interface(metaclass=ABCMeta):
 
 
 if __name__ == '__main__':
-    s=Interface()
+   a=read_pickle('Cookie.pickle')
+   print(a)
+
+
+
+

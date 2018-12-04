@@ -1,10 +1,14 @@
-#运行时候 先用Pickle ，结束时输出到text
+#运行时候 先用Pickle ，结束时输出到text         垃圾 ，不好用，就不用你了
 
 def write_text_init(path='b.text'):
     data = '接口统计   只存一次运行\n'
     with open(path, 'w+') as f:
         f.write(data)
 
+def write_text_add(data,path='b.text'):
+
+    with open(path, 'w') as f:
+        f.write(data)
 
 def write_text(data, path):           #累加
     all = read_text(path)
