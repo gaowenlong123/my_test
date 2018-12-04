@@ -2,7 +2,7 @@
 
 每个接口看成一个对象，我们可以像方法一样的调用 ，输出参数，进行一些接口测试或者逻辑测试
 
-article.favorite.favorite_info()   >>>  输出接口信息
+article.favorite_info()   >>>  输出接口信息
 
 article.publishing.motif()
 
