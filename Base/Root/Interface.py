@@ -20,7 +20,6 @@ class Interface(metaclass=ABCMeta):
         #先检查本地的cookie
         self._Check_Cookie()
 
-
         #初始化属性
         self._privite_property()
         self._public_property()
@@ -57,8 +56,8 @@ class Interface(metaclass=ABCMeta):
         mkdir_file(self.log_pickle)
         write_pickle_init(data={},path=self.log_pickle)
 
-    def _read_pickle(self):
-        return read_pickle(self.log_pickle ,is_clear=True)
+    def _read_pickle(self ,is_clear):
+        return read_pickle(self.log_pickle ,is_clear=is_clear)
 
     def _Check_Cookie(self):
         dict = read_pickle(self.Cookie_path)
@@ -104,7 +103,11 @@ class Interface(metaclass=ABCMeta):
             data = {'CMS': self.Cookie}
             writeInfo( data ,self.Cookie_path)
 
+        self._close_window()
         return self._make_headers(self.login_type, self.Cookie)
+
+    def _close_window(self):
+        pass
 
     def _make_headers(self,type ,cookie):
         if type == Enums.test_Cms_url:
@@ -138,9 +141,9 @@ class Interface(metaclass=ABCMeta):
     def write(self ,data):  #在一次运行中可以持续写入文件。但是不能两次运行中累加
         write_text(data=data,path=self.log_text)
 
-    def end_write(self):  #将pickle的信息全部中写入       (这里牵扯一个需求，字典是一个多层结构，现在只是一层字典的内容）
+    def end_write(self ,is_clear):  #将pickle的信息全部中写入       (这里牵扯一个需求，字典是一个多层结构，现在只是一层字典的内容）
         write_text('运行中的字典信息',path=self.log_text)
-        dict=self._read_pickle()
+        dict=self._read_pickle(is_clear=is_clear)
         for i in dict:
             temp = ''
             temp = '<<  '+ str(i) + '  :  '+str(dict[i]) + '  >>'
@@ -161,8 +164,9 @@ class Interface(metaclass=ABCMeta):
     def get_dir_name(self):
         return ''
 
-
-
+    @abstractmethod
+    def get_post_Data(self , para):
+        return {}
 
 
 
@@ -176,7 +180,6 @@ class Interface(metaclass=ABCMeta):
         self._error_reason = []
 
         self._type = ''   #?????
-
 
     @property
     def auther(self):

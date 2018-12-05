@@ -6,24 +6,45 @@ class I_article(Interface):
     def __init__(self ,para=''):
         super(I_article ,self).__init__()
 
-        print('dddd')
         #文件新建文章需要的自定义的数据
+        self.article_Data=self.get_post_Data(para)
+
+        #得到文章ID
         # self.ID = self.get_ID()
-        # self.article_data=self.get_Data(para)
 
 
 
-    #必须重新，获得该文件夹名，生成存储文件
+
+  #重写虚方法
     def get_dir_name(self):
+        '''
+          #必须重新，获得该文件夹名，生成存储文件
+        :return: dir_name
+        '''
         dir_name=str(os.path.dirname(__file__).split('/')[-1])
         return dir_name
 
+    def get_post_Data(self , para):
+        '''
+        得到输入的参数，拼接生成可以发送请求的文章参数
+        :return: 可以提交的文章的结构体
+        '''
+        pass
 
-    #文章类的基本属性  （标题，图片，等等
+
+    #文章类的基本属性  （1:自己定义的标题、图片等，可以随时改变， 2：系统提供的属性，创建时间等等，不可直接更改的（1：不能更改的 2：可以通过系统事件来更改的）那么就是只读吧
 
 
-    #文章类拥有的方法  （
+    #文章的基本方法
+    def get_dict(self):
+        '''
+        将得到的对象，转成字典
+        :return: dict
+        '''
+        pass
 
+
+    #文章类拥有的接口
     def recommend(self ,id):
         '''
             url : http://cmstest02.36kr.com/api/post/10464983/recommend
@@ -54,13 +75,6 @@ Cookie: .....
         '''
         pass
 
-    def get_Data(self , para):
-        '''
-        得到输入的参数，拼接生成可以请求的参数
-        :return: 可以提交的数据的体
-        '''
-        pass
-
 
 
 
@@ -83,7 +97,7 @@ if __name__ == '__main__':
     c={'dada':222444}
     i.write_dict(b)
     i.write_dict(c)
-    i.end_write()   #将存的字典写入text中
+    i.end_write(is_clear=False)   #将存的字典写入text中 ,不删除文件
 
     print(i.Headers)
 

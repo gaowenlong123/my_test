@@ -78,42 +78,6 @@ def session_Login():
     print('====',kr_Session.cookies)
 
 
-
-   #生产token csfr
-    cs_url = 'https://test02.36kr.com/pp/auth/signin-callback?code=def50200630cfaf892eb9df630144b49db106db9b7292f6f233fcd49be8925ba0ec1425e5e28221630b8820509e369b566661cf26d430dc9d0b274403366cc3d33812093620f667cc38f4dde7d95cabb5f50a296090a4360f1be89526113c66eee526894abcbe0bc902c9f707eab9f8eee375a0f34cec87d533a1bc7e2050faf77dd9e41c8898668af308c7cfdd294fcb88036aa15bbe9d452b87b147bb7e3e892b0756fa35636f62b10ab5e650248ce7c2ba7ed037a41efd220fdaabca8b2f41cdb6b033914307dc3de7ef558fcfff2e091d1844be20e86acbb5db66aa35cfbb618546f8d730c8ccfc5ec561e96bcbf9c5d387684712e933b2827cada2e249837fe566924ca640ef9baed14db0d2883f486d8da9ef3fe94668c65c7d40f473120da5320369c3f4b827528fd9de39a388b9dd64352f91d122b182412385b3f4d67ab6b20de75c486a255d2542357a70790bad4215e837e0e78b73359318f38d8e92e1c60983e5e49c6292e12ee4baf73f84000eb5e0e3d13d65a06c2f55fd6c84a7d8d4348'
-    cs_header = {
-        "origin": "http://test01web.36kr.com",
-        "Referer": "http://test01web.36kr.com/",
-        # 'User-Agent': 'userAgent',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
-    }
-
-    # 使用session直接post请求
-    responseRes = kr_Session.post(url=cs_url, headers=cs_header)
-    # 无论是否登录成功，状态码一般都是 statusCode = 200
-    print(f"statusCode = {responseRes.status_code}")
-    print(f"text = {responseRes.text}")
-    print('====', kr_Session.cookies)
-
-
-
-
-    # -------------------------------------
-    url1 = 'https://test02.36kr.com/pp/api/user-current'
-    header1 = {
-        # "origin": "http://test01web.36kr.com",
-        "Referer": "http://test01web.36kr.com/",
-        'Accept': 'application/json',
-        # 'User-Agent': 'userAgent',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
-    }
-    # post_data1 = {"ltype": "post", "lid": 10464803, "direction": "plus"}
-    a=kr_Session.get(url=url1,headers=header1)
-    print('====', kr_Session.cookies)
-
-
-    print(a.json())
-
     kr_Session.cookies.save()
 
     # return kr_Session
@@ -122,10 +86,5 @@ def session_Login():
 session_Login()
 
 
-# 2
-# print(r.cookies)
 
-# r2 = requests.get('http://cmstest02.36kr.com/api/motif?per_page=100&page=1')
-# print(r2.json())
-# r.json()['data']['country']
 
