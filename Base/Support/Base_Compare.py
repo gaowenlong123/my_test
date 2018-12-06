@@ -1,9 +1,12 @@
 
-# 获取字典中的objkey对应的值，适用于字典嵌套
-# dict:字典
-# objkey:目标key
-# default:找不到时返回的默认值
-def map(dict, objkey, default):
+def map(dict, objkey, default='default'):
+    '''
+    # 获取字典中的objkey对应的值，适用于字典嵌套
+    :param dict: 字典
+    :param objkey: 目标key
+    :param default: 找不到时返回的默认值
+    :return:
+    '''
     tmp = dict
     for k, v in tmp.items():
         if k == objkey:
@@ -44,4 +47,4 @@ if __name__ == '__main__':
                                       "ossUrl": "https://static.36krcnd.com/v1/20181206/iGy_0sHpe1B0H9btvRumYQa7a2d31006af453a8d328a248202b165"},
                                   "displayOrder": 1}]}}
 
-    print(map(a,'logo','444'))
+    print(map(a,'logo'))
