@@ -105,7 +105,7 @@ class I_vClub(Interface):
 
         re=self.request.get(url=request_url , headers=self.Headers)
         print(re.json())
-        return re.json()
+        return re.json()  #返回时 dict
 
     #新建是没有id ，post到服务器后才生产 id
     def add(self ,data ,is_sold=False):
@@ -186,6 +186,39 @@ class I_vClub(Interface):
         # print(raw['data']['organization']['id'])
         # print(raw['data']['organization']['logo']['path'])
         # print(raw['data']['organization']['wechatQrcode']['path'])
+
+        from Base.Support.Base_Compare import map
+        #1先将存在的数据 ，写入模板中
+        for key in temp['param']:
+
+            a = map(raw ,key ,None)
+            if a != None:
+                if key =='':  #?????
+                    temp['param'][key]=a[key]['path']
+                temp['param'][key]=a
+
+        print(temp)
+        # 添加ID
+        if map(raw,'id', None)!= None:
+            temp['param'].update({'id': id})
+        print('原本的值', temp)
+
+        for key in data:  #不需要 ID 和是否售出
+            print(key)
+            temp['param'][key] = data[key]
+        print('修改的值', temp)
+
+        if is_sold:
+            re=self.request.post(url=request_url ,data=json.dumps(temp) ,headers=self.Headers)
+        else:
+            for key in ('name','logoUrl'):
+                unSold_temp['param'][key] = temp['param'][key]
+            unSold_temp['param']['hasSold']=0
+            unSold_temp['param'].update({'id':id})
+            print('售出改为非售出的值',unSold_temp)
+            # 请求
+            re = self.request.post(url=request_url, data=json.dumps(unSold_temp), headers=self.Headers)
+#---------------------------------
 
         for key in temp['param']:
             if key == "investmentCaseList":
