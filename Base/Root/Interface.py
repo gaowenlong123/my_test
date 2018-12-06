@@ -11,7 +11,7 @@ class Interface(metaclass=ABCMeta):
     def __init__(self):
 
         #====每个对象初始化的步骤======
-        self.login_type = Enums.test_Cms_url
+        self.login_type = self.get_url()
         self.Cookie_path='E:\Pycharm_Git\my_test\Base\Root\Cookie.pickle'
 
         #建立一个seesion  ? 要不要直接建立一个seesion 到处用
@@ -77,11 +77,16 @@ class Interface(metaclass=ABCMeta):
             raise("还没有写判断机制呢")
             self._check_request('', self.Headers)
 
+        elif self.login_type==Enums.test_Mrs_url:
+            self.Cookie = dict['MRS']
+            self.Headers = self._make_headers(self.login_type, self.Cookie)
+            self._check_request('http://mrstest43.corp.36kr.com/api/organ/organization/list?param.pageSize=10&param.pageNo=1', headers=self.Headers)
+
     def _check_request(self , url,headers):
         '''  检查请求结果 '''
         re=requests.get(url=url ,headers=headers)
         if re.json()['code'] == 0:
-            print(re.text)
+            print(re,' In Interface.py')
             print('Cookie  没有过期')
         else:
             # 重新启动
@@ -103,8 +108,13 @@ class Interface(metaclass=ABCMeta):
             data = {'CMS': self.Cookie}
             writeInfo( data ,self.Cookie_path)
 
+        elif self.login_type == Enums.test_Mrs_url:
+            self.Cookie = self._get_Cookie()
+            data = {'MRS':self.Cookie}
+            writeInfo(data , self.Cookie_path)
+
         self._close_window()
-        return self._make_headers(self.login_type, self.Cookie)
+        return self._make_headers(self.login_type, self.Cookie)   #？？？？
 
     def _close_window(self):
         pass
@@ -127,6 +137,14 @@ class Interface(metaclass=ABCMeta):
                 'Cookie': cookie
             }
             return self.Headers
+        elif type == Enums.test_Mrs_url:
+            self.Headers = {
+                'Content-Type': 'application/json;charset=UTF-8',
+                'Cookie': cookie,
+            }
+
+            return self.Headers
+
 
     def _get_Cookie(self):
         return self._driver.get_Cookie()
@@ -167,6 +185,9 @@ class Interface(metaclass=ABCMeta):
     @abstractmethod
     def get_post_Data(self , para):
         return {}
+
+    def get_url(self):
+        return ''
 
 
 
@@ -213,7 +234,7 @@ class Interface(metaclass=ABCMeta):
 if __name__ == '__main__':
    a=read_pickle('Cookie.pickle')
    print(a)
-
+   # writeInfo({'RMS':'输错了，暂且不管'},'Cookie.pickle')
 
 
 

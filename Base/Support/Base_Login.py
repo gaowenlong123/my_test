@@ -97,7 +97,23 @@ class Login():
 
         return driver
 
+    def Mrs_Login(self , driver ,user):
+        driver.get(Enums.test_Mrs_url)
+        driver.maximize_window()
+        print('未登录之前的Token  ： ', driver.get_cookie('M-XSRF-TOKEN'))
+        a=input('请你手动登录，我就不搞自动化了，浪费时间=-=，登陆完输入任意值')
+        self.Func.refresh(driver, 2)
 
+        page_name = self.Func.find_xpath(driver ,xpath='//*[@id="root"]/div/div[1]/div/span/span[2]')
+        if user['name'] not in page_name.text  :
+            time.sleep(3)
+            print('username again = ', page_name.text)  # 登录验证
+            if user['name'] not in page_name.text :
+                print('登录失败')
+                return {'result': False}
+        print('login success <<<--------->>> ', driver.get_cookie('M-XSRF-TOKEN'))
+
+        return driver
 
     def web_guide(self , driver):
         try:

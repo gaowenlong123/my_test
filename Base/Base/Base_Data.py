@@ -25,6 +25,11 @@ def read_text(path ):                #读数据
     f.close()
     return data
 
+def read_text_by_gbk(path ):                #读数据
+    with open(path, mode='rb') as f:
+        data=f.read()
+    f.close()
+    return data
 
 
 

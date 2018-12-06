@@ -9,3 +9,7 @@ class Enums:
     Cms_url = ''
 
     test_Cms_url = 'http://cmstest02.36kr.com/'
+
+    test_Mrs_url='http://ssotest27.36kr.com/login'   #登录页面
+
+    picture=''

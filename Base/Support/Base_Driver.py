@@ -7,6 +7,7 @@ from Base.Support.Base_Login import Login
 class WebDriver():
     def __init__(self,para=''):
         self.user ={'account':'23322228888' ,'pass':'er2222','name':'自动化小能手'}
+        self.jira_user={'account':'jira' ,'pass':'123456','name':'jira'} #????
         self.driver=None
         self.ip=''
 
@@ -31,6 +32,10 @@ class WebDriver():
             self.driver=self.login_action.Web_Login(self.driver ,user=self.user)
         elif Enums.test_Cms_url == self.login_type:
             self.driver=self.login_action.Cms_Login(self.driver ,user=self.user)
+        elif Enums.test_Mrs_url == self.login_type:
+            self.driver = self.login_action.Mrs_Login(self.driver ,user=self.jira_user)
+        else:
+            print('interface 输入的url不正确')
 
 
 
