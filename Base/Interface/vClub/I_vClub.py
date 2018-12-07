@@ -2,7 +2,7 @@ from Base.Support.Base_Enums import Enums
 from Base.Root.Interface import Interface
 from Picture.Picture import Picture
 import os ,json , copy , requests
-
+from Base.Support.Base_Compare import map
 
 
 class I_vClub(Interface):
@@ -38,8 +38,29 @@ class I_vClub(Interface):
         "investmentCaseList":[],
         "logoUrl":"",}}
 
+        self.mod_data={"param":
+                           {"name":"test54.172222333",
+                            "hasSold":"1",
+                            "identityName":"ccc",
+                            "briefIntro":"简介",
+                            "focusDomain":"关注领域",
+                            "intro":"详细介绍",
+                            "capitalScale":"资金规模",
+                            "closeup":"12344",
+                            "keywords":"关键字,资本",
+                            "orgUserId":1234567,
+                            "officialWebsite":"http://1111",
+                            "wechatQrcode":"",
+                            "weibo":"http://",
+                            "investmentCaseList":[{"name":"0","briefIntro":"0","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA94fa28b4b5f845b4bf6783e110258d28","displayOrder":1},{"name":"1","briefIntro":"1","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA666b34334e214dbe991e91001e4757be","displayOrder":2},{"name":"2","briefIntro":"2","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA79c7ae6f33f6419791601f401fa5a1f9","displayOrder":3},{"name":"3","briefIntro":"3","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA3823d8cbf6d1450cbf097b83ad6f5dd5","displayOrder":4},{"name":"4","briefIntro":"4","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA6cc30c98b6ec4bcb9d796e16e1e48c08","displayOrder":5},{"name":"5","briefIntro":"5","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA62c0b981c5d34060a01d4bd600e83d37","displayOrder":6},{"name":"6","briefIntro":"6","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA52e47b7144494b74a830d12e4592a1c8","displayOrder":7},{"name":"7","briefIntro":"7","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA4a8a079b912848a1a00f60e9bbd936b5","displayOrder":8},{"name":"8","briefIntro":"8","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA73670c3a07ce4259800cbacb1c4aec47","displayOrder":9},{"name":"9","briefIntro":"9","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA11e2f7d8a0574cccb4ab1e8f618ded0a","displayOrder":10}],
+                            "logoUrl":"/v1/20181206/iGy_0sHpe1B0H9btvRumYQ6a2fedb92f5843258e8e179f2bd6257c",
+                            "id":"163"}}
+
 
     def get_dir_name(self):
+        #外部调用的路径
+        path=str(os.path.dirname(__file__).split('/')[-1])+'\\'+str(os.path.dirname(__file__).split('/')[-1].split("\\")[-1])
+
         return str(os.path.dirname(__file__).split('/')[-1])
 
     def get_url(self):
@@ -113,7 +134,6 @@ class I_vClub(Interface):
         :url:  add
         :type:  post
         :data:           不限制错误数据
-
         :return: {"code":0}
         '''
         #基本数据
@@ -153,24 +173,7 @@ class I_vClub(Interface):
         '''
         :url:  add
         :type:  post
-        :mod_data:  {"param":
-        {"name":"该机构有十个投资案例（勿删）",
-        "hasSold":"1",
-        "identityName":"shige",
-        "briefIntro":"简介",
-        "focusDomain":"关注领域",
-        "intro":"详细介绍",
-        "capitalScale":"11111111111111111111",
-        "closeup":"1111111",
-        "keywords":"文章关键字,资本",
-        "orgUserId":"12345678",
-        "officialWebsite":"http://",
-        "wechatQrcode":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMAd18887066ffc480d89c7e8892de7668f",
-        "weibo":"http://",
-        "investmentCaseList":[{"name":"0","briefIntro":"0","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA94fa28b4b5f845b4bf6783e110258d28","displayOrder":1},{"name":"1","briefIntro":"1","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA666b34334e214dbe991e91001e4757be","displayOrder":2},{"name":"2","briefIntro":"2","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA79c7ae6f33f6419791601f401fa5a1f9","displayOrder":3},{"name":"3","briefIntro":"3","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA3823d8cbf6d1450cbf097b83ad6f5dd5","displayOrder":4},{"name":"4","briefIntro":"4","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA6cc30c98b6ec4bcb9d796e16e1e48c08","displayOrder":5},{"name":"5","briefIntro":"5","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA62c0b981c5d34060a01d4bd600e83d37","displayOrder":6},{"name":"6","briefIntro":"6","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA52e47b7144494b74a830d12e4592a1c8","displayOrder":7},{"name":"7","briefIntro":"7","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA4a8a079b912848a1a00f60e9bbd936b5","displayOrder":8},{"name":"8","briefIntro":"8","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA73670c3a07ce4259800cbacb1c4aec47","displayOrder":9},{"name":"9","briefIntro":"9","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA11e2f7d8a0574cccb4ab1e8f618ded0a","displayOrder":10}],
-        "logoUrl":"/v1/20181206/iGy_0sHpe1B0H9btvRumYQ33a0c3f2a0f0445d82df9433d3ece568",
-        "id":"10"}}
-
+        :mod_data:
         :return: {"code":0}
         '''
         headers = copy.deepcopy(self.Headers)
@@ -182,77 +185,40 @@ class I_vClub(Interface):
         request_url = self.url + _url
 
         raw = self.get_mod_init(id)
+        print('raw',raw)
 
-        # print(raw['data']['organization']['id'])
-        # print(raw['data']['organization']['logo']['path'])
-        # print(raw['data']['organization']['wechatQrcode']['path'])
-
-        from Base.Support.Base_Compare import map
         #1先将存在的数据 ，写入模板中
         for key in temp['param']:
-
             a = map(raw ,key ,None)
+            print(key , a)
             if a != None:
-                if key =='':  #?????
-                    temp['param'][key]=a[key]['path']
-                temp['param'][key]=a
+                if key == 'wechatQrcode':
+                    temp['param'][key]=a['path']
 
-        print(temp)
+                temp['param'][key] = a
+            else:
+                if key == 'logoUrl':  # ?????
+                    temp['param'][key] = raw['data']['organization']['logo']['path']
+                if key=='investmentCaseList':
+                    # print(raw['data']['investmentList'])
+                    temp['param'][key] = raw['data']['investmentList']
+
         # 添加ID
         if map(raw,'id', None)!= None:
             temp['param'].update({'id': id})
-        print('原本的值', temp)
+        print('请求回来的值====>>>', temp)
 
         for key in data:  #不需要 ID 和是否售出
-            print(key)
+            print('要修改的值====>>>',key)
             temp['param'][key] = data[key]
-        print('修改的值', temp)
+        print('修改的值=====>>>', temp)
 
         if is_sold:
+            temp['param']['hasSold']=1
             re=self.request.post(url=request_url ,data=json.dumps(temp) ,headers=self.Headers)
         else:
             for key in ('name','logoUrl'):
                 unSold_temp['param'][key] = temp['param'][key]
-            unSold_temp['param']['hasSold']=0
-            unSold_temp['param'].update({'id':id})
-            print('售出改为非售出的值',unSold_temp)
-            # 请求
-            re = self.request.post(url=request_url, data=json.dumps(unSold_temp), headers=self.Headers)
-#---------------------------------
-
-        for key in temp['param']:
-            if key == "investmentCaseList":
-                temp['param'][key]=raw['data']['investmentList']
-            elif key=="logoUrl":
-                if raw['data']['organization'].get('logo' ,None) !=None:
-                    temp['param'][key] = raw['data']['organization']['logo']['path']
-            elif key == "wechatQrcode":
-                if raw['data']['organization'].get('wechatQrcode',None) !=None:
-                    temp['param'][key] = raw['data']['organization']['wechatQrcode']['path']
-
-            if raw['data'].get(key ,None) !=None:
-                temp['param'][key]=raw['data'][key]
-
-        #添加ID
-        if raw['data']['organization'].get('id', None) != None:
-                temp['param'].update({'id': id})
-
-        print(raw)
-        print('原本的值',temp)   #拿到本来的值
-
-        if temp['param']['hasSold']==1:
-            for key in data:
-                print(key)
-                temp['param'][key]=data[key]
-            print('修改的值',temp)
-            re=self.request.post(url=request_url ,data=json.dumps(temp) ,headers=self.Headers)
-
-        else:
-            for key in unSold_temp['param']:
-                if data.get(key ,None) != None:
-                    if temp['param'][key] !=data[key]:
-                        unSold_temp['param'][key] = data[key]
-                unSold_temp['param'][key]=temp['param'][key]
             unSold_temp['param']['hasSold']=0
             unSold_temp['param'].update({'id':id})
             print('售出改为非售出的值',unSold_temp)
@@ -337,25 +303,24 @@ class I_vClub(Interface):
 if __name__ == '__main__':
     i =I_vClub()
     # i.get_feed()
-    # i.delete(15)
+    # i.delete()
     # i.modWeight(2,100)
     # raw=i.get_mod_init(44)
-
-
     # i.mod_param(data, 19)
 
     # i.add(data={'name':'z自动化','logoUrl':Picture.car},is_sold=False)
+    # i.add(data,is_sold=True)
 
+    # i.mod({'name':'nihao1','keywords':'aaaaaaa','focusDomain':'NBA'},id=44,is_sold=True)
 
-
-    data={"name":"该机构有十个投资案例（误删）",
+    data={"name":"测试修改状态",
         "hasSold":"1",
-        "identityName":"shige",
+        "identityName":"shige12444",
         "briefIntro":"简介",
         "focusDomain":"关注领域",
         "intro":"详细介绍",
         "capitalScale":"资金规模",
-        "closeup":"机构特写",
+        "closeup":"12344",
         "keywords":"关键字,资本",
         "orgUserId":"1234567",
         "officialWebsite":"http://",
@@ -364,19 +329,14 @@ if __name__ == '__main__':
         "investmentCaseList":[{"name":"0","briefIntro":"0","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA94fa28b4b5f845b4bf6783e110258d28","displayOrder":1},{"name":"1","briefIntro":"1","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA666b34334e214dbe991e91001e4757be","displayOrder":2},{"name":"2","briefIntro":"2","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA79c7ae6f33f6419791601f401fa5a1f9","displayOrder":3},{"name":"3","briefIntro":"3","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA3823d8cbf6d1450cbf097b83ad6f5dd5","displayOrder":4},{"name":"4","briefIntro":"4","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA6cc30c98b6ec4bcb9d796e16e1e48c08","displayOrder":5},{"name":"5","briefIntro":"5","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA62c0b981c5d34060a01d4bd600e83d37","displayOrder":6},{"name":"6","briefIntro":"6","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA52e47b7144494b74a830d12e4592a1c8","displayOrder":7},{"name":"7","briefIntro":"7","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA4a8a079b912848a1a00f60e9bbd936b5","displayOrder":8},{"name":"8","briefIntro":"8","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA73670c3a07ce4259800cbacb1c4aec47","displayOrder":9},{"name":"9","briefIntro":"9","logo":"/v1/20181206/YfPuR3I-qGKsl3V5g1nfMA11e2f7d8a0574cccb4ab1e8f618ded0a","displayOrder":10}],
         "logoUrl":"/v1/20181206/iGy_0sHpe1B0H9btvRumYQ6a2fedb92f5843258e8e179f2bd6257c",}
 
+
     # i.add(data,is_sold=True)
 
-    i.mod({'name':'nihao1'},id=44,is_sold=True)
-
-
-
-
-
     # for m in range(50):
-        # data['param']['name']=m
-        # data['param']['identityName'] = m
-        # i.add_param(data=data,is_diret=True  )
-        # import time
-        # time.sleep(1)
-        # m+=50
-        # i.add(name=str(m))
+    #     data['param']['name']=m
+    #     data['param']['identityName'] = m
+    #     i.add_param(data=data,is_diret=True  )
+    #     import time
+    #     time.sleep(1)
+    #     m+=50
+    #     i.add(name=str(m))
