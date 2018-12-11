@@ -11,5 +11,3 @@
 
 
 
-print(create_time())
-print(time_Stamp())

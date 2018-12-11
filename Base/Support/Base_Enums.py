@@ -16,7 +16,6 @@ class Enums:
 
 
 class Article():
-
     project_id = "1"
     state="drafted"
     monographic_id= "0"
@@ -32,42 +31,42 @@ class Article():
     total_words="9"
     close_comment="0"
     has_audio="0"
-    recommend_info=null         #???
-    entity_flag=null           #???
+    # recommend_info='null'        #???
+    # entity_flag='null'           #???
 
     stat_belong=""
-    title_mobile=null         #???
+    # title_mobile='null'         #???
     catch_title=""
-    remark=null              #???
+    # remark='null'              #???
     slug=""
-    cover_mobile=null           #???
+    # cover_mobile='null'           #???
     source_type="original"
     source_urls=""
     related_post_ids=""
     key=""
-    extra=null              #???
+    # extra='null'              #???
 
 
-    user_id_old=null           #???
+    # user_id_old='null'           #???
     user_id="12186523"
-    user_id_edited_old=null      #???
+    # user_id_edited_old='null'      #???
     user_id_edited="12186523"
     user_id_created="12186523"
-    user_id_tagged= null           #???
+    # user_id_tagged= 'null'           #???
 
     views_count="0"
     mobile_views_count="0"
     app_views_count="0"
-    edited_at=null            #???
+    # edited_at='null'            #???
     published_at=""
 
     pin="0"
-    pushed_at=null
+    # pushed_at='null'
 
-    column=null
+    # column='null'
     audios=[]
 
-    post_tovc=null
+    # post_tovc='null'
     motifs=[]
     audio_ids=""
 
