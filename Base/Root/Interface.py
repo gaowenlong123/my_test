@@ -33,12 +33,7 @@ class Interface(metaclass=ABCMeta):
 
 
 
-#公有属性区域
-    def _public_property(self):
-        self.request_data = {}
-        self.response_data = {}
 
-        # 这个搞成全局的先试试 ,一次拿到全局都用
 
 
 
@@ -74,8 +69,8 @@ class Interface(metaclass=ABCMeta):
                 if 'M-XSRF-TOKEN' in i:
                     Token = i.split('=')[1]
             self.Headers = self._make_headers(self.login_type, self.Cookie)
-            raise("还没有写判断机制呢")
-            self._check_request('', self.Headers)
+            print("还没有写判断机制呢")
+            # self._check_request('', self.Headers)
 
         elif self.login_type==Enums.test_Mrs_url:
             self.Cookie = dict['MRS']
@@ -173,10 +168,6 @@ class Interface(metaclass=ABCMeta):
 
 
 
-
-
-
-
     #抽象方法区域
     @abstractmethod
     def get_dir_name(self):
@@ -186,10 +177,17 @@ class Interface(metaclass=ABCMeta):
     def get_post_Data(self , para):
         return {}
 
+    @abstractmethod
     def get_url(self):
         return ''
 
+    # 公有属性区域
+    @abstractmethod
+    def _public_property(self):
+        self.request_data = {}
+        self.response_data = {}
 
+    # 这个搞成全局的先试试 ,一次拿到全局都用
 
 
 #私有属性区域,只读不能写

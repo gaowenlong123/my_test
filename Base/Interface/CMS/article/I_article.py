@@ -92,7 +92,7 @@ Cookie: .....
 
         template = "{\"template_type\":\"small_image\",\"template_title\":\""+title+"\",\"template_title_isSame\":true,\"template_cover\":[]}"
 
-        post_data={"title": title,
+        post_data={"title": title + get_time(),
                    "column_id":"",
                    "source_type":"original",
                    "user_id":12186523,
@@ -269,8 +269,29 @@ Cookie: .....
         re=self.request.post(url=_url , headers=headers ,data=post_data)
         print(re.text)
 
+    def push(self , data ):
 
+        '''
+        :param :data  get 文章的数据
+        :return:
+        '''
+        _url = 'http://cmstest02.36kr.com/api/push'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
 
+        ar_post_data={"sound":"1",
+                      "title":data['title'],
+                      "content":"推送",
+                      "entity_type":"post",
+                      "entity_id":data['id'],
+                      "publish_now":1,
+                      "published_at":"",
+                      "expire_time":"4"}
+
+        # fl_post_data=
+
+        re=self.request.post(url=_url , headers=self.Headers ,data=ar_post_data)
+        print(re.text)
 
 if __name__ == '__main__':
     #例
@@ -290,7 +311,7 @@ if __name__ == '__main__':
     #
     # print(i.Headers)
 
-    title='自动化测试，哈哈哈哈'
+    title='自动化测试 '
     data=i.get_ID(title)
     print(data)
     article_data=i.get_article_data(data=data)
@@ -299,6 +320,9 @@ if __name__ == '__main__':
 
     i.publish(post_data)
 
+    time.sleep(2)
+
+    i.push(post_data)
 
 
     # i.create_article(title,data)

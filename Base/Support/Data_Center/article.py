@@ -34,7 +34,7 @@ class report_type:
     pass
 
 class motifs:
-    one=["340"]
+    one=[]
     pass
 
 class summary:

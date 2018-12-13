@@ -1,4 +1,4 @@
-from  Base.Interface.vClub.I_vClub import I_vClub
+from Base.Interface.CMS.vClub.I_vClub import I_vClub
 import time
 
 
