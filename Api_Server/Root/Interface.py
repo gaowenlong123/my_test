@@ -12,7 +12,7 @@ class Interface(metaclass=ABCMeta):
 
         #====每个对象初始化的步骤======
         self.login_type = self.get_url()
-        self.Cookie_path='E:\Pycharm_Git\my_test\Base\Root\Cookie.pickle'
+        self.Cookie_path='E:\Pycharm_Git\my_test\Api_Server\Root\Cookie.pickle'
 
         #建立一个seesion  ? 要不要直接建立一个seesion 到处用
         # self.request=requests.session()

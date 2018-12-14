@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/Base/Interface/CMS/article/article.text" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/Base/Interface/CMS/video/video.text" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Api_Repository/Interface/CMS/article/article.text" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Api_Repository/Interface/CMS/video/video.text" charset="GBK" />
   </component>
 </project>
