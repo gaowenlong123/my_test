@@ -84,31 +84,29 @@ class I_focus(Interface):
 
 
 
-# 方法会抽出去
-    def push(self , data):
+# 得到信息流的数据
+    def get_data(self , id=357 ,type="published"):
         '''
-        :param data: 包含ID 数据
+        http://cmstest02.36kr.com/api/focus?feed_id=357&state=drafted-published&type=feed&per_page=30&page=1
+        :param id: 频道ID
+        :type    offline 下线 ,  drafted  待发布
         :return:
         '''
-        _url = 'http://cmstest02.36kr.com/api/push'
+        _url = self.url+'?feed_id='+str(id)+'&state='+type+'&type=feed&per_page=30&page=1'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
 
-        ar_post_data = {"sound": "1",
-                        "title": data['title'],
-                        "content": "推送",
-                        "entity_type": "newsflash",
-                        "entity_id": data['id'],
-                        "publish_now": 1,
-                        "published_at": "",
-                        "expire_time": "4"}
+        re = self.request.get(url=_url, headers=self.Headers)
 
-        re = self.request.post(url=_url, headers=self.Headers, data=ar_post_data)
-        print(re.text)
+        print(re.json()['data']['total'])
+        re_list = re.json()['data']['data']
+
+        return re_list
 
 
 
 
 if __name__ == '__main__':
     i = I_focus()
-    i.publish(feed.bzsj , cover.sanjin, type=0 )
+    # i.publish(feed.bzsj , cover.sanjin, type=0 )
+    i.get_data()
