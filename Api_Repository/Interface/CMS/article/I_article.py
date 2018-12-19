@@ -3,7 +3,6 @@ import os,requests,copy
 from Api_Server.Support.Base_Enums import Enums
 from Api_Repository.Data_Center.Entity import *
 from Api_Server.Support.Base_Time import *
-# from Picture.Picture import CMS_Picture
 from Api_Repository.Data_Center.article import *
 from Api_Repository.Data_Center.Entity import *
 
@@ -43,8 +42,6 @@ class I_article(Interface):
     def _public_property(self):
         self.url = 'http://cmstest02.36kr.com/api'
         self.request = requests.session()
-
-    #文章类的基本属性  （1:自己定义的标题、图片等，可以随时改变， 2：系统提供的属性，创建时间等等，不可直接更改的（1：不能更改的 2：可以通过系统事件来更改的）那么就是只读吧
 
 
     #文章类拥有的接口
@@ -115,6 +112,18 @@ class I_article(Interface):
         re = self.request.delete(url=_url ,headers=headers,data={})
         print(re.text)
 
+    def republish(self ,id):
+        '''
+        http://cmstest01.36kr.com/api/post/10465235/publish
+        :param id:
+        :return:{"code":0}
+        '''
+        _url = self.url + '/post/' + str(id)+'/publish'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        re = self.request.put(url=_url, headers=headers, data={})
+        print(re.text)
+
     # 发布文章流程
     def get_ID(self , title=''):
         '''
@@ -152,19 +161,24 @@ class I_article(Interface):
 
         return re.json()["data"]
 
-    def get_article_data(self ,data):
+    def get_article_data(self ,data,project_id=1):
         '''
         :param data:
-        :return:
+        :project_id : 1 主站
+        :return: kr_plus_project_id=86
+
         '''
         _url='http://cmstest02.36kr.com/api/post/'+str(data["id"])+'?open_in_editor=1'  #&_=1544607271040
+        headers = copy.deepcopy(self.Headers)
+        headers['Cookie']=headers['Cookie'].split('kr_plus_project_id=')[0]+'kr_plus_project_id='+str(project_id)
 
-        re=self.request.get(url=_url ,headers=self.Headers)
+        re=self.request.get(url=_url ,headers=headers)
+        print(re.text)
         common_post_data=re.json()
         print('模板文章 ====>> ' ,common_post_data['data'])
         return common_post_data['data']
 
-    def Cmod_article(self ,article_data ,project_id=1):
+    def Cmod_article(self ,article_data ):
         '''
         :param article_data:  模板信息
         :param mod_data:      需要修改的字典
@@ -175,7 +189,6 @@ class I_article(Interface):
         headers['Content-Type'] = 'application/json;charset=UTF-8'
 
         mod_data={
-            "project_id":str(project_id),
             "template_info": template_info(article_data['title'],0) ,
 	        "summary": summary.sum,
 	        "content": content.dada,
@@ -228,7 +241,6 @@ class I_article(Interface):
 
         re=self.request.post(url=_url ,headers=headers ,data=post_data)
         print(re.text)
-
     def calculate_motif(self , id ):
 
         _url ='http://cmstest02.36kr.com/api/post/'+str(id)+'/calculate-motif '
@@ -258,12 +270,12 @@ if __name__ == '__main__':
     #
     # print(i.Headers)
 
-    title='测试第四范式'
+    title='测试发布地方站文章'
     temp=[]
     for m in range(1):
         data=i.get_ID(title)
         print(data)
-        article_data=i.get_article_data(data=data)
+        article_data=i.get_article_data(data=data ,project_id=feed_id.xian)
 
         post_data=i.Cmod_article(article_data=article_data)
 
@@ -271,7 +283,7 @@ if __name__ == '__main__':
 
         time.sleep(1)
 
-        i.recommend(data['id'])
+        # i.recommend(data['id'])
 
         temp.append(data['id'])
 
@@ -280,21 +292,10 @@ if __name__ == '__main__':
 
 
 
-    # temp1=[10465227, 10465228, 10465229, 10465230, 10465231, 10465232, 10465233, 10465234, 10465235, 10465236 ,10465237, 10465238, 10465239, 10465240, 10465241, 10465242, 10465243, 10465244, 10465245, 10465246]
-    #
-    # i.review(10465198)
-    # i.delete(10465198)
 
 
 
 
 
 
-    # i.create_article(title,data)   ，没用
-    # import time
-    # time.sleep(4)
-    # i.publish(title,data)
-    # i.common_photo(id ,CMS_Picture.xiao )
-    # i.common_photo(id ,CMS_Picture.web)
-    # i.calculate_motif(id)
 

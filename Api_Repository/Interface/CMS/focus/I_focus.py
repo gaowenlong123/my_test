@@ -1,8 +1,8 @@
 #
 from Api_Repository.Data_Center.focus import *
+from Api_Repository.Data_Center.Entity import *
 from Api_Server.Root.Interface import Interface
 from Api_Server.Support.Base_Time import *
-from Api_Repository.Data_Center.newsflash import *
 from Api_Server.Support.Base_Enums import Enums
 import copy , requests ,os
 
@@ -84,7 +84,7 @@ class I_focus(Interface):
 
 
 
-# 得到信息流的数据
+     # 得到信息流的数据
     def get_data(self , id=357 ,type="published"):
         '''
         http://cmstest02.36kr.com/api/focus?feed_id=357&state=drafted-published&type=feed&per_page=30&page=1
@@ -108,7 +108,8 @@ class I_focus(Interface):
 
 if __name__ == '__main__':
     i = I_focus()
-    # i.publish(feed.hainan , cover.sanjin, type=0 )
+    #需要解决跨品牌的问题
+    # i.publish(feed_id.xian , cover.sanjin, type=0 )
     # i.get_data(id=314)
 
 
