@@ -35,3 +35,4 @@ class cover:
 
 class feed:
     bzsj="357"
+    hainan="314"

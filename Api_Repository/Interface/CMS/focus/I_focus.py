@@ -108,5 +108,7 @@ class I_focus(Interface):
 
 if __name__ == '__main__':
     i = I_focus()
-    # i.publish(feed.bzsj , cover.sanjin, type=0 )
-    i.get_data()
+    # i.publish(feed.hainan , cover.sanjin, type=0 )
+    # i.get_data(id=314)
+
+

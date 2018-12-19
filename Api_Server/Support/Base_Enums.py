@@ -72,5 +72,8 @@ class Article():
 
 
 
+class recom_feed:
+    #推荐时调用
+    tuijian="{\"feed_ids\":[59]}"
 
 

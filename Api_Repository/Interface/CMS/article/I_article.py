@@ -13,8 +13,7 @@ class I_article(Interface):
         #文件新建文章需要的自定义的数据
         # self.article_Data=self.get_post_Data(para)  ??
 
-        self.url = 'http://cmstest02.36kr.com/api'
-        self.request = requests.session()
+
         #得到文章ID
 
         self.common_post_data={}
@@ -39,9 +38,11 @@ class I_article(Interface):
     def get_url(self):
         return Enums.test_Cms_url
 
+    def _public_property(self):
+        self.url = 'http://cmstest02.36kr.com/api'
+        self.request = requests.session()
 
     #文章类的基本属性  （1:自己定义的标题、图片等，可以随时改变， 2：系统提供的属性，创建时间等等，不可直接更改的（1：不能更改的 2：可以通过系统事件来更改的）那么就是只读吧
-
 
 
     #文章类拥有的接口
@@ -54,24 +55,68 @@ class I_article(Interface):
            :return {"code":0}
            :type    put
            request
-Host: cmstest02.36kr.com
-Connection: keep-alive
-Content-Length: 41
-Accept: */*
-Origin: http://cmstest02.36kr.com
-x-requested-with: XMLHttpRequest
-User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36
-Content-Type: application/json
-Referer: http://cmstest02.36kr.com/posts
-Accept-Encoding: gzip, deflate
-Accept-Language: en-US,en;q=0.9
-Cookie: .....
-       '''
+        '''
+        _url=self.url+'/post/'+str(id)+'/recommend'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        _data = {"recommend_info":recom_feed.tuijian}
+
+        re=self.request.put(url=_url ,headers=headers,data=_data)
+        print(re.text)
+
+    def push(self , data ):
+
+        '''
+        :param :data  get 文章的数据
+        :return:
+        '''
+        _url = 'http://cmstest02.36kr.com/api/push'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+
+        ar_post_data={"sound":"1",
+                      "title":data['title'],
+                      "content":"推送",
+                      "entity_type":"post",
+                      "entity_id":data['id'],
+                      "publish_now":1,
+                      "published_at":"",
+                      "expire_time":"4"}
+
+        # fl_post_data=
+
+        re=self.request.post(url=_url , headers=self.Headers ,data=ar_post_data)
+        print(re.text)
+
+    def review(self,id):
+        '''
+        http://cmstest02.36kr.com/api/post/10465218/review
+        :param id:
+        :return:
+        '''
+        _url = self.url + '/post/'+str(id)+'/review'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+
+        re=self.request.put(url=_url ,headers=headers,data={})
+        print(re.text)
+
+    def delete(self,id):
+        '''
+        http://cmstest02.36kr.com/api/post/10465214
+        :param id:
+        :return:{"code":21000,"msg":"文章非草稿或待审状态，不能删除"}
+        '''
+        _url = self.url + '/post/' + str(id)
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        re = self.request.delete(url=_url ,headers=headers,data={})
+        print(re.text)
 
     # 发布文章流程
-    #添加文章
     def get_ID(self , title=''):
         '''
+          #添加文章
         :url   :  /post
         :data :
          {"title":"测试配图-小图",
@@ -161,10 +206,46 @@ Cookie: .....
         print(re.text)
 
 
-    #拿出去  ？？？？
-    #丰富文章实体
+
+
+    #???
+    def common_photo(self,id,url):
+        '''
+        :data :
+        :param id:
+        :param url:
+        :return:
+        '''
+        _url = 'http://cmstest02.36kr.com/api/photo-hidden'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+
+        photo="[{"+url+"}]"
+        post_data={"entity_id": id,
+                   "entity_type": "post",
+                    "list": photo}
+
+        re=self.request.post(url=_url ,headers=headers ,data=post_data)
+        print(re.text)
+
+    def calculate_motif(self , id ):
+
+        _url ='http://cmstest02.36kr.com/api/post/'+str(id)+'/calculate-motif '
+
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        post_data ={}
+
+        re=self.request.post(url=_url , headers=headers ,data=post_data)
+        print(re.text)
+
     def create_article(self ,title,data):
-        ''''''
+        '''
+         #丰富文章实体  没啥用
+        :param title:
+        :param data:
+        :return:
+        '''
         _url='http://cmstest02.36kr.com/api/post/'+str(id)
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
@@ -239,59 +320,6 @@ Cookie: .....
         re=self.request.put(url=_url , headers=headers ,data=post_data)
         print(re.text)
 
-    def common_photo(self,id,url):
-        '''
-        :data :
-        :param id:
-        :param url:
-        :return:
-        '''
-        _url = 'http://cmstest02.36kr.com/api/photo-hidden'
-        headers = copy.deepcopy(self.Headers)
-        headers['Content-Type'] = 'application/json;charset=UTF-8'
-
-        photo="[{"+url+"}]"
-        post_data={"entity_id": id,
-                   "entity_type": "post",
-                    "list": photo}
-
-        re=self.request.post(url=_url ,headers=headers ,data=post_data)
-        print(re.text)
-
-    def calculate_motif(self , id ):
-
-        _url ='http://cmstest02.36kr.com/api/post/'+str(id)+'/calculate-motif '
-
-        headers = copy.deepcopy(self.Headers)
-        headers['Content-Type'] = 'application/json;charset=UTF-8'
-        post_data ={}
-
-        re=self.request.post(url=_url , headers=headers ,data=post_data)
-        print(re.text)
-
-    def push(self , data ):
-
-        '''
-        :param :data  get 文章的数据
-        :return:
-        '''
-        _url = 'http://cmstest02.36kr.com/api/push'
-        headers = copy.deepcopy(self.Headers)
-        headers['Content-Type'] = 'application/json;charset=UTF-8'
-
-        ar_post_data={"sound":"1",
-                      "title":data['title'],
-                      "content":"推送",
-                      "entity_type":"post",
-                      "entity_id":data['id'],
-                      "publish_now":1,
-                      "published_at":"",
-                      "expire_time":"4"}
-
-        # fl_post_data=
-
-        re=self.request.post(url=_url , headers=self.Headers ,data=ar_post_data)
-        print(re.text)
 
 if __name__ == '__main__':
     #例
@@ -311,21 +339,37 @@ if __name__ == '__main__':
     #
     # print(i.Headers)
 
-    title='自动化测试 '
-    data=i.get_ID(title)
-    print(data)
-    article_data=i.get_article_data(data=data)
+    title='自动化测试-推荐频道第四范式再下线'
+    temp=[]
+    for m in range(0):
+        data=i.get_ID(title)
+        print(data)
+        article_data=i.get_article_data(data=data)
 
-    post_data=i.Cmod_article(article_data=article_data)
+        post_data=i.Cmod_article(article_data=article_data)
 
-    i.publish(post_data)
+        i.publish(post_data)
 
-    time.sleep(2)
+        time.sleep(1)
 
-    i.push(post_data)
+        i.recommend(data['id'])
+
+        temp.append(data['id'])
+
+    # i.push(post_data)
+    # print(temp)
+
+    temp1=[10465227, 10465228, 10465229, 10465230, 10465231, 10465232, 10465233, 10465234, 10465235, 10465236 ,10465237, 10465238, 10465239, 10465240, 10465241, 10465242, 10465243, 10465244, 10465245, 10465246]
+
+    i.review(10465198)
+    i.delete(10465198)
 
 
-    # i.create_article(title,data)
+
+
+
+
+    # i.create_article(title,data)   ，没用
     # import time
     # time.sleep(4)
     # i.publish(title,data)
