@@ -33,6 +33,3 @@ class cover:
     music2="https://pic.36krcnd.com/201812/14092731/1gkii4bu7x25q3u4"
 
 
-class feed:
-    bzsj="357"
-    hainan="314"

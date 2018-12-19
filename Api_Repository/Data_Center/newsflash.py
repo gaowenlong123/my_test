@@ -1,4 +1,3 @@
-
 def template_info(title ,type=0):
     if type==0:
         temp = "{\"template_type\":\"no_image\",\"template_title\":\""+title+"\",\"template_cover\":[]}",

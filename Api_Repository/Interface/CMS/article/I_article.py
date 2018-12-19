@@ -1,9 +1,11 @@
 from Api_Server.Root.Interface import Interface
 import os,requests,copy
-from Api_Server.Support.Base_Enums import Enums ,Article
+from Api_Server.Support.Base_Enums import Enums
+from Api_Repository.Data_Center.Entity import *
 from Api_Server.Support.Base_Time import *
 # from Picture.Picture import CMS_Picture
 from Api_Repository.Data_Center.article import *
+from Api_Repository.Data_Center.Entity import *
 
 
 class I_article(Interface):
@@ -46,7 +48,7 @@ class I_article(Interface):
 
 
     #文章类拥有的接口
-    def recommend(self ,id):
+    def recommend(self ,id ,feed=recom_feed.tuijian):
         '''
             url : http://cmstest02.36kr.com/api/post/10464983/recommend
            str : {"recommend_info":"{\"feed_ids\":[269]}"}
@@ -59,7 +61,7 @@ class I_article(Interface):
         _url=self.url+'/post/'+str(id)+'/recommend'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
-        _data = {"recommend_info":recom_feed.tuijian}
+        _data = {"recommend_info":feed}
 
         re=self.request.put(url=_url ,headers=headers,data=_data)
         print(re.text)
@@ -162,7 +164,7 @@ class I_article(Interface):
         print('模板文章 ====>> ' ,common_post_data['data'])
         return common_post_data['data']
 
-    def Cmod_article(self ,article_data ):
+    def Cmod_article(self ,article_data ,project_id=1):
         '''
         :param article_data:  模板信息
         :param mod_data:      需要修改的字典
@@ -173,6 +175,7 @@ class I_article(Interface):
         headers['Content-Type'] = 'application/json;charset=UTF-8'
 
         mod_data={
+            "project_id":str(project_id),
             "template_info": template_info(article_data['title'],0) ,
 	        "summary": summary.sum,
 	        "content": content.dada,
@@ -206,8 +209,6 @@ class I_article(Interface):
         print(re.text)
 
 
-
-
     #???
     def common_photo(self,id,url):
         '''
@@ -239,88 +240,6 @@ class I_article(Interface):
         re=self.request.post(url=_url , headers=headers ,data=post_data)
         print(re.text)
 
-    def create_article(self ,title,data):
-        '''
-         #丰富文章实体  没啥用
-        :param title:
-        :param data:
-        :return:
-        '''
-        _url='http://cmstest02.36kr.com/api/post/'+str(id)
-        headers = copy.deepcopy(self.Headers)
-        headers['Content-Type'] = 'application/json;charset=UTF-8'
-
-        post_data = {"id": data["id"],
-                     "open_at": data["open_at"],
-                     "state": "drafted",
-                     "project_id": Article.project_id,
-                     "monographic_id": Article.monographic_id,
-                     "column_id": Article.column_id,
-                     "is_tovc": Article.is_tovc,
-                     "goods_id": Article.goods_id,
-                     "domain_id": Article.domain_id,
-                     "is_free": Article.is_free,
-                     "related_company_id": Article.related_company_id,
-                     "company_id": Article.company_id,
-                     "related_company_type": Article.related_company_type,
-                     "related_company_name": Article.related_company_name,
-                     "total_words": Article.total_words,
-                     "close_comment": Article.close_comment,
-                     "has_audio": Article.has_audio,
-                     # "recommend_info":Article.entity_flag,
-                     # "entity_flag":Article.entity_flag,
-                     "template_info": "{\"template_type\":\"small_image\",\"template_title\":\"融资-测试关键字\",\"template_title_isSame\":true,\"template_cover\":[\"https://pic.36krcnd.com/201812/11090658/yidycxipnetj6sap\"]}",
-                     "stat_belong": Article.stat_belong,
-                     "title": title,
-                     # "title_mobile":Article.title_mobile,
-                     "catch_title": Article.catch_title,
-                     "summary": "摘要",
-                     "content": "<p>哈哈关键字哈哈</p>",
-                     # "remark":Article.remark,
-                     "slug": Article.slug,
-                     "cover": "https://pic.36krcnd.com/201812/11090708/v0ch4zbcpd6mh26q",
-                     # "cover_mobile":Article.cover_mobile,
-                     "source_type": Article.source_type,
-                     "source_urls": Article.source_urls,
-                     "related_post_ids": Article.related_post_ids,
-                     "key": Article.key,
-                     # "extra":Article.extra,
-                     # "user_id_old":Article.user_id_old,
-                     "user_id": Article.user_id,
-                     # "user_id_edited_old":Article.user_id_edited_old,
-                     "user_id_edited": Article.user_id_edited,
-                     "user_id_created": Article.user_id_created,
-                     # "user_id_tagged":Article.user_id_tagged,
-                     "views_count": Article.views_count,
-                     "mobile_views_count": Article.mobile_views_count,
-                     "app_views_count": Article.app_views_count,
-                     # "edited_at":Article.edited_at,
-                     "published_at": Article.published_at,
-                     "created_at": get_time(),
-                     "updated_at": get_time(),
-                     "pin": Article.pin,
-                     # "pushed_at":Article.pushed_at,
-                     "report_type": "港股观察",
-                     # "user":{"id":"12186523","avatar_url":"/static/avatar.d864db3e.png","name":"自动化小能手","nickname":"自动化小能手","realname":'null',"email":'null',"crm_email":'null',"title":"读者","department_belong":"","introduction":"","is_author":"1"},
-                     "user": {"id": "12186523", "avatar_url": "/static/avatar.d864db3e.png", "name": "自动化小能手",
-                              "nickname": "自动化小能手", "title": "读者", "department_belong": "", "introduction": "",
-                              "is_author": "1"},
-                     # "column":Article.column,
-                     "audios": Article.audios,
-                     # "domain":{"id":"0","name":"测试领域推送","cover":'null',"user_id":"0","user_id_edited":"0","created_at":'null',"updated_at":'null'},
-                     "domain": {"id": "0", "name": "测试领域推送", "user_id": "0", "user_id_edited": "0"},
-                     # "post_tovc":Article.post_tovc,
-                     "motifs": Article.motifs,
-                     "audio_ids": Article.audio_ids,
-                     "last_open_at": str(time_Stamp()),  # 时间戳
-                     "motif_ids": [],  # 主题  ["340"]
-                     # "publish_now": 1
-                     }
-
-        re=self.request.put(url=_url , headers=headers ,data=post_data)
-        print(re.text)
-
-
 if __name__ == '__main__':
     #例
     i=I_article()
@@ -339,9 +258,9 @@ if __name__ == '__main__':
     #
     # print(i.Headers)
 
-    title='自动化测试-推荐频道第四范式再下线'
+    title='测试第四范式'
     temp=[]
-    for m in range(0):
+    for m in range(1):
         data=i.get_ID(title)
         print(data)
         article_data=i.get_article_data(data=data)
@@ -359,10 +278,12 @@ if __name__ == '__main__':
     # i.push(post_data)
     # print(temp)
 
-    temp1=[10465227, 10465228, 10465229, 10465230, 10465231, 10465232, 10465233, 10465234, 10465235, 10465236 ,10465237, 10465238, 10465239, 10465240, 10465241, 10465242, 10465243, 10465244, 10465245, 10465246]
 
-    i.review(10465198)
-    i.delete(10465198)
+
+    # temp1=[10465227, 10465228, 10465229, 10465230, 10465231, 10465232, 10465233, 10465234, 10465235, 10465236 ,10465237, 10465238, 10465239, 10465240, 10465241, 10465242, 10465243, 10465244, 10465245, 10465246]
+    #
+    # i.review(10465198)
+    # i.delete(10465198)
 
 
 

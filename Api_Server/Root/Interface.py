@@ -42,12 +42,16 @@ class Interface(metaclass=ABCMeta):
         '''
         创建记录文件，并初始化
         '''
+        if ":" in name:
+            name +="\\"+ name.split('\\')[-1]
         self.log_text=name+'.text'
         mkdir_file(self.log_text)
         write_text_init(self.log_text)
 
     def _mk_pickle(self ,name=''):
-        self.log_pickle = name+'.pickle'
+        if ":" in name:
+            name += "\\" + name.split('\\')[-1]
+        self.log_pickle = name + '.pickle'
         mkdir_file(self.log_pickle)
         write_pickle_init(data={},path=self.log_pickle)
 

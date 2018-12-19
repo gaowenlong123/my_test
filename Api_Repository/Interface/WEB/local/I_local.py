@@ -1,52 +1,93 @@
 # 地方站
-import os , requests
+import os , requests ,time
 from Api_Server.Support.Base_Enums import Enums
 from Api_Server.Root.Interface import Interface
+from Api_Server.Support.Base_Compare import *
+from Api_Repository.Data_Center.Entity import *
+from Api_Repository.Interface.CMS.article.I_article import I_article
 
 # class I_local(Interface):
     # def __init__(self,param = ''):
     #     super(I_local ,self).__init__()
 
 
+
 class I_local():
-    def __init__(self):
+    def __init__(self ,param=''):
         self.url = "http://test02.36kr.com/pp/api"
         self.request=requests.session()
 
-    def  new_post(self , id):
-        _url = self.url + '/aggregation-entity?type=web_latest_article&per_page=30'
+    def new_post(self ,chanel=feed_id.xian ):
+        _url = self.url + '/feed-stream?project_id=1&feed_id=298&b_id=1&direction=next'
 
         re= self.request.get(_url)
-        temp = re.json()['data']['items'][:id]
+        temp = re.json()['data']['items'][:20]
+        _list=[]
 
-        for i in temp:
-            print(i)
-            print('-'*50)
+        for dict in temp:
+            s1=map(dict,'title',"无")
+            s2=map(dict , 'entity_type' ,"无")
+            _list.append(s1+":"+s2)
+        print("资讯==>",_list)
         return temp
 
-    def head_banner(self, id):
-        _url = self.url + '/focus?type=head_line_new&per_page=6'
+    def head_banner(self,chanel=feed_id.xian):
+        '''
+        /pp/api/focus?project_id=1&type=feed&feed_id=59
+        :param id:
+        :return:
+        '''
+        _url = self.url + '/focus?&type=feed&feed_id='+str(chanel)
+        _list=[]
+        re = self.request.get(_url)
+        temp = re.json()['data']['items']
+        for dict in temp:
+            _list.append(map(dict , 'title','无'))
+        print("焦点图==>",_list)
+        return temp
+
+    def site_list(self):
+        _url = self.url + '/local-station/sites'
+        _list = []
 
         re = self.request.get(_url)
-        temp = re.json()['data']['items'][:id]
+        temp = re.json()['data']
 
-        for i in temp:
-            print(i)
-            print('-' * 50)
+        for dict in temp:
+            _list.append(map(dict, 'name', "无"))
+            # _list.append(map(dict, 'project_id', "无"))   #品牌ID可选
+            _list.append(map(dict, 'web_feed_id', "无"))
+        print(_list)
+        return _list
+
+    def flashs(self,pp=pp_id.xian):
+        '''
+        /pp/api/newsflash?project_id=1&    b_id=1 ???
+        :param id:
+        :return:
+        '''
+        _url = self.url + '/newsflash?project_id='+str(pp)
+        _list = []
+        re = self.request.get(_url)
+        temp = re.json()['data']['items'][:10]
+
+        for dict in temp:
+            _list.append(map(dict, 'title', '无'))
+        print("快讯==>",_list)
         return temp
 
+    # 有问题
     def left_channel(self):
         _url = self.url + '/feed?type=web'
-        _list=[]
+        _list = []
 
         re = self.request.get(_url)
         temp = re.json()['data']['items']
 
         for dict in temp:
-            _list.append(map(dict , 'name' , "无"))
+            _list.append(map(dict, 'name', "无"))
         print(_list)
         return _list
-    #有问题
     def recom_monographic(self, id):
         _url = self.url + '/focus?type=chosen_monographic&per_page=3'
 
@@ -59,25 +100,32 @@ class I_local():
 
         return temp
 
-    def flashs(self, id):
-        _url = self.url + '/newsflash'
-
-        re = self.request.get(_url)
-        temp = re.json()['data']['items'][:id]
-
-        for i in temp:
-            print(i)
-            print('-' * 50)
-        return temp
-
-
 
 
 if __name__ == '__main__':
     i = I_local()
+    i.site_list()
 
 
+    i.head_banner()
+    i.flashs()
+    i.new_post()
 
+    i = I_article()
+
+    title = '测试推荐文章到西安'
+    temp = []
+
+    # data = i.get_ID(title)
+    # article_data = i.get_article_data(data=data)
+    #
+    # post_data = i.Cmod_article(article_data=article_data, project_id=pp_id.xian)
+    #
+    # i.publish(post_data)
+    #
+    # time.sleep(1)
+    #
+    # i.recommend(data['id'], feed=recom_feed.xianan)
 
 
 

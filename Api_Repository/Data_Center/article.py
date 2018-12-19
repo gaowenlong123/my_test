@@ -40,5 +40,4 @@ class motifs:
 class summary:
     sum = "文章摘要"
 
-class recom_feed:
-    tuijian="{\"feed_ids\":[59]}"
+
