@@ -27,7 +27,22 @@ class content:
 #web 的图片
 class cover:
     web = "https://pic.36krcnd.com/201812/11051635/xqqqybmru90k2xfu"
+    dog="https://pic.36krcnd.com/201812/20035532/oe1q5b1ak2q7jmp5"
+    girl="https://pic.36krcnd.com/201812/20035835/pwp04kjx84ty0lot"
+    city="https://pic.36krcnd.com/201812/20040504/aefrhr7cre5d4q82"
     pass
+
+def ramdom_cover():
+    import random
+    index = random.randint(1, 4)
+    if index == 1 :
+        return cover.web
+    elif index == 2:
+        return cover.dog
+    elif index ==3:
+        return cover.city
+    else:
+        return cover.girl
 
 class report_type:
     chuang= "创投观察"
@@ -41,3 +56,6 @@ class summary:
     sum = "文章摘要"
 
 
+if __name__ == '__main__':
+    import random
+    print(random.randint(1,3))

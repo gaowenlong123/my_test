@@ -45,7 +45,7 @@ class I_article(Interface):
 
 
     #文章类拥有的接口
-    def recommend(self ,id ,feed=recom_feed.tuijian):
+    def recommend(self ,data,feed=recom_feed.tuijian):
         '''
             url : http://cmstest02.36kr.com/api/post/10464983/recommend
            str : {"recommend_info":"{\"feed_ids\":[269]}"}
@@ -55,9 +55,13 @@ class I_article(Interface):
            :type    put
            request
         '''
-        _url=self.url+'/post/'+str(id)+'/recommend'
+        if data["project_id"] !=1:
+            feed = local_recom_feed( data["project_id"] )
+
+        _url=self.url+'/post/'+str(data["id"])+'/recommend'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(data["project_id"])
         _data = {"recommend_info":feed}
 
         re=self.request.put(url=_url ,headers=headers,data=_data)
@@ -66,6 +70,7 @@ class I_article(Interface):
     def push(self , data ):
 
         '''
+        地方站就先别push了
         :param :data  get 文章的数据
         :return:
         '''
@@ -87,45 +92,55 @@ class I_article(Interface):
         re=self.request.post(url=_url , headers=self.Headers ,data=ar_post_data)
         print(re.text)
 
-    def review(self,id):
+    def review(self,data):
         '''
         http://cmstest02.36kr.com/api/post/10465218/review
-        :param id:
+        :param data: {'id': 10465323, 'open_at': 1545284393763, 'project_id': 86}
         :return:
         '''
-        _url = self.url + '/post/'+str(id)+'/review'
+        _url = self.url + '/post/'+str(data["id"])+'/review'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
 
         re=self.request.put(url=_url ,headers=headers,data={})
         print(re.text)
 
-    def delete(self,id):
+    def delete(self,data):
         '''
         http://cmstest02.36kr.com/api/post/10465214
         :param id:
         :return:{"code":21000,"msg":"文章非草稿或待审状态，不能删除"}
         '''
-        _url = self.url + '/post/' + str(id)
+        _url = self.url + '/post/' + str(data["id"])
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
+
         re = self.request.delete(url=_url ,headers=headers,data={})
         print(re.text)
 
-    def republish(self ,id):
+    def republish(self ,data):
         '''
         http://cmstest01.36kr.com/api/post/10465235/publish
         :param id:
         :return:{"code":0}
         '''
-        _url = self.url + '/post/' + str(id)+'/publish'
+        _url = self.url + '/post/' + str(data["id"])+'/publish'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
+
         re = self.request.put(url=_url, headers=headers, data={})
         print(re.text)
 
+
+
     # 发布文章流程
-    def get_ID(self , title=''):
+    def get_ID(self , title='',project_id=1):
         '''
           #添加文章
         :url   :  /post
@@ -145,7 +160,7 @@ class I_article(Interface):
         _url = self.url + '/post'
 
         headers['Content-Type'] = 'application/json;charset=UTF-8'
-
+        headers['Cookie']=headers['Cookie'].split('kr_plus_project_id=')[0]+'kr_plus_project_id='+str(project_id)
         template = "{\"template_type\":\"small_image\",\"template_title\":\""+title+"\",\"template_title_isSame\":true,\"template_cover\":[]}"
 
         post_data={"title": title + get_time(),
@@ -157,11 +172,14 @@ class I_article(Interface):
                    "template_info":template }
 
         re=self.request.post(url=_url ,data=post_data ,headers=headers)
-        print(re.json())
 
-        return re.json()["data"]
 
-    def get_article_data(self ,data,project_id=1):
+        temp_dict = re.json()["data"]
+        temp_dict.update({"project_id":project_id})
+        print(temp_dict)
+        return temp_dict
+
+    def get_article_data(self ,data):
         '''
         :param data:
         :project_id : 1 主站
@@ -170,15 +188,16 @@ class I_article(Interface):
         '''
         _url='http://cmstest02.36kr.com/api/post/'+str(data["id"])+'?open_in_editor=1'  #&_=1544607271040
         headers = copy.deepcopy(self.Headers)
-        headers['Cookie']=headers['Cookie'].split('kr_plus_project_id=')[0]+'kr_plus_project_id='+str(project_id)
+        headers['Cookie']=headers['Cookie'].split('kr_plus_project_id=')[0]+'kr_plus_project_id='+str(data["project_id"])
 
         re=self.request.get(url=_url ,headers=headers)
         print(re.text)
         common_post_data=re.json()
+
         print('模板文章 ====>> ' ,common_post_data['data'])
         return common_post_data['data']
 
-    def Cmod_article(self ,article_data ):
+    def Cmod_article(self ,article_data ,data):
         '''
         :param article_data:  模板信息
         :param mod_data:      需要修改的字典
@@ -187,12 +206,14 @@ class I_article(Interface):
         _url = 'http://cmstest02.36kr.com/api/post/' + str(article_data['id'])
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
 
         mod_data={
             "template_info": template_info(article_data['title'],0) ,
 	        "summary": summary.sum,
 	        "content": content.dada,
-	        "cover": cover.web,
+	        "cover": ramdom_cover(),
 	        "created_at":get_time(),
 	        "updated_at":get_time() ,
 	        "report_type": report_type.chuang,
@@ -210,11 +231,13 @@ class I_article(Interface):
 
         return article_data
 
-    def publish(self ,article_data ):
+    def publish(self ,article_data ,data):
         ''''''
         _url = 'http://cmstest02.36kr.com/api/post/'+str(article_data["id"])+'/publish'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
 
         article_data.update({"publish_now":1})
 
@@ -272,23 +295,23 @@ if __name__ == '__main__':
 
     title='测试发布地方站文章'
     temp=[]
-    for m in range(1):
-        data=i.get_ID(title)
+    for m in range(0):
+        data=i.get_ID(title,project_id=pp_id.xian)
         print(data)
-        article_data=i.get_article_data(data=data ,project_id=feed_id.xian)
+        article_data=i.get_article_data(data=data)
 
-        post_data=i.Cmod_article(article_data=article_data)
+        post_data=i.Cmod_article(article_data=article_data ,data=data)
 
-        i.publish(post_data)
+        i.publish(post_data ,data=data)
 
         time.sleep(1)
 
-        # i.recommend(data['id'])
+        i.recommend(data)
 
         temp.append(data['id'])
 
     # i.push(post_data)
-    # print(temp)
+    print(temp)
 
 
 

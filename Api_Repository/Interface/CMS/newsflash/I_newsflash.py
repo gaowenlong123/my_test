@@ -3,6 +3,7 @@ from Api_Server.Support.Base_Time import *
 from Api_Repository.Data_Center.newsflash import *
 from Api_Server.Support.Base_Enums import Enums
 import copy , requests ,os
+from Api_Repository.Data_Center.Entity import *
 
 class I_newsflash(Interface):
     def __init__(self ,param = ''):
@@ -31,6 +32,8 @@ class I_newsflash(Interface):
         return Enums.test_Cms_url
 
     def _public_property(self):
+        self._url='http://cmstest02.36kr.com/api'
+
         # 结构不复杂 (无图无链接)
         self.post_data = {"title": "???",
                            "catch_title": "",
@@ -62,7 +65,7 @@ class I_newsflash(Interface):
 
 
 
-    def publish(self ,title ):
+    def publish(self ,title ,project_id=1 ):
         '''
         :param title:  快讯标题
         :return:  快讯ID 标题
@@ -71,6 +74,7 @@ class I_newsflash(Interface):
         headers = copy.deepcopy(self.Headers)
         flash_data = copy.deepcopy(self.post_data)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(project_id)
 
         #个性化数据
         flash_data["title"]=title + get_time()
@@ -85,9 +89,40 @@ class I_newsflash(Interface):
         #返回值
         re_dict= {
             'id':re.json()["data"]["id"],
-            'title':flash_data["title"]
+            'title':flash_data["title"],
+            'project_id':project_id
         }
         return re_dict
+
+    def review(self,data):
+        '''
+        http://cmstest02.36kr.com/api/newsflash/21308/review
+        :param data: {'id': 10465323, 'open_at': 1545284393763, 'project_id': 86}
+        :return:
+        '''
+        _url = self._url + '/newsflash/'+str(data["id"])+'/review'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
+
+        re=self.request.put(url=_url ,headers=headers,data={})
+        print(re.text)
+
+
+    def republish(self ,data):
+        '''
+        :param id:
+        :return:{"code":0}
+        '''
+        _url = self._url + '/newsflash/' + str(data["id"])+'/publish'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
+
+        re = self.request.put(url=_url, headers=headers, data={})
+        print(re.text)
 
 
 
@@ -116,10 +151,11 @@ class I_newsflash(Interface):
 
 
 
+
 if __name__ == '__main__':
     i = I_newsflash()
 
-    data=i.publish('自动化测试快讯  ')
+    data=i.publish('测试地方站快讯  ' ,project_id=pp_id.xian)
     # i.push(data)
 
 

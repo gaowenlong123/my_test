@@ -16,8 +16,19 @@ class pp_id:
 
 class recom_feed:
     tuijian="{\"feed_ids\":[59]}"
+
+    #地方站
     xianan = "{\"feed_ids\":[298]}"
 
+def local_recom_feed(project):
+    if project == 86:
+        return recom_feed.xianan
+    elif project == 87:
+        return ''
+    elif project == 88:
+        return ''
+    elif project == 89:
+        return ''
 
 class web_feed_id:
     pass
