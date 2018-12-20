@@ -55,7 +55,7 @@ class I_local():
 
         for dict in temp:
             _list.append(map(dict, 'name', "无"))
-            # _list.append(map(dict, 'project_id', "无"))   #品牌ID可选
+            _list.append(map(dict, 'project_id', "无"))   #品牌ID可选
             _list.append(map(dict, 'web_feed_id', "无"))
         print(_list)
         return _list

@@ -84,6 +84,9 @@ class Interface(metaclass=ABCMeta):
     def _check_request(self , url,headers):
         '''  检查请求结果 '''
         re=requests.get(url=url ,headers=headers)
+        if '502' in re.text:
+            print("502")
+            assert "环境问题"
         if re.json()['code'] == 0:
             print(re,' In Interface.py')
             print('Cookie  没有过期')

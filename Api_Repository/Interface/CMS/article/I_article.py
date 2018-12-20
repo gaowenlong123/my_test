@@ -158,6 +158,7 @@ class I_article(Interface):
         '''
         headers = copy.deepcopy(self.Headers)
         _url = self.url + '/post'
+        temp_dict={}
 
         headers['Content-Type'] = 'application/json;charset=UTF-8'
         headers['Cookie']=headers['Cookie'].split('kr_plus_project_id=')[0]+'kr_plus_project_id='+str(project_id)
@@ -174,7 +175,11 @@ class I_article(Interface):
         re=self.request.post(url=_url ,data=post_data ,headers=headers)
 
 
-        temp_dict = re.json()["data"]
+        try:
+            temp_dict = re.json()["data"]
+        except KeyError:
+            print(re.text)
+            assert "报错"
         temp_dict.update({"project_id":project_id})
         print(temp_dict)
         return temp_dict

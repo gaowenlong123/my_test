@@ -16,9 +16,9 @@ class url:
 class title:
     pass
 
-def get_info(type):
+def get_info(type ,project):
     if type==0:
-        return {'url':"https://www.baidu.com" , 'title':"外链焦点图" ,"entity_type":""}
+        return {'url': "https://www.baidu.com", 'title': project+"外链焦点图", "entity_type": ""}
     elif type==1:
         return {'url':"67" , 'title':"回家路上","entity_type":"album"}
     elif type==2:
@@ -32,4 +32,12 @@ class cover:
     music1="https://pic.36krcnd.com/201812/14092438/0cp6ab1o0kbqg5g7"
     music2="https://pic.36krcnd.com/201812/14092731/1gkii4bu7x25q3u4"
 
+
+def get_cover(type):
+    if type == 0 :
+        return cover.village
+    elif type ==1 :
+        return cover.music1
+    else:
+        return cover.music2   #专栏
 
