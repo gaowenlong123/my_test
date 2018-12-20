@@ -8,15 +8,17 @@ class I_home_page():
         self.url = "http://test02.36kr.com/pp/api"
         self.request = requests.session()
 
-    def  new_post(self , id):
+    def new_post(self , id):
         _url = self.url + '/aggregation-entity?type=web_latest_article&per_page=30'
-
+        _list=[]
         re= self.request.get(_url)
         temp = re.json()['data']['items'][:id]
 
-        for i in temp:
-            print(i)
-            print('-'*50)
+        for dict in temp:
+            s1 = map(dict, 'title', "无")
+            s2 = map(dict, 'entity_type', "无")
+            _list.append(s1 + ":" + s2)
+        print("资讯==>", _list)
         return temp
 
     def head_banner(self, id):
@@ -69,9 +71,9 @@ class I_home_page():
 if __name__ == '__main__':
     i = I_home_page()
 
-    # i.new_post(2)
+    i.new_post(16)
     # i.head_banner(1)
     # i.flashs(5)
     # i.left_channel()
 
-    i.recom_monographic(2)
+    # i.recom_monographic(2)
