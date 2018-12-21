@@ -140,7 +140,7 @@ class I_article(Interface):
 
 
     # 发布文章流程
-    def get_ID(self , title='',project_id=1):
+    def get_ID(self , title='',project_id=1 ,publish=0):
         '''
           #添加文章
         :url   :  /post
@@ -174,12 +174,15 @@ class I_article(Interface):
 
         re=self.request.post(url=_url ,data=post_data ,headers=headers)
 
-
         try:
             temp_dict = re.json()["data"]
         except KeyError:
             print(re.text)
             assert "报错"
+
+        if publish !=0:
+            temp_dict.update({"published_at": get_late_time(publish)})
+            temp_dict.update({"publish_now": 0})
         temp_dict.update({"project_id":project_id})
         print(temp_dict)
         return temp_dict
@@ -244,7 +247,11 @@ class I_article(Interface):
         headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
             data["project_id"])
 
-        article_data.update({"publish_now":1})
+        if data.get("publish_now",None)==None:
+            article_data.update({"publish_now":1})
+        else:
+            article_data["published_at"]=data["published_at"]
+            article_data["publish_now"] =data["publish_now"]
 
         re =self.request.put(url=_url ,headers=headers ,data=article_data)
         print(re.text)
@@ -298,22 +305,22 @@ if __name__ == '__main__':
     #
     # print(i.Headers)
 
-    title='测试发布地方站文章'
+    title='测试发布文章'
     temp=[]
-    for m in range(0):
-        data=i.get_ID(title,project_id=pp_id.xian)
+    for m in range(1):
+        data=i.get_ID(title)
         print(data)
         article_data=i.get_article_data(data=data)
 
         post_data=i.Cmod_article(article_data=article_data ,data=data)
 
         i.publish(post_data ,data=data)
-
-        time.sleep(1)
-
-        i.recommend(data)
-
-        temp.append(data['id'])
+        #
+        # time.sleep(1)
+        #
+        # i.recommend(data)
+        #
+        # temp.append(data['id'])
 
     # i.push(post_data)
     print(temp)
