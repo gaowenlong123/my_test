@@ -4,6 +4,7 @@ from Api_Repository.Data_Center.Entity import *
 from Api_Server.Root.Interface import Interface
 from Api_Server.Support.Base_Time import *
 from Api_Server.Support.Base_Enums import Enums
+from Api_Server.Support.Base_Time import *
 import copy , requests ,os
 
 
@@ -42,18 +43,16 @@ class I_focus(Interface):
                           "hidden_title":"0",
                           "title":"",
                           "cover":"", #三金
-                          "start_time":None,
-                          "end_time":None,
                           "type":"feed",
                           "feed_id":"",
                           "entity_type":""
                           }
 
-        self.url = 'https://cmstest02.36kr.com/api/focus'
+        self.url = 'http://cmstest02.36kr.com/api/focus'
 
 
 
-    def publish(self  ,feed =0,project_id=1,type=0 ):
+    def publish(self  ,feed =0,project_id=1,type=0 ,publish_time=None ,finished_time=None ):
         '''
         新建到app的主站 或地方站
          # i.publish(feed=feed_id.bzsj ,type=0)  #主站推挤频道
@@ -75,6 +74,19 @@ class I_focus(Interface):
         else:
             temp = get_info(type,"")
 
+        #定时发布
+        if publish_time == None:
+            _data["start_time"]=publish_time
+            temp_time = 0
+        else:
+            _data["published_at"] =get_late_time(publish_time)
+            temp_time=publish_time
+
+        if finished_time == None:
+            _data["end_time"]=finished_time
+        else:
+            _data["finished_at"] = get_late_time(finished_time+temp_time)
+
         #个性化数据
         _data["title"]=temp["title"]
         _data["url"] = temp["url"]
@@ -94,8 +106,7 @@ class I_focus(Interface):
         }
         return re_dict
 
-
-    def local_publish(self ,project_id):
+    def local_publish(self ,project_id ,title='' , publish_time=None ,finished_time=None):
         '''
         web端地方站焦点图
         :return:
@@ -110,8 +121,24 @@ class I_focus(Interface):
         temp = get_info(0, get_name(project_id))
 
 
+        #定时发布
+        if publish_time == None:
+            _data["start_time"]=publish_time
+            temp_time = 0
+        else:
+            _data["published_at"] =get_late_time(publish_time)
+            temp_time=publish_time
+
+        if finished_time == None:
+            _data["end_time"]=finished_time
+        else:
+            _data["finished_at"] = get_late_time(finished_time+temp_time)
+
         # 个性化数据
-        _data["title"] = temp["title"]
+        if title=="":
+            _data["title"] = temp["title"]
+        else:
+            _data["title"] = title
         _data["url"] = temp["url"]
         _data["type"] = "local_station_banner"
         _data["cover"] = get_cover(type)
@@ -146,6 +173,50 @@ class I_focus(Interface):
         print(re.text)
 
 
+#web端 信息流固定位
+    def web_focus_feed(self ,title ,publish_time=None ,finished_time=None):
+        '''
+
+        :param title:
+        :param publish_time:   0立即发布  正数 延迟发布多长时间
+        :param finished_time:   在发布的时间，延迟多长时间
+        :return:
+        '''
+        headers = copy.deepcopy(self.Headers)
+        _data = copy.deepcopy(self.post_data)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+
+        _data = feed_stream_fix(type="web_stream_pin",position=14 ,feed="331")
+
+
+        # 个性化数据
+        _data["title"] = title
+        if publish_time == None:
+            _data["start_time"]=publish_time
+            temp_time = 0
+        else:
+            _data["published_at"] =get_late_time(publish_time)
+            temp_time=publish_time
+
+        if finished_time == None:
+            _data["end_time"]=finished_time
+        else:
+            _data["finished_at"] = get_late_time(finished_time+temp_time)
+
+        re = self.request.post(url=self.url, headers=headers, data=_data)
+        print(re.text)
+
+        # 返回值
+        re_dict = {
+            'id': re.json()["data"]["id"],
+            'title': _data["title"],
+            'project_id': 1
+        }
+        return re_dict
+
+
+
+
     def get_data(self , id=357 ,type="published"):
         '''
         # 得到信息流的数据   只能得到App端的把
@@ -171,14 +242,16 @@ class I_focus(Interface):
 if __name__ == '__main__':
     i = I_focus()
     #需要解决跨品牌的问题
-    # i.publish(feed=feed_id.bzsj ,type=0)  #app 主站推挤频道
-    # i.publish(project_id=pp_id.huzhou, type=0 )    #app地方站
+    # i.publish(feed=feed_id.bzsj ,type=0,publish_time=2,finished_time=4)  #app 主站推挤频道
+    # i.publish(project_id=pp_id.huzhou, type=0 ,publish_time=2,finished_time=2 )    #app地方站
 
 
-    # i.local_publish(pp_id.xian)          #发布web加点图
+
+    # i.local_publish(pp_id.huzhou ,"定时发布湖州-15",publish_time=2,finished_time=5)          #发布web加点图
 
     # i.review({"id":1025 , "project_id":1})   #下线焦点图
 
+    # i.web_focus_feed('新建web信息流固定位',publish_time=20 , finished_time=10)  Web 信息流固定位
 
     # i.get_data(id=314)
 

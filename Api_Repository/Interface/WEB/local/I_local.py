@@ -17,11 +17,16 @@ class I_local():
         self.url = "http://test02.36kr.com/pp/api"
         self.request=requests.session()
 
-    def new_post(self ,chanel=feed_id.xian ):
-        _url = self.url + '/feed-stream?project_id=1&feed_id=298&b_id=1&direction=next'
+    def new_post(self ,pp=pp_id.xian ,num=10):
+        '''
+        https://test02.36kr.com/pp/api/feed-stream?feed_id=316&project_id=96&per_page=20
+        :param chanel:
+        :return:
+        '''
+        _url = self.url + '/feed-stream?feed_id='+str(get_feed_id(pp))+'&project_id='+str(pp)+'&per_page=20&cc=yes'
 
         re= self.request.get(_url)
-        temp = re.json()['data']['items'][:20]
+        temp = re.json()['data']['items'][:num]
         _list=[]
 
         for dict in temp:
@@ -31,13 +36,13 @@ class I_local():
         print("资讯==>",_list)
         return temp
 
-    def head_banner(self,chanel=feed_id.xian):
+    def head_banner(self,pp=pp_id.xian):
         '''
-        /pp/api/focus?project_id=1&type=feed&feed_id=59
+        https://test02.36kr.com/pp/api/focus?project_id=86&type=local_station_banner&cc=yes
         :param id:
         :return:
         '''
-        _url = self.url + '/focus?&type=feed&feed_id='+str(chanel)
+        _url = self.url + '/focus?project_id='+str(pp)+'&type=local_station_banner'
         _list=[]
         re = self.request.get(_url)
         temp = re.json()['data']['items']
@@ -76,6 +81,20 @@ class I_local():
         print("快讯==>",_list)
         return temp
 
+    def web_fix_feedstream(self):
+        '''
+        http://test02.36kr.com/pp/api/focus?type=web_stream_pin
+        :return:
+        '''
+        _url = self.url + '/focus?type=web_stream_pin'
+        _list = []
+        re = self.request.get(_url)
+        temp = re.json()['data']['items']
+        for dict in temp:
+            _list.append(map(dict, 'title', '无'))
+        print("焦点图==>", _list)
+        return _list
+
     # 有问题
     def left_channel(self):
         _url = self.url + '/feed?type=web'
@@ -88,6 +107,7 @@ class I_local():
             _list.append(map(dict, 'name', "无"))
         print(_list)
         return _list
+
     def recom_monographic(self, id):
         _url = self.url + '/focus?type=chosen_monographic&per_page=3'
 
@@ -100,32 +120,46 @@ class I_local():
 
         return temp
 
+    def flash_ip(self,ip):
+        '''
+        http://test02.36kr.com/pp/api/newsflash?project_id=1&b_id=&per_page=20&client_ip=220.174.166.255
+        :return:
+        '''
+        _url = self.url + '/newsflash?project_id=1&b_id=&per_page=20&client_ip=' + str(ip)
+        _list = []
+        re = self.request.get(_url)
+        temp = re.json()['data']['items'][:30]
+        print(_url)
+        for dict in temp:
+            s1=map(dict, 'project_id', '无')
+            s2 = map(dict, 'station_info', '无')
+            _list.append(str(s1)+': '+ str(s2))
+        print("快讯==>", _list)
 
 
 if __name__ == '__main__':
     i = I_local()
-    i.site_list()
-
-
-    i.head_banner()
-    i.flashs()
-    i.new_post()
-
-    i = I_article()
-
-    title = '测试推荐文章到西安'
-    temp = []
-
-    # data = i.get_ID(title)
-    # article_data = i.get_article_data(data=data)
+    # i.site_list()
     #
-    # post_data = i.Cmod_article(article_data=article_data, project_id=pp_id.xian)
     #
-    # i.publish(post_data)
+    # i.head_banner()
+    # i.flashs()
+    # i.new_post(pp_id.huzhou)
+
+    # while True:
+    #     temp=i.web_fix_feedstream()
+    #     print(temp[0])
+    #     if "2" in temp[0]:
+    #         from Api_Server.Support.Base_Time import *
+    #         print(get_time())
+    #         break
     #
-    # time.sleep(1)
-    #
-    # i.recommend(data['id'], feed=recom_feed.xianan)
+    #     time.sleep(1)
+
+    a=["124.116.239.242" ,"220.174.1.222" ,"120.40.134.160" ,"120.42.37.178" ,"218.72.111.75"]
+    for m in a:
+        i.flash_ip(m)
+
 
 
 

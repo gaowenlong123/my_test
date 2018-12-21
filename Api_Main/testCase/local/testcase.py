@@ -65,10 +65,18 @@ if __name__ == '__main__':
     # for i in range(6):
     #     test_two('测试厦门快讯', pp_id.xiamen)
 
-    test_one(50,'测试湖州文章',project=pp_id.huzhou)
+    # test_one(50,'测试厦门文章',project=pp_id.xiamen)
+
+    # for i in range(20):
+    #     test_two('测试福州快讯', pp_id.fuzhou)
+    #     test_two('测试湖州快讯', pp_id.huzhou)
+    #     test_two('测试海南快讯', pp_id.hainan)
+    #     time.sleep(1)
 
 
-    # test_two('测试厦门快讯', pp_id.xiamen)
+
+
+    test_two("主站",pp_id.zhuzhan)
     # test_two('测试西安快讯', pp_id.xian)
     # test_two('测试海南快讯', pp_id.hainan)
     # test_two('测试福州快讯', pp_id.fuzhou)

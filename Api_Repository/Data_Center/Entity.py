@@ -2,6 +2,8 @@ class feed_id:
     tj="59"
     bzsj="357"
 
+    web_new="331"
+
     hainan="314"
     xian="298"
     nanjing="300"
@@ -12,6 +14,7 @@ class feed_id:
     huzhou="316"
 
 class pp_id:
+    zhuzhan=1
     xian = 86
     nanjing = 87
     chengdu = 88
