@@ -33,7 +33,7 @@ class WebDriver():
         elif Enums.test_Cms_url == self.login_type:
             self.driver=self.login_action.Cms_Login(self.driver ,user=self.user)
         elif Enums.test_Mrs_url == self.login_type:
-            self.driver = self.login_action.Mrs_Login(self.driver ,user=self.jira_user)
+            self.driver = self.login_action.Mrs_Login(self.driver ,user=self.user)
         else:
             print('interface 输入的url不正确')
 

@@ -87,12 +87,16 @@ class Interface(metaclass=ABCMeta):
         if '502' in re.text:
             print("502")
             assert "环境问题"
-        if re.json()['code'] == 0:
-            print(re,' In Interface.py')
-            print('Cookie  没有过期')
-        else:
-            # 重新启动
-            print('Cookie  过期')
+        try:
+            if re.json()['code'] == 0:
+                print(re,' In Interface.py')
+                print('Cookie  没有过期')
+            else:
+                # 重新启动
+                print('Cookie  过期')
+                # self._Restart_driver()
+        except:
+            print('出错了')
             self._Restart_driver()
 
     def _Restart_driver(self):
@@ -238,8 +242,8 @@ class Interface(metaclass=ABCMeta):
 
 if __name__ == '__main__':
    a=read_pickle('Cookie.pickle')
-   print(a)
-   # writeInfo({'RMS':'输错了，暂且不管'},'Cookie.pickle')
+   # print(a)
+   writeInfo({'MRS':'aaaaaa'},'Cookie.pickle')
 
 
 

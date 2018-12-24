@@ -66,7 +66,7 @@ class I_DaySign(Interface):
         pass
         _url = self.url +"/mis/dailyword/entity"
         headers = copy.deepcopy(self.Headers)
-        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Content-Type'] = 'application/x-www-form-urlencoded'
 
         _data = {
             "id":id

@@ -72,8 +72,12 @@ class I_home_page():
         _url = self.url + '/focus?type=web_stream_pin'
 
         re = self.request.get(_url)
-        temp = re.json()['data']['items'][0]
-        print(temp["title"])
+        temp =re.json()['data']
+
+        if temp.get("items" ,None) == None:
+            print("null")
+        else:
+            print(temp["items"]["title"])
 
 
 

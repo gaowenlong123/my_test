@@ -246,8 +246,8 @@ if __name__ == '__main__':
     # i.publish(project_id=pp_id.huzhou, type=0 ,publish_time=2,finished_time=2 )    #app地方站
 
 
-
-    # i.local_publish(pp_id.huzhou ,"定时发布湖州-15",publish_time=2,finished_time=5)          #发布web加点图
+    for m in range(1):
+        i.local_publish(pp_id.fuzhou ,"再次发布福州banner"+str(m))          #发布web加点图
 
     # i.review({"id":1025 , "project_id":1})   #下线焦点图
 

@@ -105,10 +105,10 @@ class Login():
         self.Func.refresh(driver, 2)
 
         page_name = self.Func.find_xpath(driver ,xpath='//*[@id="root"]/div/div[1]/div/span/span[2]')
-        if user['name'] not in page_name.text  :
+        if user['account'] not in page_name.text  :
             time.sleep(3)
             print('username again = ', page_name.text)  # 登录验证
-            if user['name'] not in page_name.text :
+            if user['account'] not in page_name.text :
                 print('登录失败')
                 return {'result': False}
         print('login success <<<--------->>> ', driver.get_cookie('M-XSRF-TOKEN'))

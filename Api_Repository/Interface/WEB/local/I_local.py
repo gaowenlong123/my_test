@@ -144,7 +144,7 @@ if __name__ == '__main__':
     #
     # i.head_banner()
     # i.flashs()
-    # i.new_post(pp_id.huzhou)
+    i.new_post(pp_id.xiamen)
 
     # while True:
     #     temp=i.web_fix_feedstream()
