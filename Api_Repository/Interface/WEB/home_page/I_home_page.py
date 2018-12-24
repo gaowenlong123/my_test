@@ -1,6 +1,6 @@
 #首页信息流  ,不需要cookie
 from Api_Server.Support.Base_Compare import *
-import requests
+import requests ,time
 
 class I_home_page():
     def __init__(self):
@@ -68,10 +68,23 @@ class I_home_page():
             print('-' * 50)
         return temp
 
+    def fix_feed_web(self):
+        _url = self.url + '/focus?type=web_stream_pin'
+
+        re = self.request.get(_url)
+        temp = re.json()['data']['items'][0]
+        print(temp["title"])
+
+
+
 if __name__ == '__main__':
     i = I_home_page()
 
     i.new_post(16)
+    for m in range(10):
+        i.fix_feed_web()
+        time.sleep(m)
+
     # i.head_banner(1)
     # i.flashs(5)
     # i.left_channel()

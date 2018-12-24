@@ -138,6 +138,31 @@ class I_article(Interface):
         print(re.text)
 
 
+    #聚合发布文章
+    def creat_publish(self, title, project_id=1, publish=0):
+        data = self.get_ID(title)
+
+        article_data = self.get_article_data(data=data)
+
+        post_data = self.Cmod_article(article_data=article_data, data=data)
+
+        self.publish(post_data, data=data)
+
+        return data
+    def creat_publish_recom(self, title):
+        data = self.get_ID(title)
+
+        article_data = self.get_article_data(data=data)
+
+        post_data = self.Cmod_article(article_data=article_data, data=data)
+
+        self.publish(post_data, data=data)
+
+        time.sleep(1)
+
+        self.recommend(data)
+
+        return data
 
     # 发布文章流程
     def get_ID(self , title='',project_id=1 ,publish=0):
@@ -256,7 +281,6 @@ class I_article(Interface):
         re =self.request.put(url=_url ,headers=headers ,data=article_data)
         print(re.text)
 
-
     #???
     def common_photo(self,id,url):
         '''
@@ -307,14 +331,14 @@ if __name__ == '__main__':
 
     title='测试发布文章'
     temp=[]
-    for m in range(1):
-        data=i.get_ID(title)
-        print(data)
-        article_data=i.get_article_data(data=data)
-
-        post_data=i.Cmod_article(article_data=article_data ,data=data)
-
-        i.publish(post_data ,data=data)
+    # for m in range(0):
+    #     data=i.get_ID(title)
+    #     print(data)
+    #     article_data=i.get_article_data(data=data)
+    #
+    #     post_data=i.Cmod_article(article_data=article_data ,data=data)
+    #
+    #     i.publish(post_data ,data=data)
         #
         # time.sleep(1)
         #
@@ -325,6 +349,7 @@ if __name__ == '__main__':
     # i.push(post_data)
     print(temp)
 
+    i.review({"id":10465482 ,"project_id":1})
 
 
 

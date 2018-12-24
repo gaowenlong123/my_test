@@ -68,6 +68,8 @@ class I_vClub(Interface):
     def get_post_Data(self , para):
         return {}
 
+    def _public_property(self):
+        pass
 
     #接口方法
     def get_feed(self ,pageSize=10 ,pageNo=1):

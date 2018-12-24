@@ -76,8 +76,9 @@ if __name__ == '__main__':
 
 
 
-    test_two("主站",pp_id.zhuzhan)
+    # test_two("主站",pp_id.zhuzhan)
     # test_two('测试西安快讯', pp_id.xian)
     # test_two('测试海南快讯', pp_id.hainan)
     # test_two('测试福州快讯', pp_id.fuzhou)
     # test_two('测试湖州快讯', pp_id.huzhou)
+    pass
