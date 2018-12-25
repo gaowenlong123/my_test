@@ -14,7 +14,8 @@ from Api_Repository.Interface.CMS.article.I_article import I_article
 
 class I_local():
     def __init__(self ,param=''):
-        self.url = "http://test02.36kr.com/pp/api"
+        # self.url = "http://test02.36kr.com/pp/api"
+        self.url = "http://36kr.com/pp/api"
         self.request=requests.session()
 
     def new_post(self ,pp=pp_id.xian ,num=10):
@@ -26,7 +27,11 @@ class I_local():
         _url = self.url + '/feed-stream?feed_id='+str(get_feed_id(pp))+'&project_id='+str(pp)+'&per_page=20&cc=yes'
 
         re= self.request.get(_url)
-        temp = re.json()['data']['items'][:num]
+        try:
+            temp = re.json()['data']['items'][:num]
+
+        except:
+            temp={}
         _list=[]
 
         for dict in temp:
@@ -45,10 +50,15 @@ class I_local():
         _url = self.url + '/focus?project_id='+str(pp)+'&type=local_station_banner'
         _list=[]
         re = self.request.get(_url)
-        temp = re.json()['data']['items']
-        for dict in temp:
-            _list.append(map(dict , 'title','无'))
-        print("焦点图==>",_list)
+        try:
+            temp = re.json()['data']['items']
+            for dict in temp:
+                _list.append(map(dict, 'title', '无'))
+            print("焦点图==>", _list)
+        except:
+            temp={}
+            print(get_name(pp),"无banner图")
+
         return temp
 
     def site_list(self):
@@ -74,11 +84,15 @@ class I_local():
         _url = self.url + '/newsflash?project_id='+str(pp)
         _list = []
         re = self.request.get(_url)
-        temp = re.json()['data']['items'][:10]
+        try:
+            temp = re.json()['data']['items'][:20]
 
-        for dict in temp:
-            _list.append(map(dict, 'title', '无'))
-        print("快讯==>",_list)
+            for dict in temp:
+                _list.append(map(dict, 'title', '无'))
+            print("快讯==>",_list)
+        except:
+            print(get_name(pp) ,"无快讯")
+            temp={}
         return temp
 
     def web_fix_feedstream(self):
@@ -139,12 +153,10 @@ class I_local():
 
 if __name__ == '__main__':
     i = I_local()
-    # i.site_list()
-    #
-    #
+    i.site_list()
     # i.head_banner()
     # i.flashs()
-    i.new_post(pp_id.xiamen)
+
 
     # while True:
     #     temp=i.web_fix_feedstream()
@@ -156,9 +168,28 @@ if __name__ == '__main__':
     #
     #     time.sleep(1)
 
-    a=["124.116.239.242" ,"220.174.1.222" ,"120.40.134.160" ,"120.42.37.178" ,"218.72.111.75"]
-    for m in a:
-        i.flash_ip(m)
+    # a=["124.116.239.242" ,"220.174.1.222" ,"120.40.134.160" ,"120.42.37.178" ,"218.72.111.75"]
+    # for m in a:
+    #     i.flash_ip(m)
+
+    #线上回测
+    i.new_post(pp_id.qingdao)
+    i.new_post(pp_id.xiamen)
+    i.new_post(pp_id.fuzhou)
+    i.new_post(pp_id.xian)
+    i.new_post(pp_id.hainan)
+    print("-"*40)
+    i.head_banner(pp_id.qingdao)
+    i.head_banner(pp_id.xiamen)
+    i.head_banner(pp_id.fuzhou)
+    i.head_banner(pp_id.xian)
+    i.head_banner(pp_id.hainan)
+    print("-" * 40)
+    i.flashs(pp_id.qingdao)
+    i.flashs(pp_id.xiamen)
+    i.flashs(pp_id.fuzhou)
+    i.flashs(pp_id.xian)
+    i.flashs(pp_id.hainan)
 
 
 

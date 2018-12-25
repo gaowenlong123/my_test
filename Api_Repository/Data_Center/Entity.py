@@ -12,7 +12,7 @@ class feed_id:
     xiamen="317"
     fuzhou="318"
     huzhou="316"
-
+    qingdao="315"
 class pp_id:
     zhuzhan=1
     xian = 86
@@ -86,3 +86,5 @@ def get_feed_id(project):
         return feed_id.fuzhou
     elif project == pp_id.huzhou:
         return feed_id.huzhou
+    elif project == pp_id.qingdao:
+        return feed_id.qingdao
