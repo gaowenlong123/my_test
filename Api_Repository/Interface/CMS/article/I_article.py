@@ -5,7 +5,7 @@ from Api_Repository.Data_Center.Entity import *
 from Api_Server.Support.Base_Time import *
 from Api_Repository.Data_Center.article import *
 from Api_Repository.Data_Center.Entity import *
-
+from Api_Server.Support.Base_Compare import *
 
 class I_article(Interface):
     def __init__(self ,para=''):
@@ -281,6 +281,29 @@ class I_article(Interface):
         re =self.request.put(url=_url ,headers=headers ,data=article_data)
         print(re.text)
 
+    def my_offline_delete(self):
+        '''
+        http://cmstest02.36kr.com/api/post?user_id=12186523&per_page=40&page=1
+        :return:
+        '''
+        _url = 'http://cmstest02.36kr.com/api/post?user_id=12186523&per_page=40&page=1'
+        headers = copy.deepcopy(self.Headers)
+        _temp =[]
+        re=self.request.get(url=_url ,headers=headers)
+        _list=re.json()["data"]["data"]
+
+        for dict in _list:
+            _temp.append(map(dict ,"id" ,0))
+
+        print(_temp)
+
+        for id in _temp:
+            if id !=0:
+                self.review({"id":id ,"project_id":1})
+                time.sleep(1)
+                self.delete({"id":id ,"project_id":1})
+                time.sleep(1)
+
     #???
     def common_photo(self,id,url):
         '''
@@ -349,8 +372,8 @@ if __name__ == '__main__':
     # i.push(post_data)
     print(temp)
 
-    i.review({"id":10465256 ,"project_id":1})
-
+    # i.review({"id":10465256 ,"project_id":1})
+    # i.my_offline_delete()
 
 
 

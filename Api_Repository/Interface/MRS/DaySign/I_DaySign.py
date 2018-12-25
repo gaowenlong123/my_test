@@ -121,4 +121,4 @@ class I_DaySign(Interface):
 if __name__ == '__main__':
     i= I_DaySign()
     # i.test_add("测试" )
-    i.test_ID(10465313)
+    i.test_ID(10465313)  # {"code":99,"msg":"没有权限，请重新登录"}    是因为X-token的原因吗？？？

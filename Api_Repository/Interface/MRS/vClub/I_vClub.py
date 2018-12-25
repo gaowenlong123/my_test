@@ -303,8 +303,8 @@ class I_vClub(Interface):
 
 if __name__ == '__main__':
     i =I_vClub()
-    # i.get_feed()
-    # i.delete()
+    i.get_feed()
+    # i.delete(1)
     # i.modWeight(2,100)
     # raw=i.get_mod_init(44)
     # i.mod_param(data, 19)

@@ -94,10 +94,10 @@ class Interface(metaclass=ABCMeta):
             else:
                 # 重新启动
                 print('Cookie  过期')
-                # self._Restart_driver()
+                self._Restart_driver()
         except:
             print('出错了')
-            self._Restart_driver()
+            # self._Restart_driver()
 
     def _Restart_driver(self):
         ''' Cookie写入文件  ， 返回Headers 就行'''
@@ -242,8 +242,8 @@ class Interface(metaclass=ABCMeta):
 
 if __name__ == '__main__':
    a=read_pickle('Cookie.pickle')
-   # print(a)
-   writeInfo({'MRS':'aaaaaa'},'Cookie.pickle')
+   print(a)
+   # writeInfo({'MRS':'aaaaaa'},'Cookie.pickle')
 
 
 

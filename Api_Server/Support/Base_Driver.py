@@ -71,6 +71,7 @@ class WebDriver():
 
     def _get_Cookie(self):
         temp = self.driver.get_cookies()
+        print(temp)
         Cookie = ''
         for i in temp:
             print(i['name'], '  ====  ', end=' ')
