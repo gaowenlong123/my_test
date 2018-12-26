@@ -79,18 +79,29 @@ class I_home_page():
         else:
             print(temp["items"]["title"])
 
+    def daySign(self):
+        _url ="http://gatewaytest36.36kr.com/api/mis/dailyword"
+        post={
+            "siteId":1,
+            "platformId":1,
+            "partner_id":"web",
+        }
 
+        re=self.request.post(url=_url ,data=post)
+        print(re.text)
 
 if __name__ == '__main__':
     i = I_home_page()
 
-    i.new_post(16)
-    for m in range(10):
-        i.fix_feed_web()
-        time.sleep(m)
+    # i.new_post(16)
+    # for m in range(10):
+    #     i.fix_feed_web()
+    #     time.sleep(m)
 
     # i.head_banner(1)
     # i.flashs(5)
     # i.left_channel()
 
     # i.recom_monographic(2)
+
+    i.daySign()

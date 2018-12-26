@@ -4,20 +4,14 @@ from Api_Server.Support.Base_Enums import Enums
 from Api_Repository.Data_Center.Entity import *
 from Api_Server.Support.Base_Time import *
 from Api_Repository.Data_Center.theme import *
-
+from Api_Server.Support.Base_Compare import *
 
 class I_theme(Interface):
     def __init__(self ,para=''):
         super(I_theme ,self).__init__()
 
-        #文件新建文章需要的自定义的数据
-        # self.article_Data=self.get_post_Data(para)  ??
-
-
-        #得到文章ID
-
-        self.common_post_data={}
-
+        #只新建普通话题，不创建氪友问答
+        # 需要跨站展示吗？？ 写上吧
 
   #重写虚方法
     def get_dir_name(self):
@@ -57,8 +51,33 @@ class I_theme(Interface):
         self.keyouwenda_data={}
 
 
-    #章类拥有的接口
-    def recommend(self ,id):
+
+
+    def publish(self ,title,is_small=True ,is_normal =True):
+        '''
+        http://cmstest02.36kr.com/api/theme
+        :param theme_data:  {'title' }
+        :return:
+        '''
+        _url = self.url + '/theme'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+
+        if is_normal:
+            _data = copy.deepcopy(self.normal_data)
+            _data["title"] = title + get_time()
+            _data["template_info"] = template_info(title + get_time(), is_small)
+        else:
+            _data = copy.deepcopy(self.normal_data)
+            #氪友问答再说吧
+
+        re =self.request.post(url=_url ,headers=headers ,data=_data)
+        print(re.json()['data'])
+
+        return re.json()['data']['id']
+
+    #类拥有的接口
+    def recommend(self ,id ):
         '''
             http://cmstest02.36kr.com/api/theme/980/recommend
            str : {"recommend_info":"{\"feed_ids\":[269]}"}
@@ -129,62 +148,33 @@ class I_theme(Interface):
         re = self.request.put(url=_url ,headers=headers,data={"operate":"yes"})
         print(re.text)
 
-    def publish(self ,title,is_small=True ,is_normal =True):
-        '''
-        http://cmstest02.36kr.com/api/theme
-        :param theme_data:  {'title' }
-        :return:
-        '''
-        _url = self.url + '/theme'
-        headers = copy.deepcopy(self.Headers)
-        headers['Content-Type'] = 'application/json;charset=UTF-8'
 
-        if is_normal:
-            _data = copy.deepcopy(self.normal_data)
-            _data["title"] = title + get_time()
-            _data["template_info"] = template_info(title + get_time(), is_small)
-        else:
-            _data = copy.deepcopy(self.normal_data)
-            #氪友问答再说吧
-
-        re =self.request.post(url=_url ,headers=headers ,data=_data)
-        print(re.json()['data'])
-
-        return re.json()['data']['id']
 
     #信息流
-    def hot_theme(self,id):
+    def hot_theme(self):
         '''
         http://test02.36kr.com/pp/api/aggregation-entity?type=selected_theme
         :param id:
         :return:
         '''
+        _url = "http://test02.36kr.com/pp/api/aggregation-entity?type=selected_theme"
+        re=self.request.get(url= _url )
+
+        try:
+            temp = re.json()['data']['items']
+
+        except:
+            temp={}
+        _list=[]
+
+        for dict in temp:
+            s1=map(dict,'title',"无")
+            s2=map(dict , 'entity_type' ,"无")
+            _list.append(s1+ " : "+ str(s2))
+        print("热门话题==>",_list)
 
 
-    #????
-    def push(self , data ):
 
-        '''
-        :param :data  get 文章的数据
-        :return:
-        '''
-        _url = 'http://cmstest02.36kr.com/api/push'
-        headers = copy.deepcopy(self.Headers)
-        headers['Content-Type'] = 'application/json;charset=UTF-8'
-
-        ar_post_data={"sound":"1",
-                      "title":data['title'],
-                      "content":"推送",
-                      "entity_type":"post",
-                      "entity_id":data['id'],
-                      "publish_now":1,
-                      "published_at":"",
-                      "expire_time":"4"}
-
-        # fl_post_data=
-
-        re=self.request.post(url=_url , headers=self.Headers ,data=ar_post_data)
-        print(re.text)
 
 
 if __name__ == '__main__':
@@ -198,3 +188,7 @@ if __name__ == '__main__':
 
 
     # i.hot()   定时跨品牌发布
+
+    i.hot_theme()
+
+

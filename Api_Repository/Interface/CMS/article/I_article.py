@@ -264,7 +264,30 @@ class I_article(Interface):
 
         return article_data
 
-    def publish(self ,article_data ,data):
+    def calculate_motif(self, data):
+
+        _url = 'http://cmstest02.36kr.com/api/post/' + str(data["id"]) + '/calculate-motif '
+        _list=[]
+
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
+        post_data = {}
+
+        re = self.request.post(url=_url, headers=headers, data=post_data)
+
+        try:
+            _dict = re.json()["data"]
+
+            for dict in _dict:
+                _list.append(str(map(dict ,"id" ,"无")))
+        except:
+             print(re.text)
+
+        return _list
+
+    def publish(self ,article_data ,data ,motifs=None):
         ''''''
         _url = 'http://cmstest02.36kr.com/api/post/'+str(article_data["id"])+'/publish'
         headers = copy.deepcopy(self.Headers)
@@ -277,6 +300,9 @@ class I_article(Interface):
         else:
             article_data["published_at"]=data["published_at"]
             article_data["publish_now"] =data["publish_now"]
+
+        if motifs !=  None:
+            article_data["motifs"] = motifs
 
         re =self.request.put(url=_url ,headers=headers ,data=article_data)
         print(re.text)
@@ -323,16 +349,8 @@ class I_article(Interface):
 
         re=self.request.post(url=_url ,headers=headers ,data=post_data)
         print(re.text)
-    def calculate_motif(self , id ):
 
-        _url ='http://cmstest02.36kr.com/api/post/'+str(id)+'/calculate-motif '
 
-        headers = copy.deepcopy(self.Headers)
-        headers['Content-Type'] = 'application/json;charset=UTF-8'
-        post_data ={}
-
-        re=self.request.post(url=_url , headers=headers ,data=post_data)
-        print(re.text)
 
 if __name__ == '__main__':
     #例
