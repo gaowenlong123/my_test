@@ -1,4 +1,3 @@
-
 class Common():
 
     #放到通用文件里面
@@ -19,3 +18,22 @@ class Common():
         print(re.text)
 
         return 'path 路径'
+
+    def common_photo(self,id,url):
+        '''
+        :data :
+        :param id:
+        :param url:
+        :return:
+        '''
+        _url = 'http://cmstest02.36kr.com/api/photo-hidden'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+
+        photo="[{"+url+"}]"
+        post_data={"entity_id": id,
+                   "entity_type": "post",
+                    "list": photo}
+
+        re=self.request.post(url=_url ,headers=headers ,data=post_data)
+        print(re.text)

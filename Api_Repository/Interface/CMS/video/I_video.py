@@ -46,8 +46,20 @@ class I_video(Interface):
 
         self.request=requests.session()
 
+    def create_publish(self ,title ,project_id =1,pulish_time=0 ):
+        data = self.get_Id(title, project_id=project_id, pulish_time=pulish_time)
+        self.Cmod_video(data)
+        self.publish(data)
 
-    #
+    def create_publish_recom(self, title, project_id=1):
+        data = self.get_Id(title, project_id=project_id)
+        self.Cmod_video(data)
+        self.publish(data)
+        time.sleep(1)
+        self.recommend(data)
+
+
+    #发布视频流程
     def get_Id(self ,title  ,pulish_time=0 ,project_id=1):
         '''
 
@@ -62,7 +74,7 @@ class I_video(Interface):
         headers['Content-Type'] = 'application/json;charset=UTF-8'
         headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(project_id)
 
-        _data["title"]=title+get_time()
+        _data["title"]=get_name(project_id)+title+get_time()
 
         re = self.request.post(url=self.url, data=json.dumps(_data), headers=headers)
         try:
@@ -175,8 +187,7 @@ class I_video(Interface):
 if __name__ == '__main__':
 
     i = I_video()
-    # data=i.get_Id("测试自动化发布" ,pulish_time=2)
-    # i.Cmod_video(data)
-    # i.publish(data)
+    # i.create_publish("测试发布视频",project_id=pp_id.fuzhou ,pulish_time=2)
+    i.create_publish_recom("测试推荐视频", project_id=pp_id.fuzhou)
 
-    i.offline({"id":2993})
+    # i.offline({"id":2993})

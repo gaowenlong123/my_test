@@ -86,6 +86,7 @@ def test_video(title ,project_id=1):
 if __name__ == '__main__':
     pass
 
+    # test_one(1,"测试定时发布文章" ,pp_id.zhuzhan)
     #地方站文章
     # test_one(1,"测试西安文章" ,pp_id.xian)
     # test_one(1, "测试海南文章", pp_id.hainan)
@@ -128,8 +129,8 @@ if __name__ == '__main__':
 
     #测试地方站视频
     # test_video("测试西安视v频" , pp_id.qingdao)
-    test_video('测试海南V', pp_id.hainan)
-    test_video('测试福州V', pp_id.fuzhou)
+    # test_video('测试海南V', pp_id.hainan)
+    # test_video('测试福州V', pp_id.fuzhou)
     test_video('测试厦门V', pp_id.xiamen)
     test_video('测试南京V', pp_id.nanjing)
     test_video('测试成都V', pp_id.chengdu)

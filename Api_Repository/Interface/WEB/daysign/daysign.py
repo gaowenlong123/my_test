@@ -61,4 +61,5 @@ class daysign():
 
 if __name__ == '__main__':
     i =daysign()
+    i.home_daysign()
     i.home_daysign1()

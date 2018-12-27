@@ -9,14 +9,8 @@ import copy , requests ,os
 
 
 class I_focus(Interface):
-    '''
-    Cms 焦点图
-    '''
     def __init__(self ,param = ''):
         super(I_focus ,self).__init__()
-
-        self.request = requests.session()
-
 
 
     def get_dir_name(self):
@@ -47,7 +41,7 @@ class I_focus(Interface):
                           "feed_id":"",
                           "entity_type":""
                           }
-
+        self.request = requests.session()
         self.url = 'http://cmstest02.36kr.com/api/focus'
 
 
@@ -136,9 +130,9 @@ class I_focus(Interface):
 
         # 个性化数据
         if title=="":
-            _data["title"] = temp["title"]
+            _data["title"] =get_name(project_id) + temp["title"]
         else:
-            _data["title"] = title
+            _data["title"] = get_name(project_id) + title
         _data["url"] = temp["url"]
         _data["type"] = "local_station_banner"
         _data["cover"] = get_cover(type)
@@ -173,7 +167,7 @@ class I_focus(Interface):
         print(re.text)
 
 
-#web端 信息流固定位
+    #web端 信息流固定位
     def web_focus_feed(self ,title ,publish_time=None ,finished_time=None):
         '''
 
@@ -219,6 +213,7 @@ class I_focus(Interface):
 
     def get_data(self , id=357 ,type="published"):
         '''
+
         # 得到信息流的数据   只能得到App端的把
         http://cmstest02.36kr.com/api/focus?feed_id=357&state=drafted-published&type=feed&per_page=30&page=1
         :param id: 频道ID
@@ -242,20 +237,20 @@ class I_focus(Interface):
 if __name__ == '__main__':
     i = I_focus()
     #需要解决跨品牌的问题
-    # i.publish(feed=feed_id.bzsj ,type=0,publish_time=2,finished_time=4)  #app 主站推挤频道
+    # i.publish(feed=feed_id.bzsj ,type=0 , publish_time=2,finished_time=4)  #app 主站推挤频道
     # i.publish(project_id=pp_id.xian, type=0 ,publish_time=2,finished_time=2 )    #app地方站
 
 
     # for m in range(1):
-    #     i.local_publish(pp_id.fuzhou ,"再次发布福州banner"+str(m))          #发布web加点图
+    #     i.local_publish(pp_id.fuzhou ,"发布web焦点图"+str(m))          #发布web地方站焦点图
 
     # i.review({"id":1025 , "project_id":1})   #下线焦点图
 
-    # i.web_focus_feed('新建web信息流固定位',publish_time=20 , finished_time=10)  Web 信息流固定位
+    # i.web_focus_feed('新建web信息流固定位',publish_time=20 , finished_time=10)  Web主站 信息流固定位
 
-    # i.get_data(id=314)
+    # i.get_data(id=pp_id.xiamen)        #需要在看看
 
 
 
-    i.publish(project_id=pp_id.nanjing, type=2)
+    # i.publish(project_id=pp_id.nanjing, type=2)
 

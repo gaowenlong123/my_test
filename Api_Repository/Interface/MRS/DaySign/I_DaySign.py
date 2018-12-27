@@ -9,7 +9,9 @@ class I_DaySign(Interface):
     def __init__(self):
         super(I_DaySign,self).__init__()
 
+        #暂时不搞你了
         pass
+
 
 
 
@@ -69,10 +71,11 @@ class I_DaySign(Interface):
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
 
         _data = {
-            "id":id
+            "param":{"id":id},
         }
 
         re= self.request.post(url=_url ,headers=headers ,data=json.dumps(_data))
+        print(headers)
         print(re.text)
         return re.json()["code"]
 
@@ -121,4 +124,4 @@ class I_DaySign(Interface):
 if __name__ == '__main__':
     i= I_DaySign()
     # i.test_add("测试" )
-    i.test_ID(10465313)  # {"code":99,"msg":"没有权限，请重新登录"}    是因为X-token的原因吗？？？
+    i.test_ID(10465313)  # {"code":99,"msg":"没有权限，请重新登录"}

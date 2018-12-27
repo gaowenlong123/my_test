@@ -73,7 +73,9 @@ class web_feed_id:
 
 
 def get_name(project):
-    if project == pp_id.xian:
+    if project == pp_id.zhuzhan:
+        return ''
+    elif project == pp_id.xian:
         return "西安"
     elif project == pp_id.hainan:
         return "海南"
@@ -91,6 +93,7 @@ def get_name(project):
         return "昆明"
     elif project == pp_id.qingdao:
         return "青岛"
+
 
 def get_feed_id(project):
     if project == pp_id.xian:

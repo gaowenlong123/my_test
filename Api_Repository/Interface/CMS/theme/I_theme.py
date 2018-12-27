@@ -53,7 +53,7 @@ class I_theme(Interface):
 
 
 
-    def publish(self ,title,project_id=1,is_small=True ,is_normal =True):
+    def publish(self ,title,project_id=1 , is_small=True ,is_normal =True):
         '''
         http://cmstest02.36kr.com/api/theme
         :param theme_data:  {'title' }
@@ -66,7 +66,7 @@ class I_theme(Interface):
 
         if is_normal:
             _data = copy.deepcopy(self.normal_data)
-            _data["title"] = title + get_time()
+            _data["title"] = get_name(project_id) + title + get_time()
             _data["template_info"] = template_info(title + get_time(), is_small)
         else:
             _data = copy.deepcopy(self.normal_data)
@@ -122,33 +122,33 @@ class I_theme(Interface):
         re = self.request.put(url=_url, headers=headers, data={})
         print(re.text)
 
-    def unhot(self,id):
+    def unhot(self,data):
         '''
         http://cmstest02.36kr.com/api/theme/985/unselect
         :param id:
         :return:
         '''
-        _url = self.url + '/theme/' + str(id) + '/unselect'
+        _url = self.url + '/theme/' + str(data["id"]) + '/unselect'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
 
         re = self.request.put(url=_url, headers=headers, data={})
         print(re.text)
 
-    def offline(self,id):
+    def offline(self,data):
         '''
         http://cmstest02.36kr.com/api/theme/983/offline
         :param id:
         :return:
         '''
-        _url = self.url + '/theme/'+str(id)+'/offline'
+        _url = self.url + '/theme/'+str(data["id"])+'/offline'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
 
         re=self.request.put(url=_url ,headers=headers,data={})
         print(re.text)
 
-    def top(self,id):
+    def top(self,data):
         '''
         http://cmstest02.36kr.com/api/theme/985/stick
         :param id:
@@ -156,12 +156,11 @@ class I_theme(Interface):
 
         {"operate":"no"}    取消置顶
         '''
-        _url = self.url + '/theme/' + str(id)+'/stick'
+        _url = self.url + '/theme/' + str(data["id"])+'/stick'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
         re = self.request.put(url=_url ,headers=headers,data={"operate":"yes"})
         print(re.text)
-
 
 
     #信息流
@@ -176,7 +175,6 @@ class I_theme(Interface):
 
         try:
             temp = re.json()['data']['items']
-
         except:
             temp={}
         _list=[]
@@ -193,15 +191,14 @@ class I_theme(Interface):
 
 if __name__ == '__main__':
     i = I_theme()
-    # id=i.publish("新建话题")
+    id=i.publish("新建话题" ,project_id=pp_id.chengdu)
     # time.sleep(1)
-    # i.recommend(id)
-
-    # i.offline(986)
-    # i.top(984)
+    # i.recommend({"id":123,"project_id":1})
 
 
-    # i.hot()   定时跨品牌发布
+    # i.offline({"id":986})
+    # i.top({"id":986})
+    # i.hot({"id":986})
 
     i.hot_theme()
 

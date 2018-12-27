@@ -1,5 +1,5 @@
 from Api_Server.Root.Interface import Interface
-import os,requests,copy
+import os,requests,copy ,random
 from Api_Server.Support.Base_Enums import Enums
 from Api_Repository.Data_Center.Entity import *
 from Api_Server.Support.Base_Time import *
@@ -11,16 +11,10 @@ class I_article(Interface):
     def __init__(self ,para=''):
         super(I_article ,self).__init__()
 
-        #文件新建文章需要的自定义的数据
-        # self.article_Data=self.get_post_Data(para)  ??
-
-
-        #得到文章ID
-
         self.common_post_data={}
 
 
-  #重写虚方法
+    #重写虚方法
     def get_dir_name(self):
         '''
           #必须重新，获得该文件夹名，生成存储文件
@@ -47,10 +41,6 @@ class I_article(Interface):
     #文章类拥有的接口
     def recommend(self ,data,feed=recom_feed.tuijian):
         '''
-            url : http://cmstest02.36kr.com/api/post/10464983/recommend
-           str : {"recommend_info":"{\"feed_ids\":[269]}"}
-           json: recommend_info={"feed_ids":[269]}
-
            :return {"code":0}
            :type    put
            request
@@ -68,9 +58,9 @@ class I_article(Interface):
         print(re.text)
 
     def push(self , data ):
-
+        #不只支持夸品牌push
         '''
-        地方站就先别push了
+        地方站就先别push了   ,
         :param :data  get 文章的数据
         :return:
         '''
@@ -86,8 +76,6 @@ class I_article(Interface):
                       "publish_now":1,
                       "published_at":"",
                       "expire_time":"4"}
-
-        # fl_post_data=
 
         re=self.request.post(url=_url , headers=self.Headers ,data=ar_post_data)
         print(re.text)
@@ -140,7 +128,7 @@ class I_article(Interface):
 
     #聚合发布文章
     def creat_publish(self, title, project_id=1, publish=0):
-        data = self.get_ID(title)
+        data = self.get_ID(title ,project_id ,publish=publish)
 
         article_data = self.get_article_data(data=data)
 
@@ -149,6 +137,8 @@ class I_article(Interface):
         self.publish(post_data, data=data)
 
         return data
+
+    # 聚合发布文章，并推荐
     def creat_publish_recom(self, title):
         data = self.get_ID(title)
 
@@ -164,6 +154,7 @@ class I_article(Interface):
 
         return data
 
+
     # 发布文章流程
     def get_ID(self , title='',project_id=1 ,publish=0):
         '''
@@ -177,7 +168,6 @@ class I_article(Interface):
         "source_urls":"",
         "content":"",
         "template_info":"{\"template_type\":\"small_image\",\"template_title\":\"测试配图-小图\",\"template_title_isSame\":true,\"template_cover\":[]}"}
-
         在编辑页面的提交文章标题时，会生成文章ID
         :return:  文章的ID
         '''
@@ -189,7 +179,7 @@ class I_article(Interface):
         headers['Cookie']=headers['Cookie'].split('kr_plus_project_id=')[0]+'kr_plus_project_id='+str(project_id)
         template = "{\"template_type\":\"small_image\",\"template_title\":\""+title+"\",\"template_title_isSame\":true,\"template_cover\":[]}"
 
-        post_data={"title": title + get_time(),
+        post_data={"title": title + get_name(project_id) +get_time(),
                    "column_id":"",
                    "source_type":"original",
                    "user_id":12186523,
@@ -217,7 +207,6 @@ class I_article(Interface):
         :param data:
         :project_id : 1 主站
         :return: kr_plus_project_id=86
-
         '''
         _url='http://cmstest02.36kr.com/api/post/'+str(data["id"])+'?open_in_editor=1'  #&_=1544607271040
         headers = copy.deepcopy(self.Headers)
@@ -242,8 +231,11 @@ class I_article(Interface):
         headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
             data["project_id"])
 
+        #随机生成模板
+        ran = random.randint(0,2)
+
         mod_data={
-            "template_info": template_info(article_data['title'],0) ,
+            "template_info": template_info(article_data['title'],ran) ,
 	        "summary": summary.sum,
 	        "content": content.dada,
 	        "cover": ramdom_cover(),
@@ -330,68 +322,15 @@ class I_article(Interface):
                 self.delete({"id":id ,"project_id":1})
                 time.sleep(1)
 
-    #???
-    def common_photo(self,id,url):
-        '''
-        :data :
-        :param id:
-        :param url:
-        :return:
-        '''
-        _url = 'http://cmstest02.36kr.com/api/photo-hidden'
-        headers = copy.deepcopy(self.Headers)
-        headers['Content-Type'] = 'application/json;charset=UTF-8'
-
-        photo="[{"+url+"}]"
-        post_data={"entity_id": id,
-                   "entity_type": "post",
-                    "list": photo}
-
-        re=self.request.post(url=_url ,headers=headers ,data=post_data)
-        print(re.text)
 
 
 
 if __name__ == '__main__':
-    #例
     i=I_article()
-
-    #写入text
-    # for i1 in range(10):
-    #     i.write('21111sssssssssss我是文章1dadwaa')
-    # i.write('adada')
-    #
-    # #写入dict
-    # b={"aaaa":111,"22":222222}
-    # c={'dada':222444}
-    # i.write_dict(b)
-    # i.write_dict(c)
-    # i.end_write(is_clear=False)   #将存的字典写入text中 ,不删除文件
-    #
-    # print(i.Headers)
-
-    title='测试发布文章'
-    temp=[]
-    # for m in range(0):
-    #     data=i.get_ID(title)
-    #     print(data)
-    #     article_data=i.get_article_data(data=data)
-    #
-    #     post_data=i.Cmod_article(article_data=article_data ,data=data)
-    #
-    #     i.publish(post_data ,data=data)
-        #
-        # time.sleep(1)
-        #
-        # i.recommend(data)
-        #
-        # temp.append(data['id'])
-
-    # i.push(post_data)
-    print(temp)
-
     # i.review({"id":10465256 ,"project_id":1})
     # i.my_offline_delete()
+
+    i.creat_publish("测试文章" ,project_id=pp_id.xiamen,publish=4)
 
 
 

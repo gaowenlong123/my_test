@@ -9,7 +9,7 @@ class I_newsflash(Interface):
     def __init__(self ,param = ''):
         super(I_newsflash ,self).__init__()
 
-        self.request = requests.session()
+
 
 
 
@@ -33,6 +33,8 @@ class I_newsflash(Interface):
 
     def _public_property(self):
         self._url='http://cmstest02.36kr.com/api'
+
+        self.request = requests.session()
 
         # 结构不复杂 (无图无链接)
         self.post_data = {"title": "???",
@@ -77,7 +79,7 @@ class I_newsflash(Interface):
         headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(project_id)
 
         #个性化数据
-        flash_data["title"]=title + get_time()
+        flash_data["title"]=get_name(project_id) + title + get_time()
         flash_data["description"] = description.wu
         flash_data["column_id"] = column_id.qita
         flash_data["template_info"] = template_info(flash_data["title"])
@@ -181,12 +183,8 @@ class I_newsflash(Interface):
 
 if __name__ == '__main__':
     i = I_newsflash()
-
     data=i.publish('测试地方站快讯  ' ,project_id=pp_id.xiamen)
     # i.push(data)
 
 
 
-
-
-# return    {"code":0,"msg":"","data":{"id":21290}}
