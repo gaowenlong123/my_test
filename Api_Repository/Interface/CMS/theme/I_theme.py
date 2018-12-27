@@ -53,7 +53,7 @@ class I_theme(Interface):
 
 
 
-    def publish(self ,title,is_small=True ,is_normal =True):
+    def publish(self ,title,project_id=1,is_small=True ,is_normal =True):
         '''
         http://cmstest02.36kr.com/api/theme
         :param theme_data:  {'title' }
@@ -62,6 +62,7 @@ class I_theme(Interface):
         _url = self.url + '/theme'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(project_id)
 
         if is_normal:
             _data = copy.deepcopy(self.normal_data)
@@ -72,12 +73,20 @@ class I_theme(Interface):
             #氪友问答再说吧
 
         re =self.request.post(url=_url ,headers=headers ,data=_data)
-        print(re.json()['data'])
-
-        return re.json()['data']['id']
+        # 返回值
+        print(re.text)
+        try:
+            re_dict = {
+                'id': re.json()["data"]["id"],
+                'title': _data["title"],
+                'project_id': project_id
+            }
+        except:
+            re_dict = {}
+        return re_dict
 
     #类拥有的接口
-    def recommend(self ,id ):
+    def recommend(self ,data ,feed=recom_feed.tuijian):
         '''
             http://cmstest02.36kr.com/api/theme/980/recommend
            str : {"recommend_info":"{\"feed_ids\":[269]}"}
@@ -87,10 +96,15 @@ class I_theme(Interface):
            :type    put
            request
         '''
-        _url=self.url+'/theme/'+str(id)+'/recommend'
+        if data["project_id"] != 1:
+            feed = local_recom_feed(data["project_id"])
+
+        _url=self.url+'/theme/'+str(data["id"])+'/recommend'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
-        _data = {"recommend_info":recom_feed.tuijian}
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
+        _data = {"recommend_info": feed}
 
         re=self.request.put(url=_url ,headers=headers,data=_data)
         print(re.text)

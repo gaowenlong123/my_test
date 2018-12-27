@@ -243,11 +243,11 @@ if __name__ == '__main__':
     i = I_focus()
     #需要解决跨品牌的问题
     # i.publish(feed=feed_id.bzsj ,type=0,publish_time=2,finished_time=4)  #app 主站推挤频道
-    # i.publish(project_id=pp_id.huzhou, type=0 ,publish_time=2,finished_time=2 )    #app地方站
+    # i.publish(project_id=pp_id.xian, type=0 ,publish_time=2,finished_time=2 )    #app地方站
 
 
-    for m in range(1):
-        i.local_publish(pp_id.fuzhou ,"再次发布福州banner"+str(m))          #发布web加点图
+    # for m in range(1):
+    #     i.local_publish(pp_id.fuzhou ,"再次发布福州banner"+str(m))          #发布web加点图
 
     # i.review({"id":1025 , "project_id":1})   #下线焦点图
 
@@ -255,4 +255,7 @@ if __name__ == '__main__':
 
     # i.get_data(id=314)
 
+
+
+    i.publish(project_id=pp_id.nanjing, type=2)
 

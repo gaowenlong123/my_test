@@ -47,6 +47,7 @@ class recom_feed:
 
 
 a=['西安', 86, 298, '南京', 87, 300, '成都', 88, 301, '昆明', 89, 302, '广州', 97, 321, '福州', 94, 318, '南宁', 98, 322, '贵阳', 93, 319, '厦门', 95, 317, '湖州', 96, 316, '青岛', 92, 315, '海南', 90, 314]
+
 def local_recom_feed(project):
     if project == pp_id.xian:
         return recom_feed.xianan
@@ -58,6 +59,14 @@ def local_recom_feed(project):
         return recom_feed.fuzhou
     elif project == pp_id.huzhou:
         return recom_feed.huzhou
+    elif project == pp_id.nanjing:
+        return recom_feed.nanjing
+    elif project == pp_id.chengdu:
+        return recom_feed.chengdu
+    elif project == pp_id.kunming:
+        return recom_feed.kunming
+    elif project == pp_id.qingdao:
+        return recom_feed.qingdao
 
 class web_feed_id:
     pass
@@ -74,6 +83,14 @@ def get_name(project):
         return "福州"
     elif project == pp_id.huzhou:
         return "湖州"
+    elif project ==pp_id.nanjing:
+        return "南京"
+    elif project ==pp_id.chengdu:
+        return "成都"
+    elif project == pp_id.kunming:
+        return "昆明"
+    elif project == pp_id.qingdao:
+        return "青岛"
 
 def get_feed_id(project):
     if project == pp_id.xian:
@@ -88,3 +105,9 @@ def get_feed_id(project):
         return feed_id.huzhou
     elif project == pp_id.qingdao:
         return feed_id.qingdao
+    elif project ==pp_id.nanjing:
+        return feed_id.nanjing
+    elif project == pp_id.chengdu:
+        return feed_id.chengdu
+    elif project ==pp_id.kunming:
+        return feed_id.kunming

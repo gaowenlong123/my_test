@@ -2,6 +2,7 @@ from Api_Server.Root.Interface import Interface
 from Api_Server.Support.Base_Enums import Enums
 from Api_Server.Support.Base_Time import *
 from Api_Repository.Data_Center.video import *
+from Api_Repository.Data_Center.Entity import *
 import os ,copy ,requests,json
 
 
@@ -129,7 +130,28 @@ class I_video(Interface):
         re = self.request.put(url=_url, headers=headers, data=json.dumps(_data))
         print(re.text)
 
+    def recommend(self, data, feed=recom_feed.tuijian):
+        '''
+            url : http://cmstest02.36kr.com/api/post/10464983/recommend
+           str : {"recommend_info":"{\"feed_ids\":[269]}"}
+           json: recommend_info={"feed_ids":[269]}
 
+           :return {"code":0}
+           :type    put
+           request
+        '''
+        if data["project_id"] != 1:
+            feed = local_recom_feed(data["project_id"])
+
+        _url = self.url+'/'+ str(data["id"]) + '/recommend'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
+        _data = {"recommend_info": feed}
+
+        re = self.request.put(url=_url, headers=headers, data=_data)
+        print(re.text)
 
     def offline(self,data):
         '''

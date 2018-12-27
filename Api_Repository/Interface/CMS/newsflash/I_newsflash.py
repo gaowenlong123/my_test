@@ -87,12 +87,39 @@ class I_newsflash(Interface):
         print(re.text)
 
         #返回值
-        re_dict= {
-            'id':re.json()["data"]["id"],
-            'title':flash_data["title"],
-            'project_id':project_id
-        }
+        try:
+            re_dict= {
+                'id':re.json()["data"]["id"],
+                'title':flash_data["title"],
+                'project_id':project_id
+            }
+        except:
+            re_dict={}
         return re_dict
+
+    def recommend(self, data, feed=recom_feed.tuijian):
+        '''
+            url : http://cmstest02.36kr.com/api/post/10464983/recommend
+           str : {"recommend_info":"{\"feed_ids\":[269]}"}
+           json: recommend_info={"feed_ids":[269]}
+
+           :return {"code":0}
+           :type    put
+           request
+        '''
+        if data["project_id"] != 1:
+            feed = local_recom_feed(data["project_id"])
+
+        _url = self._url + '/newsflash/' + str(data["id"]) + '/recommend'
+        headers = copy.deepcopy(self.Headers)
+        headers['Content-Type'] = 'application/json;charset=UTF-8'
+        headers['Cookie'] = headers['Cookie'].split('kr_plus_project_id=')[0] + 'kr_plus_project_id=' + str(
+            data["project_id"])
+        _data = {"recommend_info": feed}
+
+        re = self.request.put(url=_url, headers=headers, data=_data)
+        print(re.text)
+
 
     def review(self,data):
         '''
@@ -155,7 +182,7 @@ class I_newsflash(Interface):
 if __name__ == '__main__':
     i = I_newsflash()
 
-    data=i.publish('测试地方站快讯  ' ,project_id=pp_id.xian)
+    data=i.publish('测试地方站快讯  ' ,project_id=pp_id.xiamen)
     # i.push(data)
 
 
