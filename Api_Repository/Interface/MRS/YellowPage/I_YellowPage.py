@@ -36,7 +36,7 @@ class I_YellowPage(Interface):
               "address":"110000,110000,110105",
               "scale":0,
               "establishTime":"2018-01-01",
-              "identityName":"project"+str(time_Stamp()),
+              "identityName":"",
               "briefIntro":"一句话简介",
               "intro":"项目介绍",
               "space":"<p><strong><span style=\"color:#07a9fe\">市场空间与格局</span></strong></p>",
@@ -92,7 +92,8 @@ class I_YellowPage(Interface):
         _data = copy.deepcopy(self.post_data)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
 
-        _data["param"]["name"]=name +get_time_baseDay()
+        _data["param"]["name"]=name
+        _data["param"]["identityName"]="project"+str(time_Stamp())
         _data["param"]["status"] = mod_data["statusList"]
         _data["param"]["trade"] = list_ToString(mod_data["tradeList"])
         _data["param"]["round"] = mod_data["roundList"]["code"]
@@ -101,8 +102,9 @@ class I_YellowPage(Interface):
             _data["param"]["articleId"] = "10465604,10465634"
         else:
             _data["param"]["articleId"] = list_ToString(article_Id)
-        print(_data)
-        re= self.request.post(url=_url ,headers=headers ,data=_data)
+        # print(_data["param"]["identityName"])
+
+        re= self.request.post(url=_url ,headers=headers ,data=json.dumps(_data))
         print(re.text)
         # return re.json()["code"]
 
@@ -147,9 +149,8 @@ class I_YellowPage(Interface):
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
 
         _data = {
-            "param":{"id": id}
+            "param.id": id
         }
-
         re = self.request.post(url=_url, headers=headers ,data=_data)
         print(re.text)
         # return re.json()["code"]
@@ -157,5 +158,10 @@ class I_YellowPage(Interface):
 if __name__ == '__main__':
     i= I_YellowPage()
     # i.test_add("测试" )
-    data=i.get_Init()
-    i.add("测试" ,mod_data=data ,article_Id=[])  #文章只能关联一个项目
+
+    # for m in range(1):
+    #     data=i.get_Init()
+    #     i.add("测试黄页"+str(m) ,mod_data=data ,article_Id=[])  #文章只能关联一个项目
+    #     time.sleep(2)
+
+    i.delete(150)
