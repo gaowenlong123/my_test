@@ -42,3 +42,5 @@ def get_late_baseday(day =0):
 
 
 
+if __name__ == '__main__':
+    print(type(time_Stamp()))

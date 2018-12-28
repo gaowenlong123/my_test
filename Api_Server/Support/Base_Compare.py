@@ -1,4 +1,4 @@
-
+import random
 def map(dict, objkey, default='default'):
     '''
     # 获取字典中的objkey对应的值，适用于字典嵌套
@@ -18,7 +18,41 @@ def map(dict, objkey, default='default'):
                     return ret
     return default
 
+def get_random_value(dict ,key ,nums=1):
+    '''
+    :param dict:
+    :param key:  值是一个list
+    :param nums:
+    :return:
+    '''
+    re_list=[]
+    _list = []
+    _num = len(dict[key])-1
+    for i in range(nums):
+        _index = random.randint(0, _num)
+        while(_index in _list):
+            _index = random.randint(0,_num)
+        _list.append(_index)
+        re_list.append(dict[key][_index])
+    if len(re_list)==1:
+        return re_list[0]
+    return re_list
 
+def get_dict_list_value(dict ,father_key , key):
+    '''
+      这个字典的值是 list , list 里面是一堆字典 ,然后我们取list中每个字典的值
+    :param dict:
+    :param key:
+    :return:
+    '''
+    _list=dict[father_key]
+    re_list=[]
+    for dict in _list:
+        temp = map(dict ,"code" ,"无")
+        if temp != "无":
+            re_list.append(temp)
+
+    return re_list
 
 if __name__ == '__main__':
     a = {"code": 0,
@@ -48,3 +82,13 @@ if __name__ == '__main__':
                                   "displayOrder": 1}]}}
 
     print(map(a,'logo'))
+
+    dict = {"1": [2, 3, 4, 5, 6, 7]}
+
+    get_random_value(dict, "1", 6)
+
+    a={'tradeList': [{'code': 4, 'msg': '互联网金融'},{'code1': 9, 'msg': '文化娱乐'},{'code': 7, 'msg': '文化娱乐'}, {'code': 9, 'msg': '文化娱乐'}]}
+    get_dict_list_value(a,"tradeList" ,"code")
+
+
+
