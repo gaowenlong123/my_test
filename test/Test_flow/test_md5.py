@@ -34,7 +34,7 @@ data3={
 	# "os_version": "8.1.0",
 	"partner_id": "ios",
 	"partner_version": "8.1",
-	"device_id": "92772661-C750-433A-9024-55CB605FDFFC",
+	# "device_id": "92772661-C750-433A-9024-55CB605FDFFC",
 	"param": {
 		"subnavType": "1",
 		"homeCallback": "",
@@ -57,7 +57,7 @@ data4={
 	# "partner_id": "android",
 	"partner_id": "ios",
 	"partner_version": "8.1",
-	"device_id": "92772661-C750-433A-9024-55CB605FDFFC",
+	# "device_id": "92772661-C750-433A-9024-55CB605FDFFC",
 	"param": {
 		"subnavType": "1",
 		"homeCallback": "",
@@ -65,7 +65,7 @@ data4={
 		"subnavId": "59",
 		"platformId": "1",
 		"subnavNick": "recommend",
-	},
+	}
 
 	# "request_id": "",
 	# "timestamp":1546513175456,
@@ -77,10 +77,10 @@ data4={
 
 pass1=json.dumps(data3)
 pass_word=pass1+ "ystDqsMYEeep0Ov0FW3AWQ"
-print(type(pass1))
-print(type(pass_word.encode('utf-8') ))
-print(pass_word.encode('utf-8'))
-print(base64.b64encode( pass_word.encode('utf-8')))
+# print(type(pass1))
+# print(type(pass_word.encode('utf-8') ))
+# print(pass_word.encode('utf-8'))
+# print(base64.b64encode( pass_word.encode('utf-8')))
 m.update( pass_word.encode('utf-8'))  # 生成加密串，其中password是要加密的字符串
 sign=m.hexdigest()  # 打印经过md5加密的字符串
 print(sign)
