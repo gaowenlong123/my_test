@@ -33,7 +33,7 @@ class I_YellowPage(Interface):
               "status":0,
               "trade":"",
               "round":0,
-              "address":"110000,110000,110105",
+              "address":"北京市,北京市,东城区",
               "scale":0,
               "establishTime":"2018-01-01",
               "identityName":"",
@@ -159,9 +159,10 @@ if __name__ == '__main__':
     i= I_YellowPage()
     # i.test_add("测试" )
 
-    # for m in range(1):
-    #     data=i.get_Init()
-    #     i.add("测试黄页"+str(m) ,mod_data=data ,article_Id=[])  #文章只能关联一个项目
-    #     time.sleep(2)
+    for m in range(70):
+        data=i.get_Init()
+        i.add("测试黄页"+str(m) ,mod_data=data ,article_Id=[])  #文章只能关联一个项目
+        time.sleep(2)
 
-    i.delete(150)
+    # for m in range(150,170):
+    #     i.delete(m)
