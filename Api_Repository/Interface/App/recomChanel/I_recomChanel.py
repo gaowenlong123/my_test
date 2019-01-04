@@ -49,15 +49,12 @@ class I_recomChanel(Gateway):
         re = self.request.post(url=_url , headers = self.Headers , data=_data)
         print(re.text)
 
-    def feed(self):
+    def feed(self ,num):
         # 先处理数据
-        param = {
-            "pageEvent": "0",
-            "pageSize": "20",
-        }
         temp=copy.deepcopy(self.post_data)
         temp['param']["pageEvent"] ="0"
-        temp['param']["pageSize"] = "20"
+        temp['param']["pageSize"] = str(num)
+
         _data = json.dumps(temp)
 
         # 生成签名
@@ -70,4 +67,4 @@ class I_recomChanel(Gateway):
 if __name__ == '__main__':
     i = I_recomChanel()
     # i.foces()
-    i.feed()
+    i.feed(20)
