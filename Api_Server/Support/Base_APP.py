@@ -24,7 +24,20 @@ class channel_data_test:
         "subnavNick": "video",
     }
 
+    search={
+        "platformId": "1",
+        "siteId": "1",
+        # "searchWord": "奋斗"
+
+    }
 
 class channel_type:
     recom='recom'
     video='video'
+
+class search_type:
+    video='video'
+    newsflash='newsflash'
+    article='article'
+    audio='audio'
+    author='author'

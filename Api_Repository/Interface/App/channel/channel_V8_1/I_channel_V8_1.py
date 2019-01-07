@@ -13,7 +13,7 @@ class I_channel_V8_1(Gateway):
         #===== 父类实现 生成文件，记录，登录等  ，这个类实现param的个性化接口======
 
         # self.param = self.get_channelType_param(type)
-        self.post_data = self.get_postdata(type)
+        self.post_data = self.get_channel_data(type)
         # print(self.post_data)
         # print(self.url)
 
@@ -35,6 +35,9 @@ class I_channel_V8_1(Gateway):
     def get_isLogin(self):
         return False
 
+    def get_param(self):
+        return ''
+
     def foces(self):
         #先处理数据
         _data = json.dumps(copy.deepcopy(self.post_data))
@@ -43,10 +46,8 @@ class I_channel_V8_1(Gateway):
         sign = self.MD5(_data)
         _url = self.url + '/api/mis/nav/home/subnav/recom?sign='+sign
 
-
-        print(sign)
-        re = self.request.post(url=_url , headers = self.Headers , data=_data)
-        print(re.text)
+        rep = self.request.post(url=_url , headers = self.Headers , data=_data)
+        return rep.json()
 
     def feed(self, num):
         # 先处理数据
@@ -60,8 +61,8 @@ class I_channel_V8_1(Gateway):
         sign = self.MD5(_data)
         _url = self.url + '/api/mis/nav/home/subnav/flow?sign=' + sign
 
-        re = self.request.post(url=_url, headers=self.Headers, data=_data)
-        return re.json()
+        rep = self.request.post(url=_url, headers=self.Headers, data=_data)
+        return rep.json()
 
 if __name__ == '__main__':
     i = I_channel_V8_1(channel_type.video)
