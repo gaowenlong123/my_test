@@ -4,7 +4,7 @@ import os ,json , copy , requests
 from Api_Server.Support.Base_Compare import *
 from Api_Server.Support.Base_Time import *
 from Api_Repository.Data_Center.yellowPage import *
-from Api_Server.Support.Base_Data import *
+from Api_Server.Decorate_Data.Base_Data import *
 
 class I_YellowPage(Interface):
     def __init__(self):

@@ -39,7 +39,7 @@ class I_article(Interface):
 
 
     #文章类拥有的接口
-    def recommend(self ,data,feed=recom_feed.tuijian):
+    def recommend(self ,data ,feed=recom_feed.tuijian):
         '''
            :return {"code":0}
            :type    put
@@ -56,6 +56,7 @@ class I_article(Interface):
 
         re=self.request.put(url=_url ,headers=headers,data=_data)
         print(re.text)
+        return re.json()
 
     def push(self , data ):
         #不只支持夸品牌push
@@ -126,7 +127,7 @@ class I_article(Interface):
         print(re.text)
 
 
-    #聚合发布文章
+    #聚合发布文章                                  #延迟发布
     def creat_publish(self, title, project_id=1, publish=0):
         data = self.get_ID(title ,project_id ,publish=publish)
 
@@ -136,6 +137,7 @@ class I_article(Interface):
 
         self.publish(post_data, data=data)
 
+        #
         return data
 
     # 聚合发布文章，并推荐
