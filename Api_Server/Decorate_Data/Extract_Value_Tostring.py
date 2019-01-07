@@ -51,11 +51,11 @@ if __name__ == '__main__':
     import requests
    #取名为re会与正则表达式重命名
     rep=requests.get(url='https://36kr.com/pp/api/newsflash?project_id=1')
-    data=get_dict(rep.json())
+    # data=get_dict(rep.json())
 
 
 
 
 
-    keyValue_ToString_byIndex(data  ,key_list=['id','title'] ,by_index=[7])
+    # keyValue_ToString_byIndex(data  ,key_list=['id','title'] ,by_index=[7])
     # KeyValues_ToString(data, key_list=['id', 'title'])
