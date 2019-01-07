@@ -1,6 +1,6 @@
 #Gateway 接口的基类  ,实现生成文件 ，记录信息 ；自动生成sign （每个子类有自己的 params)
 from abc import abstractmethod,ABCMeta
-import requests ,json ,hashlib
+import requests ,json ,hashlib ,copy
 from Api_Server.Support.Base_APP import *
 from Api_Server.Support.Base_Enums import Enums
 from Api_Server.Base.Base_File import *
@@ -13,7 +13,7 @@ class Gateway(metaclass=ABCMeta):
         #====每个对象初始化的步骤======
         self.login_type = self.get_url()
         self.version = self.get_version()
-        self.param = self.get_param()
+
         self.pass_word = "==="
 
         self.Cookie_path='E:\Pycharm_Git\my_test\Api_Server\Root\Cookie.pickle'
@@ -44,7 +44,7 @@ class Gateway(metaclass=ABCMeta):
         '''
         if ":" in name:
             name +="\\"+ name.split('\\')[-1]
-        self.log_text=name+'.text'
+        self.log_text=name+'.txt'
         mkdir_file(self.log_text)
         write_text_init(self.log_text)
 
@@ -147,6 +147,27 @@ class Gateway(metaclass=ABCMeta):
         sign = self._md5.hexdigest()
         return sign
 
+    def get_channelType_param(self , type):
+        _data = channel_data_test.basic_data.copy()
+        if type == channel_type.recom:
+            _data.update(channel_data_test.recom)
+        elif type == channel_type.video:
+            _data.update(channel_data_test.video)
+        return _data
+
+    def get_postdata(self ,type):
+        # 这个函数不能在父类调用，因为在编译的时候还不知道具体请求那个频道信息流 !!!!
+        _params = self.get_channelType_param(type)
+
+        _post_data = {
+            "partner_id": "ios",
+            "partner_version": self.version,
+            # "device_id": "92772661-C750-433A-9024-55CB605FDFFC",
+            "param": _params,
+        }
+
+        return _post_data
+
 
 
 
@@ -168,9 +189,11 @@ class Gateway(metaclass=ABCMeta):
     def get_version(self):
         return version.V8_0
 
-    @abstractmethod
-    def get_param(self):
-        return {}
+    # @abstractmethod
+    # def get_param(self):
+    #     return {}
+
+
 
 
 
@@ -178,12 +201,7 @@ class Gateway(metaclass=ABCMeta):
     # 公有属性区域
     # @abstractmethod
     def _public_property(self):
-        self.post_data = {
-            "partner_id": "ios",
-	        "partner_version": "8.1",
-	        # "device_id": "92772661-C750-433A-9024-55CB605FDFFC",
-            "param": self.param ,
-        }
+        pass
 
 
 #私有属性区域,只读不能写

@@ -44,7 +44,7 @@ class Interface(metaclass=ABCMeta):
         '''
         if ":" in name:
             name +="\\"+ name.split('\\')[-1]
-        self.log_text=name+'.text'
+        self.log_text=name+'.txt'
         mkdir_file(self.log_text)
         write_text_init(self.log_text)
 

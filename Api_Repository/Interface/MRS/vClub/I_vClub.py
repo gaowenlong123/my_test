@@ -314,9 +314,9 @@ if __name__ == '__main__':
 
     # i.mod({'name':'nihao1','keywords':'aaaaaaa','focusDomain':'NBA'},id=44,is_sold=True)
 
-    data={"name":"测试修改状态",
+    data={"name":"测试Vclub",
         "hasSold":"1",
-        "identityName":"shige12444",
+        "identityName":"vclub",
         "briefIntro":"简介",
         "focusDomain":"关注领域",
         "intro":"详细介绍",
@@ -331,13 +331,11 @@ if __name__ == '__main__':
         "logoUrl":"/v1/20181206/iGy_0sHpe1B0H9btvRumYQ6a2fedb92f5843258e8e179f2bd6257c",}
 
 
-    # i.add(data,is_sold=True)
+    i.add(data,is_sold=True)
 
-    # for m in range(50):
-    #     data['param']['name']=m
-    #     data['param']['identityName'] = m
-    #     i.add_param(data=data,is_diret=True  )
-    #     import time
-    #     time.sleep(1)
-    #     m+=50
-    #     i.add(name=str(m))
+    for m in range(3):
+        data['param']['name']=m
+        data['param']['identityName'] = m
+        i.add(data=data,is_sold=True)
+        import time
+        time.sleep(1)

@@ -2,12 +2,22 @@ from Api_Server.Root.Gateway import Gateway
 from Api_Server.Support.Base_Enums import Enums
 from Api_Server.Support.Base_APP import *
 import os , requests ,copy ,json
-class I_recomChanel(Gateway):
-    def __init__(self ,para=''):
-        super(I_recomChanel ,self).__init__()
+from Api_Server.Decorate_Data.Extract_Dict_Value import *
+from Api_Server.Decorate_Data.Extract_Value_Tostring import *
 
-        self.request = requests.session()
 
+class I_channel_V8_1(Gateway):
+    def __init__(self ,type=''):
+        super(I_channel_V8_1 ,self).__init__()
+
+        #===== 父类实现 生成文件，记录，登录等  ，这个类实现param的个性化接口======
+
+        # self.param = self.get_channelType_param(type)
+        self.post_data = self.get_postdata(type)
+        # print(self.post_data)
+        # print(self.url)
+
+        self.request=requests.session()
 
 
     def get_dir_name(self):
@@ -16,26 +26,14 @@ class I_recomChanel(Gateway):
 
     def get_url(self):
         # 在这里区分的是测试环境还是线上环境
-
         self.url = Enums.test_App_url
         return self.url
-
 
     def get_version(self):
         return version.V8_1
 
     def get_isLogin(self):
         return False
-
-    def get_param(self):
-        return {
-        "subnavType": "1",
-		"homeCallback": "",
-        "siteId": "1",
-		"subnavId": "59",
-		"platformId": "1",
-		"subnavNick": "recommend",
-        }
 
     def foces(self):
         #先处理数据
@@ -45,14 +43,15 @@ class I_recomChanel(Gateway):
         sign = self.MD5(_data)
         _url = self.url + '/api/mis/nav/home/subnav/recom?sign='+sign
 
+
         print(sign)
         re = self.request.post(url=_url , headers = self.Headers , data=_data)
         print(re.text)
 
-    def feed(self ,num):
+    def feed(self, num):
         # 先处理数据
-        temp=copy.deepcopy(self.post_data)
-        temp['param']["pageEvent"] ="0"
+        temp = copy.deepcopy(self.post_data)
+        temp['param']["pageEvent"] = "0"
         temp['param']["pageSize"] = str(num)
 
         _data = json.dumps(temp)
@@ -62,9 +61,17 @@ class I_recomChanel(Gateway):
         _url = self.url + '/api/mis/nav/home/subnav/flow?sign=' + sign
 
         re = self.request.post(url=_url, headers=self.Headers, data=_data)
-        print(re.text)
+        return re.json()
 
 if __name__ == '__main__':
-    i = I_recomChanel()
+    i = I_channel_V8_1(channel_type.video)
+
+    #焦点图           上下一起用会报错
     # i.foces()
-    i.feed(20)
+
+    #频道信息流                      (下滑是怎么请求的)
+    data=i.feed(20)
+    data=get_dict_value(data,template_path='data/itemList')
+    # print(data)
+    keyValues_ToString(data=data, key_list=["id","widgetTitle","duration"])
+
