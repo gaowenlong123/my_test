@@ -34,11 +34,6 @@ def keyValues_ToString(data,key_list,template_print='key=value  |   key'):
             for key in key_list:
                 print(key, k_v, map(_dict, key ,default="无值"), k_k,end='')
             print('')
-
-    print(type(data))
-
-
-    print(template_print)
     pass
 
 def _get_log_string(template_print):
@@ -49,13 +44,7 @@ def _get_log_string(template_print):
     return [pattern1.findall(template_print)[0][1:-1],pattern2.findall(template_print)[0][2:-1]]
 
 
-#  路径sting  拿出字典中对应的值
-def get_dict(dict ,template_path='data/items'):
-    temp_list = template_path.split('/')
-    print(temp_list)
-    for key in temp_list:
-        dict = dict[key]
-    return dict
+
 
 
 if __name__ == '__main__':
