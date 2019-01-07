@@ -14,7 +14,8 @@ class Gateway(metaclass=ABCMeta):
         self.login_type = self.get_url()
         self.version = self.get_version()
 
-        self.pass_word = "==="
+
+        self.pass_word = "======="
 
         self.Cookie_path='E:\Pycharm_Git\my_test\Api_Server\Root\Cookie.pickle'
 
@@ -155,7 +156,7 @@ class Gateway(metaclass=ABCMeta):
             _data.update(channel_data_test.video)
         return _data
 
-    def get_postdata(self ,type):
+    def get_channel_data(self ,type):
         # 这个函数不能在父类调用，因为在编译的时候还不知道具体请求那个频道信息流 !!!!
         _params = self.get_channelType_param(type)
 
@@ -169,6 +170,18 @@ class Gateway(metaclass=ABCMeta):
         return _post_data
 
 
+    def get_data(self):
+        # 非频道的通用数据解决
+        _param =self.get_param()
+
+        _post_data = {
+            "partner_id": "ios",
+            "partner_version": self.version,
+            # "device_id": "92772661-C750-433A-9024-55CB605FDFFC",
+            "param": _param,
+        }
+
+        return _post_data
 
 
     #抽象方法区域
@@ -189,9 +202,9 @@ class Gateway(metaclass=ABCMeta):
     def get_version(self):
         return version.V8_0
 
-    # @abstractmethod
-    # def get_param(self):
-    #     return {}
+    @abstractmethod
+    def get_param(self):
+        return {}
 
 
 
