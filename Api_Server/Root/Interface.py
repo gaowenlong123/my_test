@@ -1,7 +1,7 @@
 #接口的基类  ,实现生成文件 ，记录信息 ；得到COokie
 from abc import abstractmethod,ABCMeta
 import requests
-from Api_Server.Support.Base_Driver import WebDriver
+from Api_Server.Base.Base_Driver import WebDriver
 from Api_Server.Support.Base_Enums import Enums
 from Api_Server.Base.Base_File import *
 from Api_Server.Base.Base_Data import *
@@ -89,6 +89,7 @@ class Interface(metaclass=ABCMeta):
             assert "环境问题"
         try:
             if re.json()['code'] == 0:
+
                 print(re,' In Interface.py')
                 print('Cookie  没有过期')
             else:

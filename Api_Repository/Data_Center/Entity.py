@@ -1,9 +1,12 @@
 class feed_id:
+    #app 频道需要扩充
     tj="59"
     bzsj="357"
 
+    #web 频道
     web_new="331"
 
+    #地方站频道
     hainan="314"
     xian="298"
     nanjing="300"
