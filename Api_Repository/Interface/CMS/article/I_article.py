@@ -55,7 +55,7 @@ class I_article(Interface):
         _data = {"recommend_info":feed}
 
         re=self.request.put(url=_url ,headers=headers,data=_data)
-        print(re.text)
+        # print(re.text)
         return re.json()
 
     def push(self , data ):
@@ -94,7 +94,7 @@ class I_article(Interface):
             data["project_id"])
 
         re=self.request.put(url=_url ,headers=headers,data={})
-        print(re.text)
+        # print(re.text)
 
     def delete(self,data):
         '''

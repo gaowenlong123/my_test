@@ -15,11 +15,15 @@ def asert_equal(data,key ,targrt):
     :param targrt:
     :return:
     '''
-
-    if data[key]==targrt:
-        return {"result": True, "msg": str(data[key]) + " 等于 "+ str(targrt)}
+    if data.get(key , None) == None:
+        temp = map_List_dict(data ,key ,None)
     else:
-        return {"result": False, "msg": str(data[key]) + " 不等于 "+ str(targrt)}
+        temp = data[key]
+
+    if temp==targrt:
+        return {"result": True, "msg": str(temp) + " 等于 "+ str(targrt)}
+    else:
+        return {"result": False, "msg": str(temp) + " 不等于 "+ str(targrt)}
 
     # for _dict in data:
     #     result=map(_dict ,key ,default="无")

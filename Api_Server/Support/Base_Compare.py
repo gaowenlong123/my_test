@@ -18,6 +18,30 @@ def map(dict, objkey, default='default'):
                     return ret
     return default
 
+def map_List_dict(dict, objkey, default='default'):
+    '''
+    #  {   ,a :  [  {objkey : value }  ] }
+    :param dict: 字典
+    :param objkey: 目标key
+    :param default: 找不到时返回的默认值
+    :return:
+    '''
+    tmp = dict
+    for k, v in tmp.items():
+        if k == objkey:
+            return v
+        else:
+            if type(v) is type({}):
+                ret = map(v, objkey, default)
+                if ret is not default:
+                    return ret
+            elif type(v) is type([]):
+                for dict in v :
+                    ret = map(dict, objkey, default)
+                    if ret is not default:
+                        return ret
+    return default
+
 def get_random_value(dict ,key ,nums=1):
     '''
     :param dict:
@@ -92,3 +116,6 @@ if __name__ == '__main__':
 
 
 
+    a={'_isSuccess': True, '_msg': '接口请求成功', 'data': [{'state':1,"1" :'delet2ed'}]}
+
+    print(map_List_dict(a,"1" , 'd'))

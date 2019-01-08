@@ -41,9 +41,13 @@ class I_feed_streem(Interface):
     def delete(self,data):
         '''
         可以共用
-        :param data:
+        :param data:  id 是这个信息流的id ，不是 文章实体接口的id  ！！！
         :return:
         '''
+        if type(data)==list:
+            data=data[0]
+            data.update({"project_id" :1})
+        print("做兼容了")
         _url = self.url+'/'+str(data["id"])
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
@@ -51,7 +55,7 @@ class I_feed_streem(Interface):
             data["project_id"])
 
         re = self.request.delete(url=_url, data={}, headers=headers)
-        print(re.text)
+        # print(re.text)
 
     def offline(self,data):
         '''
@@ -59,6 +63,10 @@ class I_feed_streem(Interface):
         :param data:   id 是这个信息流的id ，不是 文章实体接口的id  ！！！
         :return:
         '''
+        if type(data)==list:
+            data=data[0]
+            data.update({"project_id" :1})
+
         _url = self.url+'/'+str(data["id"])+'/offline'
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'
@@ -66,7 +74,7 @@ class I_feed_streem(Interface):
             data["project_id"])
 
         re = self.request.put(url=_url, data={}, headers=headers)
-        print(re.text)
+        # print(re.text)
 
 if __name__ == '__main__':
     i = I_feed_streem()
