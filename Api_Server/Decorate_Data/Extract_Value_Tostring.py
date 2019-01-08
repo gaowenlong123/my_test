@@ -1,47 +1,86 @@
 import re
 from Api_Server.Support.Base_Compare import *
+from Api_Server.Asert.asert import *
+
 #  模板 key   ；  输出样式
 
-
+@asert_success
 def keyValue_ToString_byIndex(data,key_list,by_index ,template_print='key=value  |   key'):
-    _re_list=[]
+    '''
+
+    :param data:  {'_isSuccess': True, '_msg': '接口请求成功', 'data': data}
+    :param key_list:
+    :param by_index:
+    :param template_print:
+    :return:
+    '''
+    re_list=[]
     _template_print_list = _get_log_string(template_print)
     k_v = _template_print_list[0]
     k_k = _template_print_list[1]
-    if type(data) == list:
-        for index,_dict in enumerate(data):
+    if type(data["data"]) == list:
+        for index,_dict in enumerate(data["data"]):
+            re_dict={}
             if index +1 not in by_index:
                 continue
             print('第'+str(index+1)+'行：',end='')
             for key in key_list:
                 temp = map(_dict, key ,default="无值")
                 print(key, k_v, temp , k_k,end='')
-                _re_list.append(temp)
+                re_dict.update({key : temp})
+            re_list.append(re_dict)
             print('')
-
-            return _re_list
+        data["data"] = re_list
     else:
-
         print("请检查输入的值是否为list")
-        return _re_list
+        data["data"] = None
 
+
+    return data
+
+@asert_success
 def keyValues_ToString(data,key_list,template_print='key=value  |   key'):
+    '''
+
+    :param data:  {'_isSuccess': True, '_msg': '接口请求成功', 'data': data}
+    :param key_list:
+    :param template_print:
+    :return:      {'_isSuccess': True, '_msg': '接口请求成功', 'data': re_dict }
+    '''
+
     _template_print_list = _get_log_string(template_print)
     k_v = _template_print_list[0]
     k_k = _template_print_list[1]
 
-    if type(data) == dict:
+    if type(data["data"]) == dict:
+        re_dict = {}
         for key in key_list:
-            print(key,k_v,map(data ,key,default="无值"),k_k ,end='')
+            temp = map(data["data"] ,key,default="无值")
+            print(key,k_v,temp ,k_k ,end='')
+            re_dict.update({key ,temp})
         print('')
+        data["data"] = re_dict
+        return data
 
-    elif type(data) == list:
-        for index,_dict in enumerate(data):
+    elif type(data["data"]) == list:
+        re_list =[]
+        for index,_dict in enumerate(data["data"]):
+            temp_dict = {}
             print('第'+str(index+1)+'行：',end='')
             for key in key_list:
-                print(key, k_v, map(_dict, key ,default="无值"), k_k,end='')
+                temp = map(_dict, key ,default="无值")
+                print(key, k_v, temp , k_k,end='')
+                temp_dict.update({key : temp })
+            re_list.append(temp_dict)
             print('')
-    pass
+
+        data["data"] = re_list
+        return data
+
+    else:
+        data["data"] = None
+        return data
+
 
 
 

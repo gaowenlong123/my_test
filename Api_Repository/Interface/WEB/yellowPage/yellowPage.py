@@ -130,8 +130,8 @@ class I_yellowPage():
 if __name__ == '__main__':
     i = I_yellowPage()
     # i.project_list()
-    # i.project_homepage(url="project1545980816" ,articleSize=0 ,teamSize=10)
+    i.project_homepage(url="project1545994744" ,articleSize=0 ,teamSize=10)
     # i.relate_article(url="dididache")
     # i.project_team(url="project1545980816")
 
-    i.article_mention()  # 有问题
+    # i.article_mention()  # 有问题

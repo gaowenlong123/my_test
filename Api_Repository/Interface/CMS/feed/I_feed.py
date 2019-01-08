@@ -36,7 +36,7 @@ class I_feed(Interface):
         self.request = requests.session()
 
     def post_feed(self ,state='',num=30):
-        _url = self.url + '/post?per_page='+str(num)+'&page=1'
+        _url = self.url + '/post?state=published&per_page='+str(num)+'&page=1'
         rep = self.request.get(url=_url ,headers=self.Headers)
         return rep.json()
 
@@ -54,12 +54,25 @@ class I_feed(Interface):
     def recom_feed(self,feed=feed_id.tj ,num=15):
         _url = self.url + '/feed-stream?state=published&feed_id='+feed+'&per_page=' + str(num) + '&page=1'
         rep = self.request.get(url=_url, headers=self.Headers)
+        # print(rep.json())
+        return rep.json()
+
+    def recom_feed_Bystate(self,state = state.offline ,feed=feed_id.tj ,num=15):
+        _url = self.url + '/feed-stream?state='+state+'&feed_id=' + feed + '&per_page=' + str(num) + '&page=1'
+        rep = self.request.get(url=_url, headers=self.Headers)
+        # print(rep.json())
+        return rep.json()
+
+    def recom_feed_ById(self ,id ,feed=feed_id.tj):
+        _url = self.url + '/feed-stream?entity_id='+str(id)+'&feed_id='+feed
+        rep = self.request.get(url=_url, headers=self.Headers)
         print(rep.json())
         return rep.json()
 
 if __name__ == '__main__':
     pass
-    # i =I_feed()
+    i =I_feed()
     # i.post_feed()
     # i.recom_feed()
+    i.recom_feed_ById(10465620)
 

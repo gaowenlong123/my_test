@@ -109,7 +109,7 @@ class I_article(Interface):
             data["project_id"])
 
         re = self.request.delete(url=_url ,headers=headers,data={})
-        print(re.text)
+        # print(re.text)
 
     def republish(self ,data):
         '''
@@ -201,6 +201,7 @@ class I_article(Interface):
             temp_dict.update({"published_at": get_late_time(publish)})
             temp_dict.update({"publish_now": 0})
         temp_dict.update({"project_id":project_id})
+        temp_dict.update({"title": post_data["title"]})
         print(temp_dict)
         return temp_dict
 
@@ -215,10 +216,11 @@ class I_article(Interface):
         headers['Cookie']=headers['Cookie'].split('kr_plus_project_id=')[0]+'kr_plus_project_id='+str(data["project_id"])
 
         re=self.request.get(url=_url ,headers=headers)
-        print(re.text)
+        # print(re.text)
         common_post_data=re.json()
 
-        print('模板文章 ====>> ' ,common_post_data['data'])
+        # print('模板文章 ====>> ' ,common_post_data['data'])
+
         return common_post_data['data']
 
     def Cmod_article(self ,article_data ,data):
@@ -251,10 +253,10 @@ class I_article(Interface):
         for dict in mod_data:
             article_data[dict]=mod_data[dict]
 
-        print(article_data)
+        # print(article_data)
 
         re = self.request.put(url=_url, headers=headers, data=article_data)
-        print(re.text)
+        # print(re.text)
 
         return article_data
 
@@ -299,14 +301,14 @@ class I_article(Interface):
             article_data["motifs"] = motifs
 
         re =self.request.put(url=_url ,headers=headers ,data=article_data)
-        print(re.text)
+        # print(re.text)
 
-    def my_offline_delete(self):
+    def my_offline_delete(self ,num):
         '''
         http://cmstest02.36kr.com/api/post?user_id=12186523&per_page=40&page=1
         :return:
         '''
-        _url = 'http://cmstest02.36kr.com/api/post?user_id=12186523&per_page=40&page=1'
+        _url = 'http://cmstest02.36kr.com/api/post?user_id=12186523&per_page='+str(num)+'&page=1'
         headers = copy.deepcopy(self.Headers)
         _temp =[]
         re=self.request.get(url=_url ,headers=headers)
@@ -330,9 +332,9 @@ class I_article(Interface):
 if __name__ == '__main__':
     i=I_article()
     # i.review({"id":10465256 ,"project_id":1})
-    # i.my_offline_delete()
+    i.my_offline_delete(num=1)
 
-    i.creat_publish("测试文章" ,project_id=pp_id.xiamen,publish=4)
+    # i.creat_publish("测试文章" ,project_id=pp_id.xiamen,publish=4)
 
 
 

@@ -117,3 +117,11 @@ def get_feed_id(project):
         return feed_id.chengdu
     elif project ==pp_id.kunming:
         return feed_id.kunming
+
+
+
+
+class state:
+    publish='published'
+    offline = 'offline'
+    delete='deleted'
