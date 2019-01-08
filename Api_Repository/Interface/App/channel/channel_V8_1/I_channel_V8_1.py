@@ -4,6 +4,7 @@ from Api_Server.Support.Base_APP import *
 import os , requests ,copy ,json
 from Api_Server.Decorate_Data.Extract_Dict_Value import *
 from Api_Server.Decorate_Data.Extract_Value_Tostring import *
+from Api_Server.Support.Base_Time import *
 
 
 class I_channel_V8_1(Gateway):
@@ -46,6 +47,7 @@ class I_channel_V8_1(Gateway):
         sign = self.MD5(_data)
         _url = self.url + '/api/mis/nav/home/subnav/recom?sign='+sign
 
+
         rep = self.request.post(url=_url , headers = self.Headers , data=_data)
         return rep.json()
 
@@ -57,11 +59,15 @@ class I_channel_V8_1(Gateway):
 
         _data = json.dumps(temp)
 
+        headers = copy.deepcopy(self.Headers)
+        headers['timestamp']= str(time_Stamp())
+        # headers["Connection"]='keep-alive'
         # 生成签名
+        a=requests.session()
         sign = self.MD5(_data)
         _url = self.url + '/api/mis/nav/home/subnav/flow?sign=' + sign
-
-        rep = self.request.post(url=_url, headers=self.Headers, data=_data)
+        print(headers)
+        rep = a.post(url=_url, headers=headers, data=_data)
         return rep.json()
 
 if __name__ == '__main__':
@@ -70,9 +76,15 @@ if __name__ == '__main__':
     #焦点图           上下一起用会报错
     # i.foces()
 
-    #频道信息流                      (下滑是怎么请求的)
-    data=i.feed(20)
-    data=get_dict_value(data,template_path='data/itemList')
-    # print(data)
-    keyValues_ToString(data=data, key_list=["id","widgetTitle","duration"])
+    #频道信息流                      (下滑是怎么请求的  event=1)
+    # data=i.feed(20)
+    # data=get_dict_value(data,template_path='data/itemList')
+    # # print(data)
+    # keyValues_ToString(data=data, key_list=["id","widgetTitle","duration"])
+
+    import time
+    for m in range(5):
+        data=i.feed(2)
+        print(data)
+        time.sleep(3)
 

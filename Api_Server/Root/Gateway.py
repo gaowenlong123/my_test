@@ -6,6 +6,7 @@ from Api_Server.Support.Base_Enums import Enums
 from Api_Server.Base.Base_File import *
 from Api_Server.Base.Base_Data import *
 from Api_Server.Base.Base_pickle import *
+from Api_Server.Support.Base_Time import *
 
 class Gateway(metaclass=ABCMeta):
     def __init__(self):
@@ -15,7 +16,7 @@ class Gateway(metaclass=ABCMeta):
         self.version = self.get_version()
 
 
-        self.pass_word = "======="
+        self.pass_word = "YySiPNKgIDOGSvhgR-iPQIggDiArRzZt5aQfLKjnktE"
 
         self.Cookie_path='E:\Pycharm_Git\my_test\Api_Server\Root\Cookie.pickle'
 
@@ -165,6 +166,7 @@ class Gateway(metaclass=ABCMeta):
             "partner_version": self.version,
             # "device_id": "92772661-C750-433A-9024-55CB605FDFFC",
             "param": _params,
+
         }
 
         return _post_data
