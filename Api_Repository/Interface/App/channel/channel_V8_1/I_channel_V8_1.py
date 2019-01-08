@@ -60,14 +60,15 @@ class I_channel_V8_1(Gateway):
         _data = json.dumps(temp)
 
         headers = copy.deepcopy(self.Headers)
-        headers['timestamp']= str(time_Stamp())
+        # headers['timestamp']= str(time_Stamp())
         # headers["Connection"]='keep-alive'
+
+
         # 生成签名
-        a=requests.session()
         sign = self.MD5(_data)
         _url = self.url + '/api/mis/nav/home/subnav/flow?sign=' + sign
         print(headers)
-        rep = a.post(url=_url, headers=headers, data=_data)
+        rep = self.request.post(url=_url, headers=headers, data=_data)
         return rep.json()
 
 if __name__ == '__main__':
