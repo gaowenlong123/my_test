@@ -60,8 +60,8 @@
 # def one(name):
 #     print("one" ,name)
 # @test
-# def one1(user,name):
-#     print("one1" ,user ,name)
+# def one1(USER,name):
+#     print("one1" ,USER ,name)
 #
 # one(1)
 # one1(1,2)
