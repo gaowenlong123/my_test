@@ -17,7 +17,7 @@ class Gateway(metaclass=ABCMeta):
 
 
         # self.pass_word = "YySiPNKgIDOGSvhgR-iPQIggDiArRzZt5aQfLKjnktE"
-        self.pass_word='ystDqsMYEeep0Ov0FW3AWQ'
+        self.pass_word='ysWQ'
 
         self.Cookie_path='E:\Pycharm_Git\my_test\Api_Server\Root\Cookie.pickle'
 
