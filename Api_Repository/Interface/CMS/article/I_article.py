@@ -332,7 +332,7 @@ class I_article(Interface):
 if __name__ == '__main__':
     i=I_article()
     # i.review({"id":10465256 ,"project_id":1})
-    i.my_offline_delete(num=1)
+    i.my_offline_delete(num=5)
 
     # i.creat_publish("测试文章" ,project_id=pp_id.xiamen,publish=4)
 

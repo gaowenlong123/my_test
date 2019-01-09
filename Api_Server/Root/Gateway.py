@@ -16,7 +16,8 @@ class Gateway(metaclass=ABCMeta):
         self.version = self.get_version()
 
 
-        self.pass_word = "YySiPNKgIDOGSvhgR-iPQIggDiArRzZt5aQfLKjnktE"
+        # self.pass_word = "YySiPNKgIDOGSvhgR-iPQIggDiArRzZt5aQfLKjnktE"
+        self.pass_word='ystDqsMYEeep0Ov0FW3AWQ'
 
         self.Cookie_path='E:\Pycharm_Git\my_test\Api_Server\Root\Cookie.pickle'
 

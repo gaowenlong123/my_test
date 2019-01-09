@@ -31,7 +31,7 @@ class I_channel_V8_1(Gateway):
         return self.url
 
     def get_version(self):
-        return version.V8_1
+        return version.V8_1_2
 
     def get_isLogin(self):
         return False
@@ -72,7 +72,7 @@ class I_channel_V8_1(Gateway):
         return rep.json()
 
 if __name__ == '__main__':
-    i = I_channel_V8_1(channel_type.video)
+    i = I_channel_V8_1(channel_type.recom)
 
     #焦点图           上下一起用会报错
     # i.foces()
@@ -83,9 +83,8 @@ if __name__ == '__main__':
     # # print(data)
     # keyValues_ToString(data=data, key_list=["id","widgetTitle","duration"])
 
-    import time
-    for m in range(5):
-        data=i.feed(2)
-        print(data)
-        time.sleep(3)
+
+    data=i.feed(20)
+    print(data["data"]["itemList"])
+
 
