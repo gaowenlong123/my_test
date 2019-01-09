@@ -1,0 +1,6 @@
+表单提交
+headers['Content-Type'] = 'application/x-www-form-urlencoded'
+_data = { "param.name": name}
+rep = self.request.post(url=_url, headers=headers, data=_data)
+
+
