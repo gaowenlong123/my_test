@@ -1,3 +1,13 @@
+1:  远程仓库换名字了，可以用这个来更换地址
+git remote set-url origin https://github.com/gaowenlong123/test_Api.git
+
+
+
+
+
+
+
+
 plan:
         1:利用request包做测试
         2：测试推荐频道信息流，来做实验
@@ -36,4 +46,7 @@ Cookie: kr_stat_uuid=wazwP25672496;
         2c561d7c80a701ee210757a0fad0083eced57d62f39ba83275a1409c3ce6781b
         2c561d7c80a701ee210757a0fad0083eced57d62f39ba83275a1409c3ce6781b
         2c561d7c80a701ee210757a0fad0083eced57d62f39ba83275a1409c3ce6781b
+
+
+
 
