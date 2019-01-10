@@ -15,11 +15,9 @@ class Gateway(metaclass=ABCMeta):
         self.login_type = self.get_url()
         self.version = self.get_version()
 
+        self.pass_word=Enums.pass_word
 
-        # self.pass_word = "YySiPNKgIDOGSvhgR-iPQIggDiArRzZt5aQfLKjnktE"
-        self.pass_word='ysWQ'
-
-        self.Cookie_path='E:\Pycharm_Git\my_test\Api_Server\Root\Cookie.pickle'
+        self.Cookie_path=Enums.cookie_path
 
         self._md5 = hashlib.md5()
 

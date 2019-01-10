@@ -18,7 +18,9 @@ class Enums:
     test_App_url='http://gatewaytest36.36kr.com'
 
 
+    cookie_path='E:\Pycharm_Git\my_test\Api_Server\Root\Cookie.pickle'
 
+    pass_word='ysWQ'
 
 
 

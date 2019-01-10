@@ -47,7 +47,6 @@ class I_channel_V8_1(Gateway):
         sign = self.MD5(_data)
         _url = self.url + '/api/mis/nav/home/subnav/recom?sign='+sign
 
-
         rep = self.request.post(url=_url , headers = self.Headers , data=_data)
         return rep.json()
 
@@ -63,17 +62,15 @@ class I_channel_V8_1(Gateway):
         # headers['timestamp']= str(time_Stamp())
         # headers["Connection"]='keep-alive'
 
-
         # 生成签名
         sign = self.MD5(_data)
         _url = self.url + '/api/mis/nav/home/subnav/flow?sign=' + sign
-        print(headers)
+
         rep = self.request.post(url=_url, headers=headers, data=_data)
+        # print(rep.status_code)
         return rep.json()
 
 if __name__ == '__main__':
-    i = I_channel_V8_1(channel_type.recom)
-
     #焦点图           上下一起用会报错
     # i.foces()
 
@@ -83,8 +80,9 @@ if __name__ == '__main__':
     # # print(data)
     # keyValues_ToString(data=data, key_list=["id","widgetTitle","duration"])
 
-
-    data=i.feed(20)
-    print(data["data"]["itemList"])
+    for m in range(5):
+        i = I_channel_V8_1(channel_type.recom)
+        data=i.feed(20)
+        # print(data["data"]["itemList"])
 
 
