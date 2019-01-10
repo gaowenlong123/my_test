@@ -30,13 +30,19 @@ class channel_data_test:
         # "searchWord": "奋斗"
 
     }
+    hot = {
+        "subnavId": "400",
+        "subnavNick": "hotlist"
+    }
 
 class channel_type:
     recom='recom'
     video='video'
+    hot='hotlist'
 
 class search_type:
     video='video'
+
     newsflash='newsflash'
     article='article'
     audio='audio'
