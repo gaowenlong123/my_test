@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from  selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
-import time
+import time ,unittest
 # 创建chrome浏览器驱动，无头模式
 chrome_options = Options()
 # chrome_options.add_argument('--headless')
