@@ -8,6 +8,7 @@ from Api_Server.Decorate_Data.Extract_Dict_Value import *
 from Api_Server.Support.Base_Time import *
 
 
+password = read_text(Enums.password_path)
 
 data={
 
@@ -35,7 +36,7 @@ import requests ,json ,hashlib
 
 def MD5(body):
     _md5 =hashlib.md5()
-    pass_word = body + read_text(Enums.password_path)
+    pass_word = body + password
     _md5.update(pass_word.encode('utf-8'))
     sign = _md5.hexdigest()
     return sign
