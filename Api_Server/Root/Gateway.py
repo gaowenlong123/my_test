@@ -15,7 +15,7 @@ class Gateway(metaclass=ABCMeta):
         self.login_type = self.get_url()
         self.version = self.get_version()
 
-        self.pass_word=Enums.pass_word
+        self.pass_word= read_text(Enums.password_path)
 
         self.Cookie_path=Enums.cookie_path
 

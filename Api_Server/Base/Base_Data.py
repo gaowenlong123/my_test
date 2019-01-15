@@ -36,5 +36,9 @@ def read_text_by_gbk(path ):                #读数据
 
 
 if __name__ == '__main__':
-    a=read_text('b.text')
-    write_text('aaccccccccccc','b.text')
+    # a=read_text('b.text')
+    from Api_Server.Support.Base_Enums import *
+
+    a = read_text(Enums.password_path)
+    print(a)
+    # write_text('aaccccccccccc','b.text')

@@ -20,7 +20,9 @@ class Enums:
 
     cookie_path='E:\Pycharm_Git\my_test\Api_Server\Root\Cookie.pickle'
 
-    pass_word='ysWQ'
+    password_path='C:\\Users\\Administrator\\Desktop\\password.txt'
+
+
 
 
 

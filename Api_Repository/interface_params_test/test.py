@@ -35,7 +35,7 @@ import requests ,json ,hashlib
 
 def MD5(body):
     _md5 =hashlib.md5()
-    pass_word = body + '====='
+    pass_word = body + read_text(Enums.password_path)
     _md5.update(pass_word.encode('utf-8'))
     sign = _md5.hexdigest()
     return sign
