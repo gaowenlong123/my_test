@@ -15,6 +15,10 @@ def asert_equal(data,key ,targrt):
     :param targrt:
     :return:
     '''
+
+    if data["_isSuccess"] == False:
+        return {"result":False ,"msg":data["msg"]}
+
     if data.get(key , None) == None:
         temp = map_List_dict(data ,key ,None)
     else:

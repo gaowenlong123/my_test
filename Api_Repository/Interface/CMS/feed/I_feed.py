@@ -63,8 +63,8 @@ class I_feed(Interface):
         # print(rep.json())
         return rep.json()
 
-    def recom_feed_ById(self ,data ,feed=feed_id.tj):
-        _url = self.url + '/feed-stream?entity_id='+str(data["id"])+'&feed_id='+feed
+    def recom_feed_ById(self ,data ,state='offline' ,feed=feed_id.tj ):
+        _url = self.url + '/feed-stream?entity_id='+str(data["id"])+'&feed_id='+feed+'&state='+state
         rep = self.request.get(url=_url, headers=self.Headers)
         # print(rep.json())
         return rep.json()

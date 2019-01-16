@@ -2,7 +2,7 @@
 def check_request(data):
     if data.get('code' ,None) != None:
         if str(data["code"]) != "0":
-            return {"_isSuccess":False,"_msg":'接口请求失败'}
+            return {"_isSuccess":False,"_msg":'接口请求失败',"msg" :data["msg"]}
         else:
             return {"_isSuccess":True,"_msg":'接口请求成功'}
     else:

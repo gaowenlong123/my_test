@@ -125,3 +125,13 @@ class state:
     publish='published'
     offline = 'offline'
     delete='deleted'
+
+
+
+class  itemType:
+    article = "10"
+    discussion="30"
+    video="60"
+    topic="5000"
+    guanggao="0"
+    kaikecolum="200000"

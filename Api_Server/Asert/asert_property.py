@@ -5,12 +5,12 @@ def asert_property(data ,target_data ,property ,property_value=''):
         print(target_data["_msg"])
         return {"result":False ,"msg":target_data["_msg"]}
 
-    print("attention 这里是一个list，注意")
+    # print("attention 这里是一个list，注意")
     _target_data=target_data["data"][0][property]
 
     if property_value == "":
         _data = data[property]
-        print("attention 这里只是一个简单字典")
+        # print("attention 这里只是一个简单字典")
         if _data == _target_data:
             return {"result":True ,"msg":_Bolean_ToString(_data ,_target_data ,isEqual=True)}
         else:

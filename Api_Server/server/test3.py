@@ -1,4 +1,4 @@
-from Api_Repository.Interface.App.channel.channel_V8_1.I_channel_V8_1 import I_channel_V8_1
+from Api_Repository.Interface.App.channel.channel_V8_2.I_channel_V8_2 import I_channel_V8_1
 from Api_Server.Support.Base_APP import *
 
 

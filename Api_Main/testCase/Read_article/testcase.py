@@ -7,7 +7,7 @@ from Api_Server.Decorate_Data.Extract_Value_Tostring import *
 from Api_Server.Asert.asert_property import *
 from Api_Server.Asert.asert_equal import *
 from Api_Server.Support.Base_Echo import *
-from Api_Repository.Interface.App.channel.channel_V8_1.I_channel_V8_1 import I_channel_V8_1
+from Api_Repository.Interface.App.channel.channel_V8_2.I_channel_V8_2 import I_channel_V8_1
 from Api_Server.Support.Base_APP import *
 
 #字典的值是   列表还是字典需要注意，要先判断
@@ -23,7 +23,7 @@ result_dict={}
 print("测试开始" ,"----"*20)
 
 #1
-article_data=article.creat_publish("11接口自动化测试123")
+article_data=article.creat_publish("App_v8.2测试")
 #测试是否发布成功
 post_feed = feed.post_feed()
 post_feed=get_dict_value(post_feed ,template_path="data/data")

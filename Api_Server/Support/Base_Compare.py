@@ -7,7 +7,11 @@ def map(dict, objkey, default='default'):
     :param default: 找不到时返回的默认值
     :return:
     '''
-    tmp = dict
+    import json
+    if type(dict) == str:
+        tmp = json.loads(dict)
+    else:
+        tmp=dict
     for k, v in tmp.items():
         if k == objkey:
             return v

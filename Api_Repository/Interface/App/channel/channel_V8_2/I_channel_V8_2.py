@@ -7,9 +7,9 @@ from Api_Server.Decorate_Data.Extract_Value_Tostring import *
 from Api_Server.Support.Base_Time import *
 
 
-class I_channel_V8_1(Gateway):
+class I_channel_V8_2(Gateway):
     def __init__(self ,type=''):
-        super(I_channel_V8_1 ,self).__init__()
+        super(I_channel_V8_2 ,self).__init__()
 
         #===== 父类实现 生成文件，记录，登录等  ，这个类实现param的个性化接口======
 
@@ -31,7 +31,7 @@ class I_channel_V8_1(Gateway):
         return self.url
 
     def get_version(self):
-        return version.V8_1_2
+        return version.V8_2
 
     def get_isLogin(self):
         return False
@@ -79,10 +79,11 @@ if __name__ == '__main__':
     # data=get_dict_value(data,template_path='data/itemList')
     # # print(data)
     # keyValues_ToString(data=data, key_list=["id","widgetTitle","duration"])
-
+    i = I_channel_V8_2(channel_type.recom)
     for m in range(5):
-        i = I_channel_V8_1(channel_type.recom)
+
         data=i.feed(20)
-        # print(data["data"]["itemList"])
+        print(data)
+        # print(data["data"]["itemList"])  写成类不能重复请求
 
 

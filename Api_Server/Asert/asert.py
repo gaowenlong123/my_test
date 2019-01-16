@@ -9,7 +9,7 @@ def asert_success(func):
     def check(data,*args ,**kwargs):
         if data["_isSuccess"] == False:
             # 如果 为false 就不执行被装饰的函数
-            return None
+            return data
         return func(data,*args ,**kwargs)
 
     return check

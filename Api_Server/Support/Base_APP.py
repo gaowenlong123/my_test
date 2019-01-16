@@ -3,6 +3,7 @@ class version:
     V8_0='8.0'
     V8_1_dev='8.1.0dev'  #???
     V8_1_2='8.1.2'
+    V8_2 = '8.2_dev'
 
 
 class channel_data_test:

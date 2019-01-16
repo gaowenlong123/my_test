@@ -1,6 +1,7 @@
-import re
+import re ,json
 from Api_Server.Support.Base_Compare import *
 from Api_Server.Asert.asert import *
+from Api_Repository.Data_Center.Entity import *
 
 #  模板 key   ；  输出样式
 
@@ -71,6 +72,13 @@ def keyValues_ToString(data,key_list,template_print='key=value  |   key'):
                 temp = map(_dict, key ,default="无值")
                 print(key, k_v, temp , k_k,end='')
                 temp_dict.update({key : temp })
+
+            #兼容广告
+            if _dict.get("itemType" ,None) ==0:
+            # if _dict["itemType"] == 0:
+                temp=map(_dict["templateMaterial"]["adJsonContent"],"title","无值")
+                print("title", k_v, temp, k_k, end='')
+                temp_dict.update({"title": temp})
             re_list.append(temp_dict)
             print('')
 
@@ -81,6 +89,31 @@ def keyValues_ToString(data,key_list,template_print='key=value  |   key'):
         data["data"] = None
         return data
 
+
+@asert_success
+def keyValues_ToString_byType(data,template_print='key=value  |   key'):
+    '''
+        根据类型输出 类型，标题，等
+    :param data:  {'_isSuccess': True, '_msg': '接口请求成功', 'data': data}
+    :param template_print:
+    :return:      {'_isSuccess': True, '_msg': '接口请求成功', 'data': re_dict }
+    '''
+    pass
+
+def _get_value_byType(data):
+    _type = str(data["itemType"])
+    if itemType.article == _type :
+        pass
+    elif itemType.discussion == _type :
+        pass
+    elif itemType.topic == _type :
+        pass
+    elif itemType.video == _type :
+        pass
+    elif itemType.guanggao == _type :
+        pass
+    elif itemType.kaikecolum == _type :
+        pass
 
 
 
@@ -98,7 +131,7 @@ def _get_log_string(template_print):
 if __name__ == '__main__':
     import requests
    #取名为re会与正则表达式重命名
-    rep=requests.get(url='https://36kr.com/pp/api/newsflash?project_id=1')
+    # rep=requests.get(url='https://36kr.com/pp/api/newsflash?project_id=1')
     # data=get_dict(rep.json())
 
 
