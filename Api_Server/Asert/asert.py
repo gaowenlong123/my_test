@@ -10,7 +10,7 @@ def asert_success(func):
         if data["_isSuccess"] == False:
             # 如果 为false 就不执行被装饰的函数
             return data
-        return func(data,*args ,**kwargs)
+        return func(data , *args ,**kwargs)
 
     return check
 
@@ -20,7 +20,6 @@ def asert_success(func):
 @asert_success
 def a(dict):
     print(dict)
-
 
 if __name__ == '__main__':
     a({"11":1 ,"_isSuccess":True})

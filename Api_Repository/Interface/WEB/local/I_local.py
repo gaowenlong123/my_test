@@ -6,12 +6,6 @@ from Api_Server.Support.Base_Compare import *
 from Api_Repository.Data_Center.Entity import *
 from Api_Repository.Interface.CMS.article.I_article import I_article
 
-# class I_local(Interface):
-    # def __init__(self,param = ''):
-    #     super(I_local ,self).__init__()
-
-
-
 class I_local():
     def __init__(self ,param=''):
         # self.url = "http://test02.36kr.com/pp/api"

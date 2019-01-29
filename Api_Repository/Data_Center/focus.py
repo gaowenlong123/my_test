@@ -9,7 +9,7 @@ _data = {"url":"https://www.baidu.com",
 class url:
     baidu = "https://www.baidu.com"
     album_gohome =  "67"
-    column_guiguKnow = "238"
+    column_guigu = "238"
 
 
 

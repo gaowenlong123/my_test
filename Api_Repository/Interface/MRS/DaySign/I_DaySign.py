@@ -8,8 +8,6 @@ from Api_Server.Support.Base_Time import *
 class I_DaySign(Interface):
     def __init__(self):
         super(I_DaySign,self).__init__()
-
-        #暂时不搞你了
         pass
 
 

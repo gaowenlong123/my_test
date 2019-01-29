@@ -3,8 +3,6 @@ import os,yaml
 操作文件
 '''
 
-
-
 def get_path(path):
     PATH = lambda p: os.path.abspath(
         os.path.join(os.path.dirname(__file__), p)
@@ -35,8 +33,6 @@ def remove_file(f):
         os.remove(f)
     else:
         print("%s文件不存在，无法删除" % f)
-
-
 
 if __name__ == '__main__':
     # mkdir_file('E:\Pycharm_Git\my_test\Base\Base\\a1.text')

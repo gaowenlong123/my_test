@@ -6,10 +6,9 @@ from Api_Server.Decorate_Data.Extract_Dict_Value import *
 from Api_Server.Decorate_Data.Extract_Value_Tostring import *
 from Api_Server.Asert.asert_property import *
 from Api_Server.Asert.asert_equal import *
-from Api_Server.Support.Base_Echo import *
 from Api_Repository.Interface.App.channel.channel_V8_2.I_channel_V8_2 import I_channel_V8_2
 from Api_Server.Support.Base_APP import *
-from Api_Repository.interface_params_test.test import *
+from Api_Repository.Interface_params_test.test import *
 
 import unittest
 class test(unittest.TestCase):
@@ -44,7 +43,7 @@ class test(unittest.TestCase):
         recom_list = self.feed.recom_feed()
         recom_list = get_dict_value(recom_list, template_path="data/data")
         self.recom_data = keyValue_ToString_byIndex(recom_list, by_index=[1], key_list=["id", "title"])
-        print(self.recom_data)
+        # print(self.recom_data)
         result2 = asert_property(self.article_data, self.recom_data, "title")
         # print(result2)
         self.result_dict.update({"推荐文章": result2})
@@ -52,7 +51,9 @@ class test(unittest.TestCase):
 
 
     def test1(self):
-
+        '''
+            推荐到频道信息流
+        '''
         start = time_Stamp()
         while(True):
             _data = App_request()
@@ -60,21 +61,23 @@ class test(unittest.TestCase):
             asert_data = keyValue_ToString_byIndex(feed_data,by_index=[2], key_list=["itemType","widgetTitle","categoryTitle","route"])
             end = time_Stamp()
             if asert_data["data"][0].get("widgetTitle" ,None) == self.article_data["title"]:
-                print("测试成功，耗时"+str(end-start)+"秒")
-                self.assertEqual(0, 0, msg="测试成功，耗时" + str(end - start) + "秒")
+                temp_str="测试成功，耗时"+str(end-start)+"秒"
+                self.result_dict.update({"test1": temp_str})
+                self.assertEqual(0, 0)
                 break
 
             if end - start >120:
+                temp_str = "测试失败，耗时" + str(end - start) + "秒"
+                self.result_dict.update({"test1": temp_str})
                 self.assertEqual(0,1,msg="测试失败，耗时" + str(end - start) + "秒")
                 break
             time.sleep(2)
 
-        # result5 = asert_equal(asert_data, self.article_data, "widgetTitle")
-        # self.result_dict.update({"该文章在推荐频道信息流": result5})
-
 
     # def test2(self):
     #     print('22')
+
+
 
     def tearDown(self):
         self.feed_stream.offline(self.recom_data["data"])
@@ -97,9 +100,8 @@ class test(unittest.TestCase):
         self.result_dict.update({"推荐频道删除文章": result6})
 
 
-        # 3
-        self.article.review(self.article_data)  # 操作
 
+        self.article.review(self.article_data)  # 操作
         # 测试是否下线
         review_data = self.feed.post_ById(self.article_data)  # 为了验证的请求
         review_data = get_dict_value(review_data, template_path="data/data")  # 做请求的校验，拿出有效值
@@ -109,9 +111,8 @@ class test(unittest.TestCase):
         # print(result3)
         self.result_dict.update({"下线文章": result3})
 
-        # #4
-        self.article.delete(self.article_data)
 
+        self.article.delete(self.article_data)
         # #测试是否删除
         dellect_data = self.feed.post_ById(self.article_data)
         dellect_data = get_dict_value(dellect_data, template_path="data/data")
@@ -123,9 +124,16 @@ class test(unittest.TestCase):
 
 
         print("测试结束", "****" * 20)
-        for i in self.result_dict:
-            print(i + "==>" + str(self.result_dict[i]['result']))
-
+        for key in self.result_dict:
+            try:
+                if self.result_dict[key].get("result" ,None) !=None:
+                    print(key + "==>" + str(self.result_dict[key]['result']))
+                else:
+                    #如果字典没有该字段
+                    print(key + "==>" + str(self.result_dict[key]))
+            except(AttributeError ):
+                #如果是字符串，不是字典
+                print(key + "==>" + str(self.result_dict[key]))
         self.result_dict.clear()
 
 

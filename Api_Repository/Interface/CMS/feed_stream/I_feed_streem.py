@@ -47,7 +47,7 @@ class I_feed_streem(Interface):
         if type(data)==list:
             data=data[0]
             data.update({"project_id" :1})
-        print("做兼容了")
+        # print("做兼容了")
         _url = self.url+'/'+str(data["id"])
         headers = copy.deepcopy(self.Headers)
         headers['Content-Type'] = 'application/json;charset=UTF-8'

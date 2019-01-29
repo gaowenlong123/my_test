@@ -1,5 +1,5 @@
 from Api_Server.Support.Base_Enums import Enums
-from Api_Server.Base.Base_Element_Fun import Function
+from Api_Server.Base.Base_Element_Function import Function
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
@@ -23,8 +23,7 @@ class Login():
         self.Func.find_class_name(driver,'password').send_keys(user['pass'])
         self.Func.find_xpath(driver, xpath='/html/body/div[2]/div/div/div/section/button').click()
 
-        # a=input('please input any')   到了机器验证了
-        # 人工睡一会？？
+
 
         try:
             self.Func.find_xpath(driver, xpath='//*[@id="app"]/div/div[1]/div/div/div[1]')
@@ -46,7 +45,7 @@ class Login():
             print('username again = ', page_name.text)  # 登录验证
             if page_name.text != user['name']:
                 return {'result' : False}
-                                  #如果还是不为用户名，就重新登录一遍
+
 
         ele = self.Func.find_xpath(driver, xpath='//*[@id="app"]/div/div[2]/div/ul/li[2]/div/a').click()
         # ActionChains(driver).move_to_element(ele).click().perform()
@@ -70,8 +69,7 @@ class Login():
         driver.maximize_window()
         # self.Func.switch_window(driver, 1)
 
-        # a=input('please input any')   到了机器验证了
-        # 人工睡一会？？
+        # a=input('input any')   到了机器验证了
         try:
             self.Func.find_xpath(driver, xpath='//*[@id="2$Menu"]/li[1]/a')
             for i in range(5):

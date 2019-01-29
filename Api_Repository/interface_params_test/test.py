@@ -1,14 +1,15 @@
+# 版本号，请求头参数 ，参数，频道
+
 # 伪装请求gateway
 #第二次请求会失败 ？？  可以是他们接口本来就有问题
 #带上 deviceID 就可以按ID发布 。
 #1 ：形成headers   2：收集data  3：生成测试用例
-from Api_Server.Root.Gateway import *
 from Api_Server.Decorate_Data.Extract_Value_Tostring import *
 from Api_Server.Decorate_Data.Extract_Dict_Value import *
 from Api_Server.Support.Base_Time import *
+from Api_Server.Support.Base_Enums import *
 
-
-password = read_text(Enums.password_path)
+password = Enums.password
 
 data={
 
@@ -65,11 +66,13 @@ def App_request():
 if __name__ == '__main__':
 
 
-    for i in range(5):
+
+    for i in range(3):
         print(i)
         data1=App_request()
-    # print(data1)
+        # print(data1)
         data2=get_dict_value(data1 ,template_path='data/itemList')
-        keyValues_ToString(data=data2, key_list=["itemType","widgetTitle","categoryTitle","route"])
-        time.sleep(4)
+        # keyValues_ToString(data=data2, key_list=["itemType","widgetTitle","categoryTitle","route"])
+        keyValue_ToString_byIndex(data=data2,by_index=[2,3,4], key_list=["itemType","widgetTitle","categoryTitle","route"])
+        time.sleep(5)
 

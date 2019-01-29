@@ -1,6 +1,6 @@
 class feed_id:
     #app 频道需要扩充
-    tj="59"
+    tuijian= "59"
     bzsj="357"
 
     #web 频道
@@ -49,7 +49,6 @@ class recom_feed:
     nanning="{\"feed_ids\":[322]}"
 
 
-a=['西安', 86, 298, '南京', 87, 300, '成都', 88, 301, '昆明', 89, 302, '广州', 97, 321, '福州', 94, 318, '南宁', 98, 322, '贵阳', 93, 319, '厦门', 95, 317, '湖州', 96, 316, '青岛', 92, 315, '海南', 90, 314]
 
 def local_recom_feed(project):
     if project == pp_id.xian:
@@ -133,5 +132,5 @@ class  itemType:
     discussion="30"
     video="60"
     topic="5000"
-    guanggao="0"
-    kaikecolum="200000"
+    advertisement= "0"
+    kaike_column= "200000"

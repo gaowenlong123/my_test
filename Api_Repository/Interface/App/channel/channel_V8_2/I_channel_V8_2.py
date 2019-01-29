@@ -1,10 +1,8 @@
-from Api_Server.Root.Gateway import Gateway
+from Api_Server.Root_Gateway.Gateway import Gateway
 from Api_Server.Support.Base_Enums import Enums
 from Api_Server.Support.Base_APP import *
-import os , requests ,copy ,json
-from Api_Server.Decorate_Data.Extract_Dict_Value import *
+import os , requests ,copy
 from Api_Server.Decorate_Data.Extract_Value_Tostring import *
-from Api_Server.Support.Base_Time import *
 
 
 class I_channel_V8_2(Gateway):
@@ -27,7 +25,7 @@ class I_channel_V8_2(Gateway):
 
     def get_url(self):
         # 在这里区分的是测试环境还是线上环境
-        self.url = Enums.test_App_url
+        self.url = Enums.test_App_url_java
         return self.url
 
     def get_version(self):

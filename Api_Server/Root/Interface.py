@@ -4,7 +4,7 @@ import requests
 from Api_Server.Base.Base_Driver import WebDriver
 from Api_Server.Support.Base_Enums import Enums
 from Api_Server.Base.Base_File import *
-from Api_Server.Base.Base_Data import *
+from Api_Server.Base.Base_Text import *
 from Api_Server.Base.Base_pickle import *
 
 class Interface(metaclass=ABCMeta):
@@ -14,7 +14,6 @@ class Interface(metaclass=ABCMeta):
         self.login_type = self.get_url()
         self.Cookie_path=Enums.cookie_path
 
-        #建立一个seesion  ? 要不要直接建立一个seesion 到处用
         # self.request=requests.session()
 
         #先检查本地的cookie
@@ -26,14 +25,8 @@ class Interface(metaclass=ABCMeta):
 
         #生成临时记录数据的文件
         self.path_name=self.get_dir_name()
-        self._mk_dir(self.path_name)
-        self._mk_pickle(self.path_name)
-
-
-
-
-
-
+        # self._mk_dir(self.path_name)
+        # self._mk_pickle(self.path_name)
 
 
 
@@ -121,7 +114,7 @@ class Interface(metaclass=ABCMeta):
             writeInfo(data , self.Cookie_path)
 
         self._close_window()
-        return self._make_headers(self.login_type, self.Cookie)   #？？？？
+        return self._make_headers(self.login_type, self.Cookie)
 
     def _close_window(self):
         pass
@@ -163,10 +156,10 @@ class Interface(metaclass=ABCMeta):
 
 
 #公有方法区域
-    def write(self ,data):  #在一次运行中可以持续写入文件。但是不能两次运行中累加
+    def write(self ,data):
         write_text(data=data,path=self.log_text)
 
-    def end_write(self ,is_clear):  #将pickle的信息全部中写入       (这里牵扯一个需求，字典是一个多层结构，现在只是一层字典的内容）
+    def end_write(self ,is_clear):
         write_text('运行中的字典信息',path=self.log_text)
         dict=self._read_pickle(is_clear=is_clear)
         for i in dict:
@@ -199,26 +192,19 @@ class Interface(metaclass=ABCMeta):
         self.request_data = {}
         self.response_data = {}
 
-    # 这个搞成全局的先试试 ,一次拿到全局都用
+
 
 
 #私有属性区域,只读不能写
     def _privite_property(self):
-        self._auther = 'gao'
-        self._FixBody = []
+        self._auther = ''
         self._error_times = 0
         self._error_frequency = []
-        self._error_reason = []
 
-        self._type = ''   #?????
 
     @property
     def auther(self):
         return self._auther
-
-    @property
-    def FixBody(self):
-        return self._FixBody
 
     @property
     def Error_Times(self):
@@ -228,13 +214,7 @@ class Interface(metaclass=ABCMeta):
     def Error_Frequency(self):
         return self._error_frequency
 
-    @property
-    def Error_Reason(self):
-        return self._error_reason
 
-    @property
-    def Type(self):
-        return self._type
 
 
 

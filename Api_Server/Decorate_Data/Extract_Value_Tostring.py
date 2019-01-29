@@ -3,7 +3,7 @@ from Api_Server.Support.Base_Compare import *
 from Api_Server.Asert.asert import *
 from Api_Repository.Data_Center.Entity import *
 
-#  模板 key   ；  输出样式
+
 
 @asert_success
 def keyValue_ToString_byIndex(data,key_list,by_index ,template_print='key=value  |   key'):
@@ -29,6 +29,20 @@ def keyValue_ToString_byIndex(data,key_list,by_index ,template_print='key=value 
                 temp = map(_dict, key ,default="无值")
                 print(key, k_v, temp , k_k,end='')
                 re_dict.update({key : temp})
+
+            # 兼容广告
+            if _dict.get("itemType", None) == 0:
+                # if _dict["itemType"] == 0:
+                if _dict.get("templateMaterial" , None) !=None:
+                    if _dict["templateMaterial"].get("adJsonContent" , None) !=None:
+                        temp = map(_dict["templateMaterial"]["adJsonContent"], "title", "无值")
+                    else:
+                        temp='attention ：无 adJsonContent !'
+                else:
+                    temp = 'attention ：无 templateMaterial !'
+                print("title", k_v, temp, k_k, end='')
+                re_dict.update({"title": temp})
+
             re_list.append(re_dict)
             print('')
         data["data"] = re_list
@@ -40,13 +54,14 @@ def keyValue_ToString_byIndex(data,key_list,by_index ,template_print='key=value 
     return data
 
 @asert_success
-def keyValues_ToString(data,key_list,template_print='key=value  |   key'):
+def keyValues_ToString(data,key_list,template_print='key=value  |   key',islog=False):
     '''
 
     :param data:  {'_isSuccess': True, '_msg': '接口请求成功', 'data': data}
     :param key_list:
     :param template_print:
     :return:      {'_isSuccess': True, '_msg': '接口请求成功', 'data': re_dict }
+    :islog: 暂时不用
     '''
 
     _template_print_list = _get_log_string(template_print)
@@ -57,8 +72,9 @@ def keyValues_ToString(data,key_list,template_print='key=value  |   key'):
         re_dict = {}
         for key in key_list:
             temp = map(data["data"] ,key,default="无值")
+
             print(key,k_v,temp ,k_k ,end='')
-            re_dict.update({key ,temp})
+            re_dict.update({key : temp})
         print('')
         data["data"] = re_dict
         return data
@@ -74,11 +90,23 @@ def keyValues_ToString(data,key_list,template_print='key=value  |   key'):
                 temp_dict.update({key : temp })
 
             #兼容广告
-            if _dict.get("itemType" ,None) ==0:
-            # if _dict["itemType"] == 0:
-                temp=map(_dict["templateMaterial"]["adJsonContent"],"title","无值")
+            # if _dict.get("itemType" ,None) ==0:
+            # # if _dict["itemType"] == 0:
+            #     temp=map(_dict["templateMaterial"]["adJsonContent"],"title","无值")
+            #     print("title", k_v, temp, k_k, end='')
+            #     temp_dict.update({"title": temp})
+
+            if _dict.get("itemType", None) == 0:
+                if _dict.get("templateMaterial" , None) !=None:
+                    if _dict["templateMaterial"].get("adJsonContent" , None) !=None:
+                        temp = map(_dict["templateMaterial"]["adJsonContent"], "title", "无值")
+                    else:
+                        temp='attention ：无 adJsonContent !'
+                else:
+                    temp = 'attention ：无 templateMaterial !'
                 print("title", k_v, temp, k_k, end='')
                 temp_dict.update({"title": temp})
+
             re_list.append(temp_dict)
             print('')
 
@@ -88,6 +116,40 @@ def keyValues_ToString(data,key_list,template_print='key=value  |   key'):
     else:
         data["data"] = None
         return data
+
+
+def queueValues_compareToString(leftdata , rightdata):
+    '''
+    为了实现字段不相同，但是对应的值是一样的，左右对比展示打印出来 。前提是你的排序待相同
+    :param leftdata:
+    :param rightdata:
+    :return:
+    '''
+    left_list=[]
+    right_list=[]
+    if type(leftdata)!=dict and type(right_list)!=dict:
+        print("传入值不为dict")
+        return ''
+
+    for temp in leftdata.values():
+        left_list.append(temp)
+    for temp in rightdata.values():
+        right_list.append(temp)
+
+    if len(left_list) != len(right_list):
+        difference=len(left_list)-len(right_list)
+        if difference<0:
+            difference=abs(difference)
+            for i in range(difference):
+                left_list.append("无值")
+        else:
+            for i in range(difference):
+                right_list.append("无值")
+
+    for (m1, m2) in zip(left_list, right_list):
+        print(m1 , "  ==等于==  " ,m2)
+
+
 
 
 @asert_success
@@ -110,9 +172,9 @@ def _get_value_byType(data):
         pass
     elif itemType.video == _type :
         pass
-    elif itemType.guanggao == _type :
+    elif itemType.advertisement == _type :
         pass
-    elif itemType.kaikecolum == _type :
+    elif itemType.kaike_column == _type :
         pass
 
 
@@ -129,14 +191,7 @@ def _get_log_string(template_print):
 
 
 if __name__ == '__main__':
-    import requests
-   #取名为re会与正则表达式重命名
-    # rep=requests.get(url='https://36kr.com/pp/api/newsflash?project_id=1')
-    # data=get_dict(rep.json())
+    #取名为re会与正则表达式重命名
+    pass
 
 
-
-
-
-    # keyValue_ToString_byIndex(data  ,key_list=['id','title'] ,by_index=[7])
-    # KeyValues_ToString(data, key_list=['id', 'title'])

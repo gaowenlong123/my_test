@@ -1,4 +1,4 @@
-from Api_Server.Root.Gateway import Gateway
+from Api_Server.Root_Gateway.Gateway import Gateway
 from Api_Server.Support.Base_Enums import Enums
 from Api_Server.Support.Base_APP import *
 import os , requests ,copy ,json
@@ -18,7 +18,7 @@ class I_copartner_V8_1(Gateway):
 
     def get_url(self):
         # 在这里区分的是测试环境还是线上环境
-        self.url = Enums.test_App_url
+        self.url = Enums.test_App_url_java
         return self.url
 
     def get_version(self):

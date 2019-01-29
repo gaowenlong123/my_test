@@ -6,7 +6,6 @@ from Api_Server.Decorate_Data.Extract_Dict_Value import *
 from Api_Server.Decorate_Data.Extract_Value_Tostring import *
 from Api_Server.Asert.asert_property import *
 from Api_Server.Asert.asert_equal import *
-from Api_Server.Support.Base_Echo import *
 from Api_Repository.Interface.App.channel.channel_V8_2.I_channel_V8_2 import I_channel_V8_1
 from Api_Server.Support.Base_APP import *
 
@@ -49,11 +48,11 @@ result_dict.update({"推荐文章" :result2})
 
 
 #在推荐频道信息流查看
-app_data = get_channel_feed(I_channel_V8_1 ,channel_type.recom)
-app_list=get_dict_value(app_data ,template_path="data/itemList")
-_data=keyValue_ToString_byIndex(app_list ,by_index=[1,2,3,4,5],key_list=["mark","widgetTitle"])
-print(_data)
-input()
+# app_data = get_channel_feed(I_channel_V8_1 ,channel_type.recom)
+# app_list=get_dict_value(app_data ,template_path="data/itemList")
+# _data=keyValue_ToString_byIndex(app_list ,by_index=[1,2,3,4,5],key_list=["mark","widgetTitle"])
+# print(_data)
+# input()
 
 
 

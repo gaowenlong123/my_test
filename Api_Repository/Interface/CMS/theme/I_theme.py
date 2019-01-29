@@ -11,7 +11,7 @@ class I_theme(Interface):
         super(I_theme ,self).__init__()
 
         #只新建普通话题，不创建氪友问答
-        # 需要跨站展示吗？？ 写上吧
+
 
   #重写虚方法
     def get_dir_name(self):

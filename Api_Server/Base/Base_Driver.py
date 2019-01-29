@@ -81,10 +81,6 @@ class WebDriver():
         # self.Cookie=Cookie[:-1]
         return Cookie[:-1]
 
-
-
-
-
     def get_headers_Token(self):
         headers = {
             'M-X-XSRF-TOKEN': self.driver.get_cookie('M-XSRF-TOKEN')['value'],

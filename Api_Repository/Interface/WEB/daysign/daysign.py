@@ -49,14 +49,9 @@ class daysign():
         try:
             _temp = re.json()["data"]
 
-            # for dict in _temp:
-
-            # print("time ===>", map(_temp, "currentTimeFormat", "无"))
-            # print(map(_temp, 'title', "无"))
-            # print(map(_temp, "content", "无"))
-
         except:
             _temp = {}
+        return _temp
 
 
 if __name__ == '__main__':

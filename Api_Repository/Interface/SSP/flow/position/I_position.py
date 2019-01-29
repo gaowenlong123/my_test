@@ -65,7 +65,6 @@ class I_position(Interface):
 
     def mod(self ,data ,mod_data):  # 表单提交
         '''
-
         :param data:
         :param mod_data:    param.width"     param.height":
         }

@@ -250,7 +250,5 @@ if __name__ == '__main__':
 
     # i.get_data(id=pp_id.xiamen)        #需要在看看
 
-
-
     # i.publish(project_id=pp_id.nanjing, type=2)
 
